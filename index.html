@@ -1,0 +1,1657 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Autobutler Mechanics API Reference</title>
+
+    <style>
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight, .highlight .w {
+  color: #f8f8f2;
+  background-color: #272822;
+}
+.highlight .err {
+  color: #272822;
+  background-color: #f92672;
+}
+.highlight .c, .highlight .cd, .highlight .cm, .highlight .c1, .highlight .cs {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #f4bf75;
+}
+.highlight .nt {
+  color: #f4bf75;
+}
+.highlight .o, .highlight .ow {
+  color: #f8f8f2;
+}
+.highlight .p, .highlight .pi {
+  color: #f8f8f2;
+}
+.highlight .gi {
+  color: #a6e22e;
+}
+.highlight .gd {
+  color: #f92672;
+}
+.highlight .gh {
+  color: #66d9ef;
+  background-color: #272822;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kv {
+  color: #ae81ff;
+}
+.highlight .kc {
+  color: #fd971f;
+}
+.highlight .kt {
+  color: #fd971f;
+}
+.highlight .kd {
+  color: #fd971f;
+}
+.highlight .s, .highlight .sb, .highlight .sc, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .s1 {
+  color: #a6e22e;
+}
+.highlight .sr {
+  color: #a1efe4;
+}
+.highlight .si {
+  color: #cc6633;
+}
+.highlight .se {
+  color: #cc6633;
+}
+.highlight .nn {
+  color: #f4bf75;
+}
+.highlight .nc {
+  color: #f4bf75;
+}
+.highlight .no {
+  color: #f4bf75;
+}
+.highlight .na {
+  color: #66d9ef;
+}
+.highlight .m, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mb, .highlight .mx {
+  color: #a6e22e;
+}
+.highlight .ss {
+  color: #a6e22e;
+}
+    </style>
+    <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all.js"></script>
+  </head>
+
+  <body class="index" data-languages="[&quot;shell&quot;,&quot;javascript&quot;]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar.png" alt="Navbar" />
+      </span>
+    </a>
+    <div class="tocify-wrapper">
+      <img src="images/logo.png" alt="Logo" />
+        <div class="lang-selector">
+              <a href="#" data-language-name="shell">shell</a>
+              <a href="#" data-language-name="javascript">javascript</a>
+        </div>
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
+      <div id="toc">
+      </div>
+        <ul class="toc-footer">
+            <li><a href='#'>Sign Up for a Developer Key</a></li>
+            <li><a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a></li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        
+          <h1 id="authentication">Authentication</h1>
+
+<blockquote>
+<p>To authorize, use this code:</p>
+</blockquote>
+<pre class="highlight shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
+curl <span class="s2">"api_endpoint_here"</span>
+  -H <span class="s2">"Authorization: token"</span>
+</code></pre><pre class="highlight javascript"><code><span class="nx">jQuery</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s2">"api_endpoint_here"</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"Authorization"</span><span class="p">:</span> <span class="s2">"token"</span><span class="p">,</span>
+  <span class="p">},</span>
+<span class="p">})</span>
+</code></pre>
+<blockquote>
+<p>Make sure to replace <code class="prettyprint">token</code> with your API token.</p>
+</blockquote>
+
+<p>The API uses short lived tokens for authentication, which must be passed via the
+<code class="prettyprint">Authorization</code> header. These tokens can be optained through the
+<a href="#create-a-new-api-token">tokens</a> endpoint.</p>
+
+<aside class="notice">
+Please note that API tokens will expire. An expired token will always result in
+a <code>401: Unauthorized</code> error, upon which you must optain a new token.
+</aside>
+
+          <h1 id="tokens">Tokens</h1>
+
+<h2 id="create-a-new-api-token">Create a new API token</h2>
+
+<blockquote>
+<p>To obtain an API token, use this code:</p>
+</blockquote>
+<pre class="highlight shell"><code>curl -X <span class="s2">"POST"</span> <span class="s2">"https://www.autobutler.dk/api/v2/mechanics/tokens"</span> <span class="se">\</span>
+     -H <span class="s2">"Content-Type: application/json; charset=utf-8"</span> <span class="se">\</span>
+     -d <span class="s2">"{</span><span class="se">\"</span><span class="s2">email</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">workshop@email.dk</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">password</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">qwerty</span><span class="se">\"</span><span class="s2">}"</span>
+</code></pre><pre class="highlight javascript"><code><span class="nx">jQuery</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s2">"http://dev.autobutler.dk:3000/api/v2/mechanics/tokens"</span><span class="p">,</span>
+  <span class="na">type</span><span class="p">:</span> <span class="s2">"POST"</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"Content-Type"</span><span class="p">:</span> <span class="s2">"application/json; charset=utf-8"</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="na">contentType</span><span class="p">:</span> <span class="s2">"application/json"</span><span class="p">,</span>
+  <span class="na">data</span><span class="p">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
+    <span class="s2">"email"</span><span class="p">:</span> <span class="s2">"workshop@email.dk"</span><span class="p">,</span>
+    <span class="s2">"password"</span><span class="p">:</span> <span class="s2">"qwerty"</span>
+  <span class="p">})</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">textStatus</span><span class="p">,</span> <span class="nx">jqXHR</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"HTTP Request Succeeded: "</span> <span class="o">+</span> <span class="nx">jqXHR</span><span class="p">.</span><span class="nx">status</span><span class="p">);</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">fail</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">jqXHR</span><span class="p">,</span> <span class="nx">textStatus</span><span class="p">,</span> <span class="nx">errorThrown</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"HTTP Request Failed"</span><span class="p">);</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">always</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="cm">/* ... */</span>
+<span class="p">});</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eyJ0fXAiOiJRL1QiLCJhbGcoOiJIUzI1NiJ9.abJ1c2VyX2lkIjoyODE5NTAsInV4cCI6MTQ3NTMxMDMxM30.U0l2r96BQ0Wj9vgRIu-y2ue8MW3O86wUtpDSMx2NI4w"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"refreshToken"</span><span class="p">:</span><span class="w"> </span><span class="s2">"be04ef6368e721104ej7fb582356b232364b9d8a59aa6401905cc9b700e79c7a0"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Workshop Name"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"countryId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"da"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"vatFactor"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.25</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"requireAutomaticPayment"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint provides an API token for the the specified workshop login
+credentials.</p>
+
+<p>Please note that the provided token is short lived and will have to be renewed
+by performing a new request to the token endpoint when it expires.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST https://www.autobutler.dk/api/v2/mechanics/tokens</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>email</td>
+<td>string</td>
+<td><code class="prettyprint">null</code></td>
+<td>yes</td>
+<td>The e-mail address of the workshop</td>
+</tr>
+<tr>
+<td>password</td>
+<td>string</td>
+<td><code class="prettyprint">null</code></td>
+<td>yes</td>
+<td>The password of the workshop</td>
+</tr>
+</tbody></table>
+
+<h3 id="response-json">Response JSON</h3>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>string</td>
+<td><code class="prettyprint">ok</code> if the login credentials were valid. Otherwise <code class="prettyprint">failed</code></td>
+</tr>
+<tr>
+<td>token</td>
+<td>string</td>
+<td>The API token that should be used for other requests</td>
+</tr>
+<tr>
+<td>refreshToken</td>
+<td>string</td>
+<td>A token that can be used to obtain a fresh API token</td>
+</tr>
+<tr>
+<td>user.name</td>
+<td>string</td>
+<td>The name of the workshop</td>
+</tr>
+<tr>
+<td>user.countryId</td>
+<td>integer</td>
+<td>The Id of the country with which the workshop is associated</td>
+</tr>
+<tr>
+<td>user.locale</td>
+<td>string</td>
+<td>The locale that is configured for the workshop</td>
+</tr>
+<tr>
+<td>user.vatFactor</td>
+<td>float</td>
+<td>The VAT factor that is configured for the workshop</td>
+</tr>
+<tr>
+<td>user.requireAutomaticPayment</td>
+<td>boolean</td>
+<td>A boolean indicating weather or not the workshop must have automatic payment configured</td>
+</tr>
+</tbody></table>
+
+<h3 id="potential-errors">Potential Errors</h3>
+
+<table><thead>
+<tr>
+<th>Error Code</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>401</td>
+<td>The provided credentials were incorrect</td>
+</tr>
+</tbody></table>
+
+          <h1 id="jobs">Jobs</h1>
+
+<h2 id="get-a-list-of-available-jobs">Get a list of available jobs</h2>
+
+<blockquote>
+<p>To obtain a list of jobs, use the following code:</p>
+</blockquote>
+<pre class="highlight shell"><code>curl -X <span class="s2">"GET"</span> <span class="s2">"https://www.autobutler.dk/api/v2/mechanics/jobs"</span> <span class="se">\</span>
+     -H <span class="s2">"Authorization: token"</span>
+</code></pre><pre class="highlight javascript"><code><span class="nx">jQuery</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s2">"https://www.autobutler.dk/api/v2/mechanics/jobs"</span><span class="p">,</span>
+  <span class="na">type</span><span class="p">:</span> <span class="s2">"GET"</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"Authorization"</span><span class="p">:</span> <span class="s2">"token"</span><span class="p">,</span>
+  <span class="p">},</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">textStatus</span><span class="p">,</span> <span class="nx">jqXHR</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"HTTP Request Succeeded: "</span> <span class="o">+</span> <span class="nx">jqXHR</span><span class="p">.</span><span class="nx">status</span><span class="p">);</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">fail</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">jqXHR</span><span class="p">,</span> <span class="nx">textStatus</span><span class="p">,</span> <span class="nx">errorThrown</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"HTTP Request Failed"</span><span class="p">);</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">always</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="cm">/* ... */</span>
+<span class="p">});</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"jobs"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint returns a list of jobs that are available for the workshop to bid
+on.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://www.autobutler.dk/api/v2/mechanics/jobs</code></p>
+
+<h3 id="response-json">Response JSON</h3>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Can be blank?</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>jobs</td>
+<td>array</td>
+<td>no</td>
+<td>A list of <a href="#joboverview">jobOverview</a> objects</td>
+</tr>
+</tbody></table>
+
+<h2 id="get-job-details">Get job details</h2>
+
+<blockquote>
+<p>To obtain the details of a job, use the following code:</p>
+</blockquote>
+<pre class="highlight shell"><code>curl -X <span class="s2">"GET"</span> <span class="s2">"https://www.autobutler.dk/api/v2/mechanics/jobs/123456"</span> <span class="se">\</span>
+     -H <span class="s2">"Authorization: token"</span>
+</code></pre><pre class="highlight javascript"><code><span class="nx">jQuery</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s2">"https://www.autobutler.dk/api/v2/mechanics/jobs/123456"</span><span class="p">,</span>
+  <span class="na">type</span><span class="p">:</span> <span class="s2">"GET"</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"Authorization"</span><span class="p">:</span> <span class="s2">"token"</span><span class="p">,</span>
+  <span class="p">},</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">textStatus</span><span class="p">,</span> <span class="nx">jqXHR</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"HTTP Request Succeeded: "</span> <span class="o">+</span> <span class="nx">jqXHR</span><span class="p">.</span><span class="nx">status</span><span class="p">);</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">fail</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">jqXHR</span><span class="p">,</span> <span class="nx">textStatus</span><span class="p">,</span> <span class="nx">errorThrown</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"HTTP Request Failed"</span><span class="p">);</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">always</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="cm">/* ... */</span>
+<span class="p">});</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"job"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+  </span><span class="nt">"draftOffer"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+  </span><span class="nt">"offer"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint returns the details of a specific job.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://www.autobutler.dk/api/v2/mechanics/jobs/{id}</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Required?</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>nil</td>
+<td>yes</td>
+<td>The id of the job</td>
+</tr>
+</tbody></table>
+
+<h3 id="response-json">Response JSON</h3>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Can be blank?</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>job</td>
+<td>object</td>
+<td>no</td>
+<td>A <a href="#jobdetails">jobDetails</a> object that contains the details of the job</td>
+</tr>
+<tr>
+<td>draftOffer</td>
+<td>object</td>
+<td>yes</td>
+<td>A <a href="#draftofferdetails">draftOfferDetails</a> object that contains the details of the draft offer</td>
+</tr>
+<tr>
+<td>offer</td>
+<td>object</td>
+<td>yes</td>
+<td>A <a href="#offerdetails">offerDetails</a> object that contains the details of the existing offer</td>
+</tr>
+</tbody></table>
+
+<h3 id="potential-errors">Potential Errors</h3>
+
+<table><thead>
+<tr>
+<th>Error Code</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>404</td>
+<td>The job with the specified id could not be found or is not available for the workshop</td>
+</tr>
+</tbody></table>
+
+          <h1 id="common-json-objects">Common JSON objects</h1>
+
+<h2 id="joboverview">jobOverview</h2>
+
+<blockquote>
+<p>Example:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"job"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"acceptedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-30T14:16:13.325+02:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"acceptedOfferId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"cancelledAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-30T14:16:13.325+02:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"closedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-30T14:16:13.325+02:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-30T14:16:13.325+02:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"completedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-30T14:16:13.325+02:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deadlineBefore"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-14"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deadlineToggle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NEXT_OPEN"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Brakes"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"priorityScore"</span><span class="p">:</span><span class="w"> </span><span class="mi">3310</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"publicCommentsCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"referenceNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ab123456"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"rejectedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-30T14:16:13.325+02:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"reopenedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-30T14:16:13.325+02:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OPEN"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"selected"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"jobTasks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"jobTaskTypeId"</span><span class="p">:</span><span class="w"> </span><span class="mi">56</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Brakes"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"car"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">371762</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"registrationNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AB12345"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"make"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Citroen"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"year"</span><span class="p">:</span><span class="w"> </span><span class="mi">1997</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Citroen Berlingo"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"carOwner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">343827</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"ownerId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"ownerType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Partner"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"mechanicOwned"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"marketPrice"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"draftOffer"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+  </span><span class="nt">"offer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"draft"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"priceDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"totalPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">1234.56</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Can be blank?</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>job</td>
+<td>object</td>
+<td>no</td>
+<td>A JSON object with details of the job</td>
+</tr>
+<tr>
+<td>job.id</td>
+<td>integer</td>
+<td>no</td>
+<td>The id of the job</td>
+</tr>
+<tr>
+<td>job.acceptedAt</td>
+<td>string</td>
+<td>yes</td>
+<td>A timestamp for when an offer for the job was accepted</td>
+</tr>
+<tr>
+<td>job.acceptedOfferId</td>
+<td>integer</td>
+<td>yes</td>
+<td>The id of the accepted offer</td>
+</tr>
+<tr>
+<td>job.cancelledAt</td>
+<td>string</td>
+<td>yes</td>
+<td>A timestamp for when the job was cancelled</td>
+</tr>
+<tr>
+<td>job.closedAt</td>
+<td>string</td>
+<td>yes</td>
+<td>A timestamp for when the job was closed</td>
+</tr>
+<tr>
+<td>job.createdAt</td>
+<td>string</td>
+<td>no</td>
+<td>A timestamp for when the job was created</td>
+</tr>
+<tr>
+<td>job.completedAt</td>
+<td>string</td>
+<td>yes</td>
+<td>A timestamp for when the job was completed</td>
+</tr>
+<tr>
+<td>job.deadlineBefore</td>
+<td>string</td>
+<td>no</td>
+<td>The latest date that the car owner requested when the job was created</td>
+</tr>
+<tr>
+<td>job.deadlineToggle</td>
+<td>string</td>
+<td>no</td>
+<td>When the car owner would like the job to be done:<br><code class="prettyprint">&quot;NEXT_OPEN&quot;</code>: Next free time before the deadline<br><code class="prettyprint">&quot;URGENT&quot;</code>: The job is urgent</td>
+</tr>
+<tr>
+<td>job.name</td>
+<td>string</td>
+<td>no</td>
+<td>A label that reflects the type of tasks included in the job</td>
+</tr>
+<tr>
+<td>job.priorityScore</td>
+<td>integer</td>
+<td>yes</td>
+<td>Undocumented - For internal use only</td>
+</tr>
+<tr>
+<td>job.publicCommentsCount</td>
+<td>integer</td>
+<td>yes</td>
+<td>The number of comments on the job</td>
+</tr>
+<tr>
+<td>job.referenceNumber</td>
+<td>string</td>
+<td>no</td>
+<td>The reference number of the job. Usually a two letter code followed by the id of the job</td>
+</tr>
+<tr>
+<td>job.rejectedAt</td>
+<td>string</td>
+<td>yes</td>
+<td>A timestamp for when the job was rejected - Only applicable for Mechanic Booking jobs</td>
+</tr>
+<tr>
+<td>job.reopenedAt</td>
+<td>string</td>
+<td>yes</td>
+<td>A timestamp for when the job was re-opened</td>
+</tr>
+<tr>
+<td>job.state</td>
+<td>string</td>
+<td>no</td>
+<td>The current state of the job - Mostly for internal use</td>
+</tr>
+<tr>
+<td>job.selected</td>
+<td>boolean</td>
+<td>no</td>
+<td>A boolean indicating weather or not the workshop was explicitly selected by the car owner during the job creation flow</td>
+</tr>
+<tr>
+<td>job.jobTasks</td>
+<td>array(object)</td>
+<td>no</td>
+<td>An array of job tasks included in the job</td>
+</tr>
+<tr>
+<td>job.jobTasks.jobTaskTypeId</td>
+<td>integer</td>
+<td>no</td>
+<td>The id of the job task type for this task</td>
+</tr>
+<tr>
+<td>job.jobTasks.name</td>
+<td>string</td>
+<td>no</td>
+<td>A label describing the type of the task</td>
+</tr>
+<tr>
+<td>job.car</td>
+<td>object</td>
+<td>no</td>
+<td>A JSON object with details of the car</td>
+</tr>
+<tr>
+<td>job.car.id</td>
+<td>integer</td>
+<td>no</td>
+<td>The id of the car</td>
+</tr>
+<tr>
+<td>job.car.registrationNumber</td>
+<td>string</td>
+<td>yes</td>
+<td>The registration number of the car</td>
+</tr>
+<tr>
+<td>job.car.make</td>
+<td>string</td>
+<td>yes</td>
+<td>The make of the car</td>
+</tr>
+<tr>
+<td>job.car.year</td>
+<td>string</td>
+<td>yes</td>
+<td>The registration date of the year</td>
+</tr>
+<tr>
+<td>job.car.name</td>
+<td>string</td>
+<td>no</td>
+<td>A label that identifies the car make, model and year</td>
+</tr>
+<tr>
+<td>job.carOwner</td>
+<td>object</td>
+<td>no</td>
+<td>A JSON object with details of the car owner</td>
+</tr>
+<tr>
+<td>job.carOwner.id</td>
+<td>integer</td>
+<td>no</td>
+<td>The id of the car owner</td>
+</tr>
+<tr>
+<td>job.carOwner.ownerId</td>
+<td>integer</td>
+<td>no</td>
+<td>The id of the car owners owner - Mostly for internal use</td>
+</tr>
+<tr>
+<td>job.carOwner.ownerType</td>
+<td>string</td>
+<td>no</td>
+<td>The type of the car owners owner - Mostly for internal use</td>
+</tr>
+<tr>
+<td>job.carOwner.mechanicOwned</td>
+<td>boolean</td>
+<td>no</td>
+<td>A boolean indicating weather or not this is a Mechanic Booking job</td>
+</tr>
+<tr>
+<td>job.marketPrice</td>
+<td>object</td>
+<td>yes</td>
+<td>A <a href="#marketprice">marketPrice</a> object with market pricing details of the job</td>
+</tr>
+<tr>
+<td>draftOffer</td>
+<td>object</td>
+<td>yes</td>
+<td>A <a href="#draftofferoverview">draftOfferOverview</a> object</td>
+</tr>
+<tr>
+<td>offer</td>
+<td>object</td>
+<td>yes</td>
+<td>A JSON object with details of the existing offer from the workshop</td>
+</tr>
+<tr>
+<td>offer.id</td>
+<td>integer</td>
+<td>no</td>
+<td>The id of the offer</td>
+</tr>
+<tr>
+<td>offer.draft</td>
+<td>boolean</td>
+<td>no</td>
+<td>A boolean representing weather or not the offer is a draft</td>
+</tr>
+<tr>
+<td>offer.priceDetails</td>
+<td>object</td>
+<td>no</td>
+<td>A JSON object with details of the offer pricing</td>
+</tr>
+<tr>
+<td>offer.priceDetails.totalPrice</td>
+<td>float</td>
+<td>no</td>
+<td>The total price of the offer</td>
+</tr>
+</tbody></table>
+
+<h2 id="jobdetails">jobDetails</h2>
+
+<blockquote>
+<p>Example:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">538984</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"acceptedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-11-17T18:00:11.613+01:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"acceptedOfferId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"cancelledAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-11-17T18:00:11.613+01:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"closedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-11-17T18:00:11.613+01:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-11-17T18:00:11.613+01:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"completedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-11-17T18:00:11.613+01:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"courtesyCarNeeded"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"deadlineBefore"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-01"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"deadlineToggle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NEXT_OPEN"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Servicing and Suspension / shock absorbers"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"referenceNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ab538984"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"rejectedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-11-17T18:00:11.613+01:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"reopenedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-11-17T18:00:11.613+01:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OPEN"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"selected"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"jobTasks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"jobTaskTypeId"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Water pump and belts. Oil air and fuel filters. Points and plugs."</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Servicing"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"jobTaskFields"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">279851</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dont_know"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"human"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Don't know the milage since last service"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"jobTaskField"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"humanName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mileage since at last service?"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nt">"jobFiles"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test.jpg"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://some.cdcn.domain.com/images/url_to_image.jpg"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"image"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"thumbUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://some.cdcn.domain.com/images/url_to_image_thumb.jpg"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"largeUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://some.cdcn.domain.com/images/url_to_image_large.jpg"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"jobTaskTypeId"</span><span class="p">:</span><span class="w"> </span><span class="mi">72</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Front and rear wishbones. Trackrod ends and antiroll droplinks"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Suspension / shock absorbers"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"jobTaskFields"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="nt">"jobFiles"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"car"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">388148</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"chassisNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456789"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"fuelType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UNKNOWN"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"kilometres"</span><span class="p">:</span><span class="w"> </span><span class="mi">130000</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"lastServiceDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-16"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"make"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Volvo"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"S60"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"series"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"registrationNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y312PEV"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"typeCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"vin"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"variant"</span><span class="p">:</span><span class="w"> </span><span class="s2">"S T"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"year"</span><span class="p">:</span><span class="w"> </span><span class="mi">2001</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Volvo S60"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"carOwner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">357727</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"ownerId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"ownerType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Partner"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"mechanicOwned"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Alex"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"jobZip"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"areaId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1643724</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hounslow, Greater London"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"zip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TW13 6AA"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">51.439627</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.389636</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"maxDistance"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"marketPrice"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Can be blank?</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>no</td>
+<td>The id of the job</td>
+</tr>
+<tr>
+<td>acceptedAt</td>
+<td>string</td>
+<td>yes</td>
+<td>A timestamp for when an offer for the job was accepted</td>
+</tr>
+<tr>
+<td>acceptedOfferId</td>
+<td>integer</td>
+<td>yes</td>
+<td>The id of the accepted offer</td>
+</tr>
+<tr>
+<td>cancelledAt</td>
+<td>string</td>
+<td>yes</td>
+<td>A timestamp for when the job was cancelled</td>
+</tr>
+<tr>
+<td>closedAt</td>
+<td>string</td>
+<td>yes</td>
+<td>A timestamp for when the job was closed</td>
+</tr>
+<tr>
+<td>createdAt</td>
+<td>string</td>
+<td>no</td>
+<td>A timestamp for when the job was created</td>
+</tr>
+<tr>
+<td>completedAt</td>
+<td>string</td>
+<td>yes</td>
+<td>A timestamp for when the job was completed</td>
+</tr>
+<tr>
+<td>deadlineBefore</td>
+<td>string</td>
+<td>no</td>
+<td>The latest date that the car owner requested when the job was created</td>
+</tr>
+<tr>
+<td>deadlineToggle</td>
+<td>string</td>
+<td>no</td>
+<td>When the car owner would like the job to be done:<br><code class="prettyprint">&quot;NEXT_OPEN&quot;</code>: Next free time before the deadline<br><code class="prettyprint">&quot;URGENT&quot;</code>: The job is urgent</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>no</td>
+<td>A label that reflects the type of tasks included in the job</td>
+</tr>
+<tr>
+<td>referenceNumber</td>
+<td>string</td>
+<td>no</td>
+<td>The reference number of the job. Usually a two letter code followed by the id of the job</td>
+</tr>
+<tr>
+<td>rejectedAt</td>
+<td>string</td>
+<td>yes</td>
+<td>A timestamp for when the job was rejected - Only applicable for Mechanic Booking jobs</td>
+</tr>
+<tr>
+<td>reopenedAt</td>
+<td>string</td>
+<td>yes</td>
+<td>A timestamp for when the job was re-opened</td>
+</tr>
+<tr>
+<td>state</td>
+<td>string</td>
+<td>no</td>
+<td>The current state of the job - Mostly for internal use</td>
+</tr>
+<tr>
+<td>selected</td>
+<td>boolean</td>
+<td>no</td>
+<td>A boolean indicating weather or not the workshop was explicitly selected by the car owner during the job creation flow</td>
+</tr>
+<tr>
+<td>jobTasks</td>
+<td>array(object)</td>
+<td>no</td>
+<td>An array of job tasks included in the job</td>
+</tr>
+<tr>
+<td>jobTasks.jobTaskTypeId</td>
+<td>integer</td>
+<td>no</td>
+<td>The id of the job task type for this task</td>
+</tr>
+<tr>
+<td>jobTasks.description</td>
+<td>string</td>
+<td>no</td>
+<td>The text provided by the car owner to describe the things expected from the workshop for this task</td>
+</tr>
+<tr>
+<td>jobTasks.name</td>
+<td>string</td>
+<td>no</td>
+<td>A label describing the type of the task</td>
+</tr>
+<tr>
+<td>jobTasks.jobTaskFields</td>
+<td>array(object)</td>
+<td>no</td>
+<td>An array of objects containing details about the dynamic options provided by the car owner for the task</td>
+</tr>
+<tr>
+<td>jobTasks.jobTaskFields.id</td>
+<td>integer</td>
+<td>no</td>
+<td>The id of the selected option record</td>
+</tr>
+<tr>
+<td>jobTasks.jobTaskFields.value</td>
+<td>string</td>
+<td>no</td>
+<td>The machine readable value selected by the car owner</td>
+</tr>
+<tr>
+<td>jobTasks.jobTaskFields.human</td>
+<td>string</td>
+<td>no</td>
+<td>The human readable value selected by the car owner</td>
+</tr>
+<tr>
+<td>jobTasks.jobTaskFields.jobTaskField</td>
+<td>object</td>
+<td>no</td>
+<td>An object representing the details of the job task field</td>
+</tr>
+<tr>
+<td>jobTasks.jobTaskFields.jobTaskField.id</td>
+<td>integer</td>
+<td>no</td>
+<td>The id of the job task field</td>
+</tr>
+<tr>
+<td>jobTasks.jobTaskFields.jobTaskField.humanName</td>
+<td>string</td>
+<td>no</td>
+<td>The title of the option that the car owner was asked to select</td>
+</tr>
+<tr>
+<td>jobTasks.jobFiles</td>
+<td>array(object)</td>
+<td>no</td>
+<td>An array of objects representing the files that the car owner uploaded with the job</td>
+</tr>
+<tr>
+<td>jobTasks.jobFiles.id</td>
+<td>integer</td>
+<td>no</td>
+<td>The id of the uploaded file</td>
+</tr>
+<tr>
+<td>jobTasks.jobFiles.name</td>
+<td>string</td>
+<td>no</td>
+<td>The name of the file</td>
+</tr>
+<tr>
+<td>jobTasks.jobFiles.url</td>
+<td>string</td>
+<td>no</td>
+<td>The url for the uploaded file</td>
+</tr>
+<tr>
+<td>jobTasks.jobFiles.image</td>
+<td>boolean</td>
+<td>no</td>
+<td><code class="prettyprint">true</code> if the uploaded file is an image, otherwise <code class="prettyprint">false</code></td>
+</tr>
+<tr>
+<td>jobTasks.jobFiles.thumbUrl</td>
+<td>string</td>
+<td>yes</td>
+<td>The url for a thumbnail version of the file. Only available for images</td>
+</tr>
+<tr>
+<td>jobTasks.jobFiles.largeUrl</td>
+<td>string</td>
+<td>yes</td>
+<td>The url for a large version of the file. Only available for images</td>
+</tr>
+<tr>
+<td>car</td>
+<td>object</td>
+<td>no</td>
+<td>An object representing the details of the car</td>
+</tr>
+<tr>
+<td>car.id</td>
+<td>integer</td>
+<td>no</td>
+<td>The id of the car</td>
+</tr>
+<tr>
+<td>car.chassisNumber</td>
+<td>string</td>
+<td>yes</td>
+<td>The chassis number of the car</td>
+</tr>
+<tr>
+<td>car.fuelType</td>
+<td>string</td>
+<td>no</td>
+<td>The type of fuel used by the car: <code class="prettyprint">&quot;UNKNOWN&quot;</code>, <code class="prettyprint">&quot;PETROL&quot;</code>, <code class="prettyprint">&quot;ELECTRIC&quot;</code>, <code class="prettyprint">&quot;HYBRID&quot;</code>, <code class="prettyprint">&quot;GAS&quot;</code></td>
+</tr>
+<tr>
+<td>car.kilometres</td>
+<td>integer</td>
+<td>no</td>
+<td>The current milage of the car (in kilometers)</td>
+</tr>
+<tr>
+<td>car.lastServiceDate</td>
+<td>string</td>
+<td>yes</td>
+<td>A date for when the car was last serviced</td>
+</tr>
+<tr>
+<td>car.make</td>
+<td>string</td>
+<td>yes</td>
+<td>The make of the car</td>
+</tr>
+<tr>
+<td>car.model</td>
+<td>string</td>
+<td>yes</td>
+<td>The model of the car</td>
+</tr>
+<tr>
+<td>car.series</td>
+<td>string</td>
+<td>yes</td>
+<td>The series identifier of the car</td>
+</tr>
+<tr>
+<td>car.registrationNumber</td>
+<td>string</td>
+<td>yes</td>
+<td>The registration number of the car</td>
+</tr>
+<tr>
+<td>car.typeCode</td>
+<td>string</td>
+<td>yes</td>
+<td>The type approval of the car</td>
+</tr>
+<tr>
+<td>car.vin</td>
+<td>string</td>
+<td>yes</td>
+<td>The VIN number of the car</td>
+</tr>
+<tr>
+<td>car.variant</td>
+<td>string</td>
+<td>yes</td>
+<td>The model variant identifier of the car</td>
+</tr>
+<tr>
+<td>car.year</td>
+<td>integer</td>
+<td>yes</td>
+<td>The registration year of the car</td>
+</tr>
+<tr>
+<td>car.name</td>
+<td>string</td>
+<td>yes</td>
+<td>A label containing information about both make and model</td>
+</tr>
+<tr>
+<td>carOwner</td>
+<td>object</td>
+<td>no</td>
+<td>An object representing details about the car owner</td>
+</tr>
+<tr>
+<td>carOwner.id</td>
+<td>integer</td>
+<td>no</td>
+<td>The id of the car owner</td>
+</tr>
+<tr>
+<td>carOwner.ownerId</td>
+<td>integer</td>
+<td>no</td>
+<td>The id of the car owners owner - Only for internal use</td>
+</tr>
+<tr>
+<td>carOwner.ownerType</td>
+<td>integer</td>
+<td>no</td>
+<td>The type of the car owners owner - Only for internal use</td>
+</tr>
+<tr>
+<td>carOwner.mechanicOwned</td>
+<td>boolean</td>
+<td>no</td>
+<td><code class="prettyprint">true</code> if the job is a Mechanic Booking job, otherwise <code class="prettyprint">false</code></td>
+</tr>
+<tr>
+<td>carOwner.name</td>
+<td>string</td>
+<td>no</td>
+<td>The name of the car owner. Please note that the full name of the car owner is only returned for Mechanic Booking jobs or jobs that are accepted but not completed</td>
+</tr>
+<tr>
+<td>carOwner.email</td>
+<td>string</td>
+<td>yes</td>
+<td>The e-mail address of the car owner. Only returned for Mechanic Booking jobs or jobs that are accepted but not completed</td>
+</tr>
+<tr>
+<td>carOwner.phoneNumber</td>
+<td>string</td>
+<td>yes</td>
+<td>The phone number of the car owner. Only returned for Mechanic Booking jobs or jobs that are accepted but not completed</td>
+</tr>
+<tr>
+<td>jobZip</td>
+<td>object</td>
+<td>no</td>
+<td>An object representing details about the geolocation of the job</td>
+</tr>
+<tr>
+<td>jobZip.areaId</td>
+<td>integer</td>
+<td>no</td>
+<td>The id of the area selected by the car owner</td>
+</tr>
+<tr>
+<td>jobZip.city</td>
+<td>string</td>
+<td>no</td>
+<td>The city name of the area selected by the car owner</td>
+</tr>
+<tr>
+<td>jobZip.zip</td>
+<td>string</td>
+<td>no</td>
+<td>The zip code of the area selected by the car owner</td>
+</tr>
+<tr>
+<td>jobZip.latitude</td>
+<td>float</td>
+<td>no</td>
+<td>The latitude of the area selected by the car owner</td>
+</tr>
+<tr>
+<td>jobZip.longitude</td>
+<td>float</td>
+<td>no</td>
+<td>The longitude of the area selected by the car owner</td>
+</tr>
+<tr>
+<td>jobZip.maxDistance</td>
+<td>integer</td>
+<td>no</td>
+<td>The maximum driving distance selected by the car owner</td>
+</tr>
+<tr>
+<td>job.marketPrice</td>
+<td>object</td>
+<td>yes</td>
+<td>A <a href="#marketprice">marketPrice</a> object with market pricing details of the job</td>
+</tr>
+</tbody></table>
+
+<h2 id="draftofferoverview">draftOfferOverview</h2>
+
+<blockquote>
+<p>Example:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"priceDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"totalPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">1234.56</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Can be blank?</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>no</td>
+<td>The id of the draft offer</td>
+</tr>
+<tr>
+<td>priceDetails</td>
+<td>object</td>
+<td>no</td>
+<td>A JSON object with details of the draft offer pricing</td>
+</tr>
+<tr>
+<td>priceDetails.totalPrice</td>
+<td>float</td>
+<td>no</td>
+<td>The total price of the draft offer</td>
+</tr>
+</tbody></table>
+
+<h2 id="draftofferdetails">draftOfferDetails</h2>
+
+<blockquote>
+<p>Example:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hi Peter, here is an offer for the job that you requested."</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-11-17T18:00:11.613+01:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"priceDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"pricing"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LINE_ITEMS"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"totalNumberOfHours"</span><span class="p">:</span><span class="w"> </span><span class="mf">2.0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"subtotal"</span><span class="p">:</span><span class="w"> </span><span class="mf">1539.0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"totalsExcludingVat"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"priceOfWork"</span><span class="p">:</span><span class="w"> </span><span class="mf">500.0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"priceOfWorkPerHour"</span><span class="p">:</span><span class="w"> </span><span class="mf">250.0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"priceOfParts"</span><span class="p">:</span><span class="w"> </span><span class="mf">1000.0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"priceOfCourtesyCar"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"serviceFee"</span><span class="p">:</span><span class="w"> </span><span class="mf">39.0</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"lineItems"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"articleNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0001"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"category"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-11-17T18:00:11.613+01:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Working hours"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"manufacturer"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"partnerData"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hours"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"customerPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">250.0</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"discountPercent"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"grossPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">250.0</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"netPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">250.0</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mf">2.0</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"discountedCustomerPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">250.0</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"subtotal"</span><span class="p">:</span><span class="w"> </span><span class="mf">500.0</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1235</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"articleNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BOSCH-BC00345"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"brakes"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-11-17T18:00:11.613+01:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Brake Calipers"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"manufacturer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bosch"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"partnerData"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"some"</span><span class="p">:</span><span class="w"> </span><span class="s2">"arbitrary"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MecaOfferLineItem"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pcs"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"customerPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">500.0</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"discountPercent"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"grossPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">500.0</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"netPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">400.0</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mf">2.0</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"discountedCustomerPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">500.0</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"subtotal"</span><span class="p">:</span><span class="w"> </span><span class="mf">1000.0</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Can be blank?</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>no</td>
+<td>The if of the draft offer</td>
+</tr>
+<tr>
+<td>body</td>
+<td>string</td>
+<td>no</td>
+<td>The offer text for the car owner</td>
+</tr>
+<tr>
+<td>createdAt</td>
+<td>string</td>
+<td>no</td>
+<td>A timestamp for when the draft offer was created</td>
+</tr>
+<tr>
+<td>priceDetails</td>
+<td>object</td>
+<td>no</td>
+<td>An object representing the pricing details of the draft offer</td>
+</tr>
+<tr>
+<td>priceDetails.pricing</td>
+<td>string</td>
+<td>no</td>
+<td>The type of pricing used for the draft offer. Possible values are:<br><code class="prettyprint">&quot;LINE_ITEMS&quot;</code>: This offer contains order lines with individual prices<br><code class="prettyprint">&quot;FIXED&quot;</code>: This offer contains order lines but a single fixed price<br><code class="prettyprint">&quot;HOURLY&quot;</code>: This offer has no order lines but instead consists of an hourly rate and a fixed price for spare parts</td>
+</tr>
+<tr>
+<td>priceDetails.totalNumberOfHours</td>
+<td>float</td>
+<td>no</td>
+<td>The total number of working hours included in the draft offer</td>
+</tr>
+<tr>
+<td>priceDetails.subtotal</td>
+<td>float</td>
+<td>no</td>
+<td>The sub total of the draft offer</td>
+</tr>
+<tr>
+<td>priceDetails.totalsExcludingVat</td>
+<td>object</td>
+<td>no</td>
+<td>An object representing the totals of the draft offer excluding VAT</td>
+</tr>
+<tr>
+<td>priceDetails.totalsExcludingVat.priceOfWork</td>
+<td>float</td>
+<td>no</td>
+<td>The total labour price of the draft offer</td>
+</tr>
+<tr>
+<td>priceDetails.totalsExcludingVat.priceOfWorkPerHour</td>
+<td>float</td>
+<td>no</td>
+<td>The total labour price of the offer divided by the total number of working hours</td>
+</tr>
+<tr>
+<td>priceDetails.totalsExcludingVat.priceOfParts</td>
+<td>float</td>
+<td>no</td>
+<td>The total price of spare parts</td>
+</tr>
+<tr>
+<td>priceDetails.totalsExcludingVat.priceOfCourtesyCar</td>
+<td>float</td>
+<td>no</td>
+<td>The price of the courtesy car, regardless of weather it is included or not</td>
+</tr>
+<tr>
+<td>priceDetails.totalsExcludingVat.serviceFee</td>
+<td>float</td>
+<td>no</td>
+<td>The Autobutler service fee</td>
+</tr>
+<tr>
+<td>priceDetails.lineItems</td>
+<td>array(object)</td>
+<td>no</td>
+<td>An array of objects representing the individual order lines</td>
+</tr>
+<tr>
+<td>priceDetails.lineItems.id</td>
+<td>integer</td>
+<td>no</td>
+<td>The id of the order line</td>
+</tr>
+<tr>
+<td>priceDetails.lineItems.articleNumber</td>
+<td>string</td>
+<td>yes</td>
+<td>An article number for the part</td>
+</tr>
+<tr>
+<td>priceDetails.lineItems.category</td>
+<td>string</td>
+<td>yes</td>
+<td>A metadata category label</td>
+</tr>
+<tr>
+<td>priceDetails.lineItems.createdAt</td>
+<td>string</td>
+<td>no</td>
+<td>A timestamp for when the line item was created</td>
+</tr>
+<tr>
+<td>priceDetails.lineItems.description</td>
+<td>string</td>
+<td>no</td>
+<td>The description of the item</td>
+</tr>
+<tr>
+<td>priceDetails.lineItems.manufacturer</td>
+<td>string</td>
+<td>yes</td>
+<td>The manufacturer of the part</td>
+</tr>
+<tr>
+<td>priceDetails.lineItems.partnerData</td>
+<td>object</td>
+<td>yes</td>
+<td>An object with arbitrary partner metadata</td>
+</tr>
+<tr>
+<td>priceDetails.lineItems.type</td>
+<td>string</td>
+<td>yes</td>
+<td>Used to identify line items from third party integrations</td>
+</tr>
+<tr>
+<td>priceDetails.lineItems.unit</td>
+<td>string</td>
+<td>no</td>
+<td>The type of unit used for the item. Possible values:<br><code class="prettyprint">&quot;pcs&quot;</code>: Pieces<br><code class="prettyprint">&quot;liter&quot;</code>: Liters<br><code class="prettyprint">&quot;gram&quot;</code>: Grams<br><code class="prettyprint">&quot;kg&quot;</code>: Kilograms<br><code class="prettyprint">&quot;meter&quot;</code>: Meters<br><code class="prettyprint">&quot;set&quot;</code>: Sets<br><code class="prettyprint">&quot;hours&quot;</code>: Working hours</td>
+</tr>
+<tr>
+<td>priceDetails.lineItems.customerPrice</td>
+<td>float</td>
+<td>no</td>
+<td>The price per unit that will be charged to the car owner</td>
+</tr>
+<tr>
+<td>priceDetails.lineItems.discountPercent</td>
+<td>float</td>
+<td>no</td>
+<td>A discount percentage that will be deducted from the price that the car owner will be charged</td>
+</tr>
+<tr>
+<td>priceDetails.lineItems.grossPrice</td>
+<td>float</td>
+<td>no</td>
+<td>The listed sales price for the item</td>
+</tr>
+<tr>
+<td>priceDetails.lineItems.netPrice</td>
+<td>float</td>
+<td>no</td>
+<td>The purchase price for the workshop</td>
+</tr>
+<tr>
+<td>priceDetails.lineItems.quantity</td>
+<td>float</td>
+<td>no</td>
+<td>The number of units</td>
+</tr>
+<tr>
+<td>priceDetails.lineItems.discountedCustomerPrice</td>
+<td>float</td>
+<td>no</td>
+<td>The customer unit price minus discount</td>
+</tr>
+<tr>
+<td>priceDetails.lineItems.subtotal</td>
+<td>float</td>
+<td>no</td>
+<td>The number of units multiplied by the discounted customer price</td>
+</tr>
+</tbody></table>
+
+<h2 id="marketprice">marketPrice</h2>
+
+<blockquote>
+<p>Example:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"averagePrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">1234.56</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"highestPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">6543.21</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"lowestPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">123.45</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"mechanicsCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Can be blank?</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>averagePrice</td>
+<td>float</td>
+<td>no</td>
+<td>The average market price for the job</td>
+</tr>
+<tr>
+<td>highestPrice</td>
+<td>float</td>
+<td>no</td>
+<td>The highest market price for the job</td>
+</tr>
+<tr>
+<td>averagePrice</td>
+<td>float</td>
+<td>no</td>
+<td>The lowest market price for the job</td>
+</tr>
+<tr>
+<td>mechanicsCount</td>
+<td>integer</td>
+<td>no</td>
+<td>The number of mechanics used in the market price calculation</td>
+</tr>
+</tbody></table>
+
+          <h1 id="errors">Errors</h1>
+
+<aside class="notice">This error section is stored in a separate file in `includes/_errors.md`. Slate allows you to optionally separate out your docs into many files&hellip;just save them to the `includes` folder and add them to the top of your `index.md`&rsquo;s frontmatter. Files are included in the order listed.</aside>
+
+<p>The Kittn API uses the following error codes:</p>
+
+<table><thead>
+<tr>
+<th>Error Code</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>400</td>
+<td>Bad Request &ndash; Your request sucks</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Unauthorized &ndash; Your API key is wrong</td>
+</tr>
+<tr>
+<td>403</td>
+<td>Forbidden &ndash; The kitten requested is hidden for administrators only</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found &ndash; The specified kitten could not be found</td>
+</tr>
+<tr>
+<td>405</td>
+<td>Method Not Allowed &ndash; You tried to access a kitten with an invalid method</td>
+</tr>
+<tr>
+<td>406</td>
+<td>Not Acceptable &ndash; You requested a format that isn&rsquo;t json</td>
+</tr>
+<tr>
+<td>410</td>
+<td>Gone &ndash; The kitten requested has been removed from our servers</td>
+</tr>
+<tr>
+<td>418</td>
+<td>I&rsquo;m a teapot</td>
+</tr>
+<tr>
+<td>429</td>
+<td>Too Many Requests &ndash; You&rsquo;re requesting too many kittens! Slow down!</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Internal Server Error &ndash; We had a problem with our server. Try again later.</td>
+</tr>
+<tr>
+<td>503</td>
+<td>Service Unavailable &ndash; We&rsquo;re temporarially offline for maintanance. Please try again later.</td>
+</tr>
+</tbody></table>
+
+      </div>
+      <div class="dark-box">
+          <div class="lang-selector">
+                <a href="#" data-language-name="shell">shell</a>
+                <a href="#" data-language-name="javascript">javascript</a>
+          </div>
+      </div>
+    </div>
+  </body>
+</html>
