@@ -13,6 +13,7 @@ includes:
   - authentication
   - tokens
   - jobs
+  - settings
   - objects
   - errors
 
