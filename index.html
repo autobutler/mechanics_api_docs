@@ -459,6 +459,776 @@ on.</p>
 </tr>
 </tbody></table>
 
+          <h1 id="settings">Settings</h1>
+
+<h2 id="get-mechanic-settings">Get mechanic settings</h2>
+
+<blockquote>
+<p>To get the settings for the workshop, use this code:</p>
+</blockquote>
+<pre class="highlight shell"><code>curl -X <span class="s2">"GET"</span> <span class="s2">"https://www.autobutler.dk/api/v2/mechanics/settings"</span> <span class="se">\</span>
+     -H <span class="s2">"Authorization: token"</span>
+</code></pre><pre class="highlight javascript"><code><span class="nx">jQuery</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s2">"https://www.autobutler.dk/api/v2/mechanics/settings"</span><span class="p">,</span>
+  <span class="na">type</span><span class="p">:</span> <span class="s2">"GET"</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"Authorization"</span><span class="p">:</span> <span class="s2">"token"</span><span class="p">,</span>
+  <span class="p">},</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">textStatus</span><span class="p">,</span> <span class="nx">jqXHR</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"HTTP Request Succeeded: "</span> <span class="o">+</span> <span class="nx">jqXHR</span><span class="p">.</span><span class="nx">status</span><span class="p">);</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">fail</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">jqXHR</span><span class="p">,</span> <span class="nx">textStatus</span><span class="p">,</span> <span class="nx">errorThrown</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"HTTP Request Failed"</span><span class="p">);</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">always</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="cm">/* ... */</span>
+<span class="p">});</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"allowMail"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"bidSettings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"auto"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"guaranteeOnParts"</span><span class="p">:</span><span class="w"> </span><span class="mi">24</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"guaranteeOnWork"</span><span class="p">:</span><span class="w"> </span><span class="mi">24</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"hourlyRate"</span><span class="p">:</span><span class="w"> </span><span class="mf">479.0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"nextFreeTimeDaysForward"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"numberOfDaysValid"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"priceOfCourtesyCar"</span><span class="p">:</span><span class="w"> </span><span class="mf">179.0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"productDiscountPercent"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.5</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"qualityOfParts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OEM"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"timeDiscountPercent"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.5</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"courtesyCar"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"manual"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"guaranteeOnParts"</span><span class="p">:</span><span class="w"> </span><span class="mi">48</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"guaranteeOnWork"</span><span class="p">:</span><span class="w"> </span><span class="mi">48</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"hourlyRate"</span><span class="p">:</span><span class="w"> </span><span class="mf">499.0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"numberOfDaysValid"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"priceOfCourtesyCar"</span><span class="p">:</span><span class="w"> </span><span class="mf">199.0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"productDiscountPercent"</span><span class="p">:</span><span class="w"> </span><span class="mf">5.0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"qualityOfParts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ORIGINAL"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"timeDiscountPercent"</span><span class="p">:</span><span class="w"> </span><span class="mf">5.0</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"digestMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DAILY"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"excludedJobTaskTypes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">56</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"brakes"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"excludedMakes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">39</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Oldsmobile"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"mecaDisabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"mecaPassword"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my_password"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"mecaUsername"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MyUsername"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"mecaViaCrm"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"mechanicOwnedFlowBookTimeUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://mechanicbooking.dk/dippels-testvaerksted/book"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"mechanicOwnedFlowEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"mechanicOwnedFlowTermsUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://dev.autobutler.dk:3000/dashboard/workshop_crm_terms"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"mechanicOwnedFlowUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://mechanicbooking.dk/dippels-testvaerksted"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"tolerancePassword"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my_password"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"toleranceTWMName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tolerance TWM"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"toleranceUsername"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MyUsername"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"usingAutofrontal"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"wantsGeneratorSms"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"wantsSms"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"wantsZeroJobsDigest"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint returns settings for the workshop.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://www.autobutler.dk/api/v2/mechanics/settings</code></p>
+
+<h3 id="response-json">Response JSON</h3>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Can be blank?</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>allowMail</td>
+<td>boolean</td>
+<td>no</td>
+<td>Weather or not we are allowed to send newsletters</td>
+</tr>
+<tr>
+<td>bidSettings</td>
+<td>object</td>
+<td>no</td>
+<td>An object representing the different bid settings</td>
+</tr>
+<tr>
+<td>bidSettings.auto</td>
+<td>object</td>
+<td>no</td>
+<td>An object representing the automatic bid settings</td>
+</tr>
+<tr>
+<td>bidSettings.auto.active</td>
+<td>boolean</td>
+<td>no</td>
+<td>Weather or not automatic bidding is enabled</td>
+</tr>
+<tr>
+<td>bidSettings.auto.guaranteeOnParts</td>
+<td>integer</td>
+<td>yes</td>
+<td>The default warranty on spare parts in months for automatic bids</td>
+</tr>
+<tr>
+<td>bidSettings.auto.guaranteeOnWork</td>
+<td>integer</td>
+<td>yes</td>
+<td>The default warranty on work in months for automatic bids</td>
+</tr>
+<tr>
+<td>bidSettings.auto.hourlyRate</td>
+<td>float</td>
+<td>yes</td>
+<td>The default hourly rate for automatic bids</td>
+</tr>
+<tr>
+<td>bidSettings.auto.nextFreeTimeDaysForward</td>
+<td>integer</td>
+<td>yes</td>
+<td>The default number of days until the next available time for automatic bids</td>
+</tr>
+<tr>
+<td>bidSettings.auto.numberOfDaysValid</td>
+<td>integer</td>
+<td>yes</td>
+<td>The default number of days an automatic bid is valid</td>
+</tr>
+<tr>
+<td>bidSettings.auto.priceOfCourtesyCar</td>
+<td>float</td>
+<td>yes</td>
+<td>The default price of courtesy car for automatic bids</td>
+</tr>
+<tr>
+<td>bidSettings.auto.productDiscountPercent</td>
+<td>float</td>
+<td>yes</td>
+<td>The default discount percentage for spare parts in automatic bids</td>
+</tr>
+<tr>
+<td>bidSettings.auto.qualityOfParts</td>
+<td>string</td>
+<td>yes</td>
+<td>The default quality of spare parts in automatic bids</td>
+</tr>
+<tr>
+<td>bidSettings.auto.timeDiscountPercent</td>
+<td>string</td>
+<td>yes</td>
+<td>The default discount percentage for work in automatic bids</td>
+</tr>
+<tr>
+<td>bidSettings.courtesyCar</td>
+<td>boolean</td>
+<td>no</td>
+<td>Weather or not the workshop offers courtesy car</td>
+</tr>
+<tr>
+<td>bidSettings.manual</td>
+<td>object</td>
+<td>no</td>
+<td>An object representing the manual bid settings</td>
+</tr>
+<tr>
+<td>bidSettings.manual.guaranteeOnParts</td>
+<td>integer</td>
+<td>yes</td>
+<td>The default warranty on spare parts in months for manual bids</td>
+</tr>
+<tr>
+<td>bidSettings.manual.guaranteeOnWork</td>
+<td>integer</td>
+<td>yes</td>
+<td>The default warranty on work in months for manual bids</td>
+</tr>
+<tr>
+<td>bidSettings.manual.hourlyRate</td>
+<td>float</td>
+<td>yes</td>
+<td>The default hourly rate for manual bids</td>
+</tr>
+<tr>
+<td>bidSettings.manual.numberOfDaysValid</td>
+<td>integer</td>
+<td>yes</td>
+<td>The default number of days an manual bid is valid</td>
+</tr>
+<tr>
+<td>bidSettings.manual.priceOfCourtesyCar</td>
+<td>float</td>
+<td>yes</td>
+<td>The default price of courtesy car for manual bids</td>
+</tr>
+<tr>
+<td>bidSettings.manual.productDiscountPercent</td>
+<td>float</td>
+<td>yes</td>
+<td>The default discount percentage for spare parts in manual bids</td>
+</tr>
+<tr>
+<td>bidSettings.manual.qualityOfParts</td>
+<td>string</td>
+<td>yes</td>
+<td>The default quality of spare parts in manual bids</td>
+</tr>
+<tr>
+<td>bidSettings.manual.timeDiscountPercent</td>
+<td>string</td>
+<td>yes</td>
+<td>The default discount percentage for work in manual bids</td>
+</tr>
+<tr>
+<td>digestMode</td>
+<td>string</td>
+<td>no</td>
+<td>Frequency of digest mail sendouts</td>
+</tr>
+<tr>
+<td>excludedJobTaskTypes</td>
+<td>array(object)</td>
+<td>no</td>
+<td>A list of job task types that are unsupported</td>
+</tr>
+<tr>
+<td>excludedJobTaskTypes.id</td>
+<td>integer</td>
+<td>no</td>
+<td>The id of the job task type</td>
+</tr>
+<tr>
+<td>excludedJobTaskTypes.name</td>
+<td>string</td>
+<td>no</td>
+<td>The machine-readable name of the job task type</td>
+</tr>
+<tr>
+<td>excludedMakes</td>
+<td>array(object)</td>
+<td>no</td>
+<td>A list of car makes that are unsupported</td>
+</tr>
+<tr>
+<td>excludedMakes.id</td>
+<td>integer</td>
+<td>no</td>
+<td>The id of the car make</td>
+</tr>
+<tr>
+<td>excludedMakes.name</td>
+<td>string</td>
+<td>no</td>
+<td>The name of the car make</td>
+</tr>
+<tr>
+<td>mecaDisabled</td>
+<td>boolean</td>
+<td>no</td>
+<td>Weather or not spare part ordering through Meca is disabled</td>
+</tr>
+<tr>
+<td>mecaPassword</td>
+<td>string</td>
+<td>yes</td>
+<td>The Meca password of the workshop</td>
+</tr>
+<tr>
+<td>mecaUsername</td>
+<td>string</td>
+<td>yes</td>
+<td>The Meca username of the workshop</td>
+</tr>
+<tr>
+<td>mecaViaCrm</td>
+<td>boolean</td>
+<td>no</td>
+<td>If set to <code class="prettyprint">true</code>, ordering og spare parts via Meca is configured to take place through their own CRM system</td>
+</tr>
+<tr>
+<td>mechanicOwnedFlowBookTimeUrl</td>
+<td>string</td>
+<td>yes</td>
+<td>The unique Mechanicbooking book time URL for the workshop</td>
+</tr>
+<tr>
+<td>mechanicOwnedFlowEnabled</td>
+<td>boolean</td>
+<td>no</td>
+<td>Weather or not Mechanicbooking is enabled</td>
+</tr>
+<tr>
+<td>mechanicOwnedFlowTermsUrl</td>
+<td>string</td>
+<td>yes</td>
+<td>A url for the Mechanicbooking terms</td>
+</tr>
+<tr>
+<td>mechanicOwnedFlowUrl</td>
+<td>string</td>
+<td>yes</td>
+<td>The unique Mechanicbooking flow URL for the workshop</td>
+</tr>
+<tr>
+<td>tolerancePassword</td>
+<td>string</td>
+<td>yes</td>
+<td>The Tolerance password of the workshop</td>
+</tr>
+<tr>
+<td>toleranceTWMName</td>
+<td>string</td>
+<td>yes</td>
+<td>The Tolerance type used by the workshop</td>
+</tr>
+<tr>
+<td>toleranceUsername</td>
+<td>string</td>
+<td>yes</td>
+<td>The Tolerance username the workshop</td>
+</tr>
+<tr>
+<td>usingAutofrontal</td>
+<td>boolean</td>
+<td>no</td>
+<td>Weather or not the Autofrontal integration is enabled for the workshop</td>
+</tr>
+<tr>
+<td>wantsGeneratorSms</td>
+<td>boolean</td>
+<td>no</td>
+<td>Weather or not the workshop wants to receive Generator related sms messages</td>
+</tr>
+<tr>
+<td>wantsSms</td>
+<td>boolean</td>
+<td>no</td>
+<td>Weather or not the workshop wants to receive Autobutler related sms messages</td>
+</tr>
+<tr>
+<td>wantsZeroJobsDigest</td>
+<td>boolean</td>
+<td>no</td>
+<td>Weather or not the workshop wants digest e-mails when he has no available jobs</td>
+</tr>
+</tbody></table>
+
+<h2 id="update-mechanic-settings">Update mechanic settings</h2>
+
+<blockquote>
+<p>To update the settings for the workshop, use this code:</p>
+</blockquote>
+<pre class="highlight shell"><code>curl -X <span class="s2">"PATCH"</span> <span class="s2">"https://www.autobutler.dk/api/v2/mechanics/settings"</span> <span class="se">\</span>
+     -H <span class="s2">"Authorization: token"</span> <span class="se">\</span>
+     -H <span class="s2">"Content-Type: application/json; charset=utf-8"</span> <span class="se">\</span>
+     -d <span class="s2">"{</span><span class="se">\"</span><span class="s2">bidSettings</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">auto</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">active</span><span class="se">\"</span><span class="s2">:true},</span><span class="se">\"</span><span class="s2">manual</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">hourlyRate</span><span class="se">\"</span><span class="s2">:497},</span><span class="se">\"</span><span class="s2">courtesyCar</span><span class="se">\"</span><span class="s2">:false},</span><span class="se">\"</span><span class="s2">mecaViaCrm</span><span class="se">\"</span><span class="s2">:false,</span><span class="se">\"</span><span class="s2">excludedJobTaskTypes</span><span class="se">\"</span><span class="s2">:[{</span><span class="se">\"</span><span class="s2">id</span><span class="se">\"</span><span class="s2">:56},{</span><span class="se">\"</span><span class="s2">id</span><span class="se">\"</span><span class="s2">:57}],</span><span class="se">\"</span><span class="s2">excludedMakes</span><span class="se">\"</span><span class="s2">:[{</span><span class="se">\"</span><span class="s2">id</span><span class="se">\"</span><span class="s2">:39},{</span><span class="se">\"</span><span class="s2">id</span><span class="se">\"</span><span class="s2">:4}]}"</span>
+</code></pre><pre class="highlight javascript"><code><span class="nx">jQuery</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s2">"https://www.autobutler.dk/api/v2/mechanics/settings"</span><span class="p">,</span>
+  <span class="na">type</span><span class="p">:</span> <span class="s2">"PATCH"</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"Authorization"</span><span class="p">:</span> <span class="s2">"token"</span><span class="p">,</span>
+    <span class="s2">"Content-Type"</span><span class="p">:</span> <span class="s2">"application/json; charset=utf-8"</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="na">contentType</span><span class="p">:</span> <span class="s2">"application/json"</span><span class="p">,</span>
+  <span class="na">data</span><span class="p">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
+    <span class="s2">"excludedJobTaskTypes"</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="s2">"id"</span><span class="p">:</span> <span class="mi">56</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s2">"id"</span><span class="p">:</span> <span class="mi">57</span>
+      <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="s2">"excludedMakes"</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="s2">"id"</span><span class="p">:</span> <span class="mi">39</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s2">"id"</span><span class="p">:</span> <span class="mi">4</span>
+      <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="s2">"bidSettings"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">"auto"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"active"</span><span class="p">:</span> <span class="kc">true</span>
+      <span class="p">},</span>
+      <span class="s2">"manual"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"hourlyRate"</span><span class="p">:</span> <span class="mi">497</span>
+      <span class="p">},</span>
+      <span class="s2">"courtesyCar"</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="s2">"mecaViaCrm"</span><span class="p">:</span> <span class="kc">false</span>
+  <span class="p">})</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">textStatus</span><span class="p">,</span> <span class="nx">jqXHR</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"HTTP Request Succeeded: "</span> <span class="o">+</span> <span class="nx">jqXHR</span><span class="p">.</span><span class="nx">status</span><span class="p">);</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">fail</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">jqXHR</span><span class="p">,</span> <span class="nx">textStatus</span><span class="p">,</span> <span class="nx">errorThrown</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"HTTP Request Failed"</span><span class="p">);</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">always</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="cm">/* ... */</span>
+<span class="p">});</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"allowMail"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"bidSettings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"auto"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"guaranteeOnParts"</span><span class="p">:</span><span class="w"> </span><span class="mi">24</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"guaranteeOnWork"</span><span class="p">:</span><span class="w"> </span><span class="mi">24</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"hourlyRate"</span><span class="p">:</span><span class="w"> </span><span class="mf">479.0</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"nextFreeTimeDaysForward"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"numberOfDaysValid"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"priceOfCourtesyCar"</span><span class="p">:</span><span class="w"> </span><span class="mf">179.0</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"productDiscountPercent"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.5</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"qualityOfParts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OEM"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"timeDiscountPercent"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.5</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"courtesyCar"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"manual"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"guaranteeOnParts"</span><span class="p">:</span><span class="w"> </span><span class="mi">48</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"guaranteeOnWork"</span><span class="p">:</span><span class="w"> </span><span class="mi">48</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"hourlyRate"</span><span class="p">:</span><span class="w"> </span><span class="mf">497.0</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"numberOfDaysValid"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"priceOfCourtesyCar"</span><span class="p">:</span><span class="w"> </span><span class="mf">199.0</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"productDiscountPercent"</span><span class="p">:</span><span class="w"> </span><span class="mf">5.0</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"qualityOfParts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ORIGINAL"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"timeDiscountPercent"</span><span class="p">:</span><span class="w"> </span><span class="mf">5.0</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"digestMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DAILY"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"excludedJobTaskTypes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">56</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"brakes"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">57</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"car_care"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"excludedMakes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">39</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Oldsmobile"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Toyota"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"mecaDisabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"mecaPassword"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my_password"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"mecaUsername"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MyUsername"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"mecaViaCrm"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"mechanicOwnedFlowBookTimeUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://mechanicbooking.dk/dippels-testvaerksted/book"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"mechanicOwnedFlowEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"mechanicOwnedFlowTermsUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://dev.autobutler.dk:3000/dashboard/workshop_crm_terms"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"mechanicOwnedFlowUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://mechanicbooking.dk/dippels-testvaerksted"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"tolerancePassword"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my_password"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"toleranceTWMName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tolerance TWM"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"toleranceUsername"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MyUsername"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"usingAutofrontal"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"wantsGeneratorSms"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"wantsSms"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"wantsZeroJobsDigest"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint updates the settings for the workshop. Please note that only the
+parameters sent to the endpoint will be touched in the settings, Ie. if you for
+instance don&rsquo;t want to change the <code class="prettyprint">allowMail</code> setting, simply leave that value
+out of the request body. Notice that empty strings are not ignored.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">PATCH https://www.autobutler.dk/api/v2/mechanics/settings</code></p>
+
+<h3 id="request-json">Request JSON</h3>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Required?</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>allowMail</td>
+<td>boolean</td>
+<td>no</td>
+<td>Weather or not we are allowed to send newsletters</td>
+</tr>
+<tr>
+<td>bidSettings</td>
+<td>object</td>
+<td>no</td>
+<td>An object representing the different bid settings</td>
+</tr>
+<tr>
+<td>bidSettings.auto</td>
+<td>object</td>
+<td>no</td>
+<td>An object representing the automatic bid settings</td>
+</tr>
+<tr>
+<td>bidSettings.auto.active</td>
+<td>boolean</td>
+<td>no</td>
+<td>Weather or not automatic bidding is enabled</td>
+</tr>
+<tr>
+<td>bidSettings.auto.guaranteeOnParts</td>
+<td>integer</td>
+<td>no</td>
+<td>The default warranty on spare parts in months for automatic bids</td>
+</tr>
+<tr>
+<td>bidSettings.auto.guaranteeOnWork</td>
+<td>integer</td>
+<td>no</td>
+<td>The default warranty on work in months for automatic bids</td>
+</tr>
+<tr>
+<td>bidSettings.auto.hourlyRate</td>
+<td>float</td>
+<td>no</td>
+<td>The default hourly rate for automatic bids</td>
+</tr>
+<tr>
+<td>bidSettings.auto.nextFreeTimeDaysForward</td>
+<td>integer</td>
+<td>no</td>
+<td>The default number of days until the next available time for automatic bids</td>
+</tr>
+<tr>
+<td>bidSettings.auto.numberOfDaysValid</td>
+<td>integer</td>
+<td>no</td>
+<td>The default number of days an automatic bid is valid</td>
+</tr>
+<tr>
+<td>bidSettings.auto.priceOfCourtesyCar</td>
+<td>float</td>
+<td>no</td>
+<td>The default price of courtesy car for automatic bids</td>
+</tr>
+<tr>
+<td>bidSettings.auto.productDiscountPercent</td>
+<td>float</td>
+<td>no</td>
+<td>The default discount percentage for spare parts in automatic bids</td>
+</tr>
+<tr>
+<td>bidSettings.auto.qualityOfParts</td>
+<td>string</td>
+<td>no</td>
+<td>The default quality of spare parts in automatic bids</td>
+</tr>
+<tr>
+<td>bidSettings.auto.timeDiscountPercent</td>
+<td>string</td>
+<td>no</td>
+<td>The default discount percentage for work in automatic bids</td>
+</tr>
+<tr>
+<td>bidSettings.courtesyCar</td>
+<td>boolean</td>
+<td>no</td>
+<td>Weather or not the workshop offers courtesy car</td>
+</tr>
+<tr>
+<td>bidSettings.manual</td>
+<td>object</td>
+<td>no</td>
+<td>An object representing the manual bid settings</td>
+</tr>
+<tr>
+<td>bidSettings.manual.guaranteeOnParts</td>
+<td>integer</td>
+<td>no</td>
+<td>The default warranty on spare parts in months for manual bids</td>
+</tr>
+<tr>
+<td>bidSettings.manual.guaranteeOnWork</td>
+<td>integer</td>
+<td>no</td>
+<td>The default warranty on work in months for manual bids</td>
+</tr>
+<tr>
+<td>bidSettings.manual.hourlyRate</td>
+<td>float</td>
+<td>no</td>
+<td>The default hourly rate for manual bids</td>
+</tr>
+<tr>
+<td>bidSettings.manual.numberOfDaysValid</td>
+<td>integer</td>
+<td>no</td>
+<td>The default number of days an manual bid is valid</td>
+</tr>
+<tr>
+<td>bidSettings.manual.priceOfCourtesyCar</td>
+<td>float</td>
+<td>no</td>
+<td>The default price of courtesy car for manual bids</td>
+</tr>
+<tr>
+<td>bidSettings.manual.productDiscountPercent</td>
+<td>float</td>
+<td>no</td>
+<td>The default discount percentage for spare parts in manual bids</td>
+</tr>
+<tr>
+<td>bidSettings.manual.qualityOfParts</td>
+<td>string</td>
+<td>no</td>
+<td>The default quality of spare parts in manual bids</td>
+</tr>
+<tr>
+<td>bidSettings.manual.timeDiscountPercent</td>
+<td>string</td>
+<td>no</td>
+<td>The default discount percentage for work in manual bids</td>
+</tr>
+<tr>
+<td>digestMode</td>
+<td>string</td>
+<td>no</td>
+<td>Frequency of digest mail sendouts</td>
+</tr>
+<tr>
+<td>excludedJobTaskTypes</td>
+<td>array(object)</td>
+<td>no</td>
+<td>A list of job task types that are unsupported</td>
+</tr>
+<tr>
+<td>excludedJobTaskTypes.id</td>
+<td>integer</td>
+<td>yes</td>
+<td>The id of the job task type</td>
+</tr>
+<tr>
+<td>excludedMakes</td>
+<td>array(object)</td>
+<td>no</td>
+<td>A list of car makes that are unsupported</td>
+</tr>
+<tr>
+<td>excludedMakes.id</td>
+<td>integer</td>
+<td>yes</td>
+<td>The id of the car make</td>
+</tr>
+<tr>
+<td>mecaDisabled</td>
+<td>boolean</td>
+<td>no</td>
+<td>Weather or not spare part ordering through Meca is disabled</td>
+</tr>
+<tr>
+<td>mecaPassword</td>
+<td>string</td>
+<td>no</td>
+<td>The Meca password of the workshop</td>
+</tr>
+<tr>
+<td>mecaUsername</td>
+<td>string</td>
+<td>no</td>
+<td>The Meca username of the workshop</td>
+</tr>
+<tr>
+<td>mecaViaCrm</td>
+<td>boolean</td>
+<td>no</td>
+<td>If set to <code class="prettyprint">true</code>, ordering og spare parts via Meca is configured to take place through their own CRM system</td>
+</tr>
+<tr>
+<td>mechanicOwnedFlowEnabled</td>
+<td>boolean</td>
+<td>no</td>
+<td>Weather or not Mechanicbooking is enabled</td>
+</tr>
+<tr>
+<td>tolerancePassword</td>
+<td>string</td>
+<td>no</td>
+<td>The Tolerance password of the workshop</td>
+</tr>
+<tr>
+<td>toleranceTWMName</td>
+<td>string</td>
+<td>no</td>
+<td>The Tolerance type used by the workshop</td>
+</tr>
+<tr>
+<td>toleranceUsername</td>
+<td>string</td>
+<td>no</td>
+<td>The Tolerance username the workshop</td>
+</tr>
+<tr>
+<td>usingAutofrontal</td>
+<td>boolean</td>
+<td>no</td>
+<td>Weather or not the Autofrontal integration is enabled for the workshop</td>
+</tr>
+<tr>
+<td>wantsGeneratorSms</td>
+<td>boolean</td>
+<td>no</td>
+<td>Weather or not the workshop wants to receive Generator related sms messages</td>
+</tr>
+<tr>
+<td>wantsSms</td>
+<td>boolean</td>
+<td>no</td>
+<td>Weather or not the workshop wants to receive Autobutler related sms messages</td>
+</tr>
+<tr>
+<td>wantsZeroJobsDigest</td>
+<td>boolean</td>
+<td>no</td>
+<td>Weather or not the workshop wants digest e-mails when he has no available jobs</td>
+</tr>
+</tbody></table>
+
+<h3 id="response-json">Response JSON</h3>
+
+<p>The endpoint responds with a status object with the updated settings nested within.
+The JSON values in this nested object is the same as in the
+<a href="#get-mechanic-settings">show</a> endpoint.</p>
+
           <h1 id="common-json-objects">Common JSON objects</h1>
 
 <h2 id="joboverview">jobOverview</h2>
