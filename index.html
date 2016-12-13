@@ -490,6 +490,26 @@ on.</p>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"additionalChains"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bosch Car Service"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dinitrol"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"affiliations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">61</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dæktryg"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Michelin Quality Dealer"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
   </span><span class="nt">"allowMail"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="nt">"bidSettings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nt">"auto"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -516,17 +536,57 @@ on.</p>
       </span><span class="nt">"timeDiscountPercent"</span><span class="p">:</span><span class="w"> </span><span class="mf">5.0</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"competencies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Audio/Stereo/Navigation"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">63</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Beklædning/polstring "</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"contactName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Foo Bar"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"countryBilling"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"cvr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"digestMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DAILY"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"foo@bar.dk"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"emailBilling"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"emailJobRelated"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"emailPublic"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"employees"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"establishedDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
   </span><span class="nt">"excludedJobTaskTypes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">56</span><span class="p">,</span><span class="w">
       </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"brakes"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">57</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"car_care"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="nt">"excludedMakes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">39</span><span class="p">,</span><span class="w">
       </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Oldsmobile"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Toyota"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"faxNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"invoiceReference"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"makes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Alfa Romeo"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">66</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BMW"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="nt">"mecaDisabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
@@ -537,13 +597,57 @@ on.</p>
   </span><span class="nt">"mechanicOwnedFlowEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="nt">"mechanicOwnedFlowTermsUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://dev.autobutler.dk:3000/dashboard/workshop_crm_terms"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"mechanicOwnedFlowUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://mechanicbooking.dk/dippels-testvaerksted"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"mobilePhoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dippels Testværksted"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"nameBilling"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dippels Testværksted"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"openingHours"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"1_begin"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"1_end"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"2_begin"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"2_end"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"3_begin"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"3_end"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"4_begin"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"4_end"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"5_begin"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"5_end"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"6_begin"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"6_end"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"7_begin"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"7_end"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"organisation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FREE"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"ownerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thomas Dippel"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77343221"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"place"</span><span class="p">:</span><span class="w"> </span><span class="s2">"København S"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"placeBilling"</span><span class="p">:</span><span class="w"> </span><span class="s2">"København S"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"properName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dippels Testværksted"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"showEmail"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"showPhoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"specialties"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Alfa Romeo"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">66</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BMW"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"streetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Njalsgade"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"streetNameBilling"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Njalsgade"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"streetNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"21 G, 1."</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"streetNumberBilling"</span><span class="p">:</span><span class="w"> </span><span class="s2">"21 G, 1."</span><span class="p">,</span><span class="w">
   </span><span class="nt">"tolerancePassword"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my_password"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"toleranceTWMName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tolerance TWM"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"toleranceTWMName"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="nt">"toleranceUsername"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MyUsername"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"usingAutofrontal"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"wantsGeneratorSms"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"vatNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DK32891799"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"wantsGeneratorSms"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
   </span><span class="nt">"wantsSms"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"wantsZeroJobsDigest"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="nt">"www"</span><span class="p">:</span><span class="w"> </span><span class="s2">"www.foo.bar"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"zip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2300"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"zipBilling"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2300"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint returns settings for the workshop.</p>
@@ -562,6 +666,42 @@ on.</p>
 <th>Description</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>additionalChains</td>
+<td>array(object)</td>
+<td>no</td>
+<td>A list of objects representing the workshop chains that the workshop is part of</td>
+</tr>
+<tr>
+<td>additionalChains.id</td>
+<td>integer</td>
+<td>no</td>
+<td>The id of the chain</td>
+</tr>
+<tr>
+<td>additionalChains.name</td>
+<td>string</td>
+<td>no</td>
+<td>The name of the chain</td>
+</tr>
+<tr>
+<td>affiliations</td>
+<td>array(object)</td>
+<td>no</td>
+<td>A list of objects representing the different organisations that the workshop is a member of</td>
+</tr>
+<tr>
+<td>affiliations.id</td>
+<td>integer</td>
+<td>no</td>
+<td>The id of the organisation</td>
+</tr>
+<tr>
+<td>affiliations.name</td>
+<td>string</td>
+<td>no</td>
+<td>The name of the organisation</td>
+</tr>
 <tr>
 <td>allowMail</td>
 <td>boolean</td>
@@ -701,10 +841,88 @@ on.</p>
 <td>The default discount percentage for work in manual bids</td>
 </tr>
 <tr>
+<td>competencies</td>
+<td>array(object)</td>
+<td>no</td>
+<td>A list of objects representing the different competencies of the workshop</td>
+</tr>
+<tr>
+<td>competencies.id</td>
+<td>integer</td>
+<td>no</td>
+<td>The id of the competency</td>
+</tr>
+<tr>
+<td>competencies.name</td>
+<td>string</td>
+<td>no</td>
+<td>The name of the competency</td>
+</tr>
+<tr>
+<td>contactName</td>
+<td>string</td>
+<td>yes</td>
+<td>The name of the contact person at the workshop</td>
+</tr>
+<tr>
+<td>countryBilling</td>
+<td>string</td>
+<td>yes</td>
+<td>The country of the billing address for the workshop</td>
+</tr>
+<tr>
+<td>cvr</td>
+<td>string</td>
+<td>yes</td>
+<td>The VAT-number of the workshop</td>
+</tr>
+<tr>
+<td>description</td>
+<td>string</td>
+<td>yes</td>
+<td>A short description of the workshop</td>
+</tr>
+<tr>
 <td>digestMode</td>
 <td>string</td>
 <td>no</td>
 <td>Frequency of digest mail sendouts</td>
+</tr>
+<tr>
+<td>email</td>
+<td>string</td>
+<td>no</td>
+<td>The e-mail address of the workshop. Also doubles as the Autobutler username for the workshop</td>
+</tr>
+<tr>
+<td>emailBilling</td>
+<td>string</td>
+<td>yes</td>
+<td>A separate billing e-mail address for the workshop</td>
+</tr>
+<tr>
+<td>emailJobRelated</td>
+<td>string</td>
+<td>yes</td>
+<td>A separate e-mail address for receiving job-related notifications</td>
+</tr>
+<tr>
+<td>emailPublic</td>
+<td>string</td>
+<td>yes</td>
+<td>A separate e-mail address for the workshop that will be shown publically on the workshops profile page</td>
+</tr>
+<tr>
+<td>employees</td>
+<td>integer</td>
+<td>yes</td>
+<td>The number of employess at the workshop</td>
+</tr>
+<tr>
+<td>establishedDate</td>
+<td>string</td>
+<td>yes</td>
+<td>A date for when the workshop was established</td>
 </tr>
 <tr>
 <td>excludedJobTaskTypes</td>
@@ -741,6 +959,36 @@ on.</p>
 <td>string</td>
 <td>no</td>
 <td>The name of the car make</td>
+</tr>
+<tr>
+<td>faxNumber</td>
+<td>string</td>
+<td>yes</td>
+<td>The fax number of the workshop</td>
+</tr>
+<tr>
+<td>invoiceReference</td>
+<td>string</td>
+<td>yes</td>
+<td>An identifier that will be printed on all invoices</td>
+</tr>
+<tr>
+<td>makes</td>
+<td>array(object)</td>
+<td>no</td>
+<td>A list of objects representing the different makes that the workshop is officially authorized to service</td>
+</tr>
+<tr>
+<td>makes.id</td>
+<td>integer</td>
+<td>no</td>
+<td>The id of the make</td>
+</tr>
+<tr>
+<td>makes.name</td>
+<td>string</td>
+<td>no</td>
+<td>The name of the make</td>
 </tr>
 <tr>
 <td>mecaDisabled</td>
@@ -791,6 +1039,204 @@ on.</p>
 <td>The unique Mechanicbooking flow URL for the workshop</td>
 </tr>
 <tr>
+<td>mobilePhoneNumber</td>
+<td>string</td>
+<td>yes</td>
+<td>The mobile phone numer of the workshop</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>no</td>
+<td>The name of the workshop</td>
+</tr>
+<tr>
+<td>nameBilling</td>
+<td>string</td>
+<td>yes</td>
+<td>The name of the workshop that will be printed on invoices</td>
+</tr>
+<tr>
+<td>openingHours</td>
+<td>object</td>
+<td>no</td>
+<td>An object representing the opening hours of the workshop</td>
+</tr>
+<tr>
+<td>openingHours.1_begin</td>
+<td>string</td>
+<td>yes</td>
+<td>The opening hour for Mondays</td>
+</tr>
+<tr>
+<td>openingHours.1_end</td>
+<td>string</td>
+<td>yes</td>
+<td>The closing hour for Mondays</td>
+</tr>
+<tr>
+<td>openingHours.2_begin</td>
+<td>string</td>
+<td>yes</td>
+<td>The opening hour for Tuesdays</td>
+</tr>
+<tr>
+<td>openingHours.2_end</td>
+<td>string</td>
+<td>yes</td>
+<td>The closing hour for Tuesdays</td>
+</tr>
+<tr>
+<td>openingHours.3_begin</td>
+<td>string</td>
+<td>yes</td>
+<td>The opening hour for Wednesdays</td>
+</tr>
+<tr>
+<td>openingHours.3_end</td>
+<td>string</td>
+<td>yes</td>
+<td>The closing hour for Wednesdays</td>
+</tr>
+<tr>
+<td>openingHours.4_begin</td>
+<td>string</td>
+<td>yes</td>
+<td>The opening hour for Thursdays</td>
+</tr>
+<tr>
+<td>openingHours.4_end</td>
+<td>string</td>
+<td>yes</td>
+<td>The closing hour for Thursdays</td>
+</tr>
+<tr>
+<td>openingHours.5_begin</td>
+<td>string</td>
+<td>yes</td>
+<td>The opening hour for Fridays</td>
+</tr>
+<tr>
+<td>openingHours.5_end</td>
+<td>string</td>
+<td>yes</td>
+<td>The closing hour for Fridays</td>
+</tr>
+<tr>
+<td>openingHours.6_begin</td>
+<td>string</td>
+<td>yes</td>
+<td>The opening hour for Saturdays</td>
+</tr>
+<tr>
+<td>openingHours.6_end</td>
+<td>string</td>
+<td>yes</td>
+<td>The closing hour for Saturdays</td>
+</tr>
+<tr>
+<td>openingHours.7_begin</td>
+<td>string</td>
+<td>yes</td>
+<td>The opening hour for Sundays</td>
+</tr>
+<tr>
+<td>openingHours.7_end</td>
+<td>string</td>
+<td>yes</td>
+<td>The closing hour for Sundays</td>
+</tr>
+<tr>
+<td>organisation</td>
+<td>string</td>
+<td>no</td>
+<td><code class="prettyprint">&quot;FREE&quot;</code>: The workshop is not an authorized car make workshop<br><code class="prettyprint">&quot;AUTHORISED&quot;</code>: The workshop is an authorized car make workshop</td>
+</tr>
+<tr>
+<td>ownerName</td>
+<td>string</td>
+<td>yes</td>
+<td>The name of the workshop owner</td>
+</tr>
+<tr>
+<td>phoneNumber</td>
+<td>string</td>
+<td>yes</td>
+<td>The phone number of the workshop</td>
+</tr>
+<tr>
+<td>place</td>
+<td>string</td>
+<td>no</td>
+<td>The city where the workshop is located</td>
+</tr>
+<tr>
+<td>placeBilling</td>
+<td>string</td>
+<td>yes</td>
+<td>The city where invoices should be sent</td>
+</tr>
+<tr>
+<td>properName</td>
+<td>string</td>
+<td>yes</td>
+<td>The legal name of the workshop</td>
+</tr>
+<tr>
+<td>showEmail</td>
+<td>boolean</td>
+<td>no</td>
+<td>Weather or not the e-mail address of the workshop can be shown publically</td>
+</tr>
+<tr>
+<td>showPhoneNumber</td>
+<td>boolean</td>
+<td>no</td>
+<td>Weather or not the phone number of the workshop can be shown publically</td>
+</tr>
+<tr>
+<td>specialties</td>
+<td>array(object)</td>
+<td>no</td>
+<td>A list of objects representing the different job task types that the workshop specilises in</td>
+</tr>
+<tr>
+<td>specialties.id</td>
+<td>integer</td>
+<td>no</td>
+<td>The id of the job task type</td>
+</tr>
+<tr>
+<td>specialties.name</td>
+<td>string</td>
+<td>no</td>
+<td>The name of the job task type</td>
+</tr>
+<tr>
+<td>streetName</td>
+<td>string</td>
+<td>no</td>
+<td>The street name where the workshop is located</td>
+</tr>
+<tr>
+<td>streetNameBilling</td>
+<td>string</td>
+<td>yes</td>
+<td>The street name where invoices should be sent</td>
+</tr>
+<tr>
+<td>streetNumber</td>
+<td>string</td>
+<td>no</td>
+<td>The street number where the workshop is located</td>
+</tr>
+<tr>
+<td>streetNumberBilling</td>
+<td>string</td>
+<td>yes</td>
+<td>The street number where invoices should be sent</td>
+</tr>
+<tr>
 <td>tolerancePassword</td>
 <td>string</td>
 <td>yes</td>
@@ -827,10 +1273,22 @@ on.</p>
 <td>Weather or not the workshop wants to receive Autobutler related sms messages</td>
 </tr>
 <tr>
-<td>wantsZeroJobsDigest</td>
-<td>boolean</td>
+<td>www</td>
+<td>string</td>
+<td>yes</td>
+<td>The website address of the workshop</td>
+</tr>
+<tr>
+<td>zip</td>
+<td>string</td>
 <td>no</td>
-<td>Weather or not the workshop wants digest e-mails when he has no available jobs</td>
+<td>The zip code where the workshop is located</td>
+</tr>
+<tr>
+<td>zipBilling</td>
+<td>string</td>
+<td>yes</td>
+<td>The zip code where invoices should be sent</td>
 </tr>
 </tbody></table>
 
@@ -1120,10 +1578,82 @@ out of the request body. Notice that empty strings are not ignored.</p>
 <td>The default discount percentage for work in manual bids</td>
 </tr>
 <tr>
+<td>competencies</td>
+<td>array(object)</td>
+<td>no</td>
+<td>A list of objects representing the different competencies of the workshop</td>
+</tr>
+<tr>
+<td>competencies.id</td>
+<td>integer</td>
+<td>yes</td>
+<td>The id of the competency</td>
+</tr>
+<tr>
+<td>contactName</td>
+<td>string</td>
+<td>no</td>
+<td>The name of the contact person at the workshop</td>
+</tr>
+<tr>
+<td>countryBilling</td>
+<td>string</td>
+<td>no</td>
+<td>The country of the billing address for the workshop</td>
+</tr>
+<tr>
+<td>cvr</td>
+<td>string</td>
+<td>no</td>
+<td>The VAT-number of the workshop</td>
+</tr>
+<tr>
+<td>description</td>
+<td>string</td>
+<td>no</td>
+<td>A short description of the workshop</td>
+</tr>
+<tr>
 <td>digestMode</td>
 <td>string</td>
 <td>no</td>
 <td>Frequency of digest mail sendouts</td>
+</tr>
+<tr>
+<td>email</td>
+<td>string</td>
+<td>no</td>
+<td>The e-mail address of the workshop. Also doubles as the Autobutler username for the workshop</td>
+</tr>
+<tr>
+<td>emailBilling</td>
+<td>string</td>
+<td>no</td>
+<td>A separate billing e-mail address for the workshop</td>
+</tr>
+<tr>
+<td>emailJobRelated</td>
+<td>string</td>
+<td>no</td>
+<td>A separate e-mail address for receiving job-related notifications</td>
+</tr>
+<tr>
+<td>emailPublic</td>
+<td>string</td>
+<td>no</td>
+<td>A separate e-mail address for the workshop that will be shown publically on the workshops profile page</td>
+</tr>
+<tr>
+<td>employees</td>
+<td>integer</td>
+<td>no</td>
+<td>The number of employess at the workshop</td>
+</tr>
+<tr>
+<td>establishedDate</td>
+<td>string</td>
+<td>no</td>
+<td>A date for when the workshop was established</td>
 </tr>
 <tr>
 <td>excludedJobTaskTypes</td>
@@ -1148,6 +1678,18 @@ out of the request body. Notice that empty strings are not ignored.</p>
 <td>integer</td>
 <td>yes</td>
 <td>The id of the car make</td>
+</tr>
+<tr>
+<td>faxNumber</td>
+<td>string</td>
+<td>no</td>
+<td>The fax number of the workshop</td>
+</tr>
+<tr>
+<td>invoiceReference</td>
+<td>string</td>
+<td>no</td>
+<td>An identifier that will be printed on all invoices</td>
 </tr>
 <tr>
 <td>mecaDisabled</td>
@@ -1178,6 +1720,192 @@ out of the request body. Notice that empty strings are not ignored.</p>
 <td>boolean</td>
 <td>no</td>
 <td>Weather or not Mechanicbooking is enabled</td>
+</tr>
+<tr>
+<td>mobilePhoneNumber</td>
+<td>string</td>
+<td>no</td>
+<td>The mobile phone numer of the workshop</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>no</td>
+<td>The name of the workshop</td>
+</tr>
+<tr>
+<td>nameBilling</td>
+<td>string</td>
+<td>no</td>
+<td>The name of the workshop that will be printed on invoices</td>
+</tr>
+<tr>
+<td>openingHours</td>
+<td>object</td>
+<td>no</td>
+<td>An object representing the opening hours of the workshop</td>
+</tr>
+<tr>
+<td>openingHours.1_begin</td>
+<td>string</td>
+<td>yes</td>
+<td>The opening hour for Mondays</td>
+</tr>
+<tr>
+<td>openingHours.1_end</td>
+<td>string</td>
+<td>yes</td>
+<td>The closing hour for Mondays</td>
+</tr>
+<tr>
+<td>openingHours.2_begin</td>
+<td>string</td>
+<td>yes</td>
+<td>The opening hour for Tuesdays</td>
+</tr>
+<tr>
+<td>openingHours.2_end</td>
+<td>string</td>
+<td>yes</td>
+<td>The closing hour for Tuesdays</td>
+</tr>
+<tr>
+<td>openingHours.3_begin</td>
+<td>string</td>
+<td>yes</td>
+<td>The opening hour for Wednesdays</td>
+</tr>
+<tr>
+<td>openingHours.3_end</td>
+<td>string</td>
+<td>yes</td>
+<td>The closing hour for Wednesdays</td>
+</tr>
+<tr>
+<td>openingHours.4_begin</td>
+<td>string</td>
+<td>yes</td>
+<td>The opening hour for Thursdays</td>
+</tr>
+<tr>
+<td>openingHours.4_end</td>
+<td>string</td>
+<td>yes</td>
+<td>The closing hour for Thursdays</td>
+</tr>
+<tr>
+<td>openingHours.5_begin</td>
+<td>string</td>
+<td>yes</td>
+<td>The opening hour for Fridays</td>
+</tr>
+<tr>
+<td>openingHours.5_end</td>
+<td>string</td>
+<td>yes</td>
+<td>The closing hour for Fridays</td>
+</tr>
+<tr>
+<td>openingHours.6_begin</td>
+<td>string</td>
+<td>yes</td>
+<td>The opening hour for Saturdays</td>
+</tr>
+<tr>
+<td>openingHours.6_end</td>
+<td>string</td>
+<td>yes</td>
+<td>The closing hour for Saturdays</td>
+</tr>
+<tr>
+<td>openingHours.7_begin</td>
+<td>string</td>
+<td>yes</td>
+<td>The opening hour for Sundays</td>
+</tr>
+<tr>
+<td>openingHours.7_end</td>
+<td>string</td>
+<td>yes</td>
+<td>The closing hour for Sundays</td>
+</tr>
+<tr>
+<td>ownerName</td>
+<td>string</td>
+<td>no</td>
+<td>The name of the workshop owner</td>
+</tr>
+<tr>
+<td>phoneNumber</td>
+<td>string</td>
+<td>no</td>
+<td>The phone number of the workshop</td>
+</tr>
+<tr>
+<td>place</td>
+<td>string</td>
+<td>no</td>
+<td>The city where the workshop is located</td>
+</tr>
+<tr>
+<td>placeBilling</td>
+<td>string</td>
+<td>no</td>
+<td>The city where invoices should be sent</td>
+</tr>
+<tr>
+<td>properName</td>
+<td>string</td>
+<td>no</td>
+<td>The legal name of the workshop</td>
+</tr>
+<tr>
+<td>showEmail</td>
+<td>boolean</td>
+<td>no</td>
+<td>Weather or not the e-mail address of the workshop can be shown publically</td>
+</tr>
+<tr>
+<td>showPhoneNumber</td>
+<td>boolean</td>
+<td>no</td>
+<td>Weather or not the phone number of the workshop can be shown publically</td>
+</tr>
+<tr>
+<td>specialties</td>
+<td>array(object)</td>
+<td>no</td>
+<td>A list of objects representing the different job task types that the workshop specilises in</td>
+</tr>
+<tr>
+<td>specialties.id</td>
+<td>integer</td>
+<td>yes</td>
+<td>The id of the job task type</td>
+</tr>
+<tr>
+<td>streetName</td>
+<td>string</td>
+<td>no</td>
+<td>The street name where the workshop is located</td>
+</tr>
+<tr>
+<td>streetNameBilling</td>
+<td>string</td>
+<td>no</td>
+<td>The street name where invoices should be sent</td>
+</tr>
+<tr>
+<td>streetNumber</td>
+<td>string</td>
+<td>no</td>
+<td>The street number where the workshop is located</td>
+</tr>
+<tr>
+<td>streetNumberBilling</td>
+<td>string</td>
+<td>no</td>
+<td>The street number where invoices should be sent</td>
 </tr>
 <tr>
 <td>tolerancePassword</td>
@@ -1220,6 +1948,24 @@ out of the request body. Notice that empty strings are not ignored.</p>
 <td>boolean</td>
 <td>no</td>
 <td>Weather or not the workshop wants digest e-mails when he has no available jobs</td>
+</tr>
+<tr>
+<td>www</td>
+<td>string</td>
+<td>no</td>
+<td>The website address of the workshop</td>
+</tr>
+<tr>
+<td>zip</td>
+<td>string</td>
+<td>no</td>
+<td>The zip code where the workshop is located</td>
+</tr>
+<tr>
+<td>zipBilling</td>
+<td>string</td>
+<td>no</td>
+<td>The zip code where invoices should be sent</td>
 </tr>
 </tbody></table>
 
