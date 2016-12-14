@@ -521,6 +521,7 @@ openingHours.6_end                         | string        | yes           | The
 openingHours.7_begin                       | string        | yes           | The opening hour for Sundays
 openingHours.7_end                         | string        | yes           | The closing hour for Sundays
 ownerName                                  | string        | no            | The name of the workshop owner
+password                                   | string        | no            | A new password for the workshop
 phoneNumber                                | string        | no            | The phone number of the workshop
 place                                      | string        | no            | The city where the workshop is located
 placeBilling                               | string        | no            | The city where invoices should be sent
