@@ -548,6 +548,33 @@ on.</p>
   </span><span class="p">],</span><span class="w">
   </span><span class="nt">"contactName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Foo Bar"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"countryBilling"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"customerPaymentMethods"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"accepted"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cash"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cash"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"accepted"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"credit_card"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Credit Card"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"accepted"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"invoice"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Invoice"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"accepted"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"financing"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Financing"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"accepted"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mobile_pay"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mobilepay"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
   </span><span class="nt">"cvr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"digestMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DAILY"</span><span class="p">,</span><span class="w">
@@ -869,6 +896,30 @@ on.</p>
 <td>string</td>
 <td>yes</td>
 <td>The country of the billing address for the workshop</td>
+</tr>
+<tr>
+<td>customerPaymentMethods</td>
+<td>array(object)</td>
+<td>no</td>
+<td>A list of all available payment methods with details about which ones are accepted by the workshop</td>
+</tr>
+<tr>
+<td>customerPaymentMethods.accepted</td>
+<td>boolean</td>
+<td>no</td>
+<td>Weather or not the payment method is accepted by the workshop</td>
+</tr>
+<tr>
+<td>customerPaymentMethods.id</td>
+<td>string</td>
+<td>no</td>
+<td>The id of the payment method</td>
+</tr>
+<tr>
+<td>customerPaymentMethods.name</td>
+<td>string</td>
+<td>no</td>
+<td>The name of the payment method</td>
 </tr>
 <tr>
 <td>cvr</td>
@@ -1353,70 +1404,7 @@ on.</p>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"allowMail"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"bidSettings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"auto"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"guaranteeOnParts"</span><span class="p">:</span><span class="w"> </span><span class="mi">24</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"guaranteeOnWork"</span><span class="p">:</span><span class="w"> </span><span class="mi">24</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"hourlyRate"</span><span class="p">:</span><span class="w"> </span><span class="mf">479.0</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"nextFreeTimeDaysForward"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"numberOfDaysValid"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"priceOfCourtesyCar"</span><span class="p">:</span><span class="w"> </span><span class="mf">179.0</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"productDiscountPercent"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.5</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"qualityOfParts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OEM"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"timeDiscountPercent"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.5</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nt">"courtesyCar"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"manual"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"guaranteeOnParts"</span><span class="p">:</span><span class="w"> </span><span class="mi">48</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"guaranteeOnWork"</span><span class="p">:</span><span class="w"> </span><span class="mi">48</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"hourlyRate"</span><span class="p">:</span><span class="w"> </span><span class="mf">497.0</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"numberOfDaysValid"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"priceOfCourtesyCar"</span><span class="p">:</span><span class="w"> </span><span class="mf">199.0</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"productDiscountPercent"</span><span class="p">:</span><span class="w"> </span><span class="mf">5.0</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"qualityOfParts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ORIGINAL"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"timeDiscountPercent"</span><span class="p">:</span><span class="w"> </span><span class="mf">5.0</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nt">"digestMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DAILY"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"excludedJobTaskTypes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">56</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"brakes"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">57</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"car_care"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="nt">"excludedMakes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">39</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Oldsmobile"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Toyota"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="nt">"mecaDisabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"mecaPassword"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my_password"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"mecaUsername"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MyUsername"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"mecaViaCrm"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"mechanicOwnedFlowBookTimeUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://mechanicbooking.dk/dippels-testvaerksted/book"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"mechanicOwnedFlowEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"mechanicOwnedFlowTermsUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://dev.autobutler.dk:3000/dashboard/workshop_crm_terms"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"mechanicOwnedFlowUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://mechanicbooking.dk/dippels-testvaerksted"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"tolerancePassword"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my_password"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"toleranceTWMName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tolerance TWM"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"toleranceUsername"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MyUsername"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"usingAutofrontal"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"wantsGeneratorSms"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"wantsSms"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"wantsZeroJobsDigest"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">},</span><span class="w">
   </span><span class="nt">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -1600,6 +1588,18 @@ out of the request body. Notice that empty strings are not ignored.</p>
 <td>string</td>
 <td>no</td>
 <td>The country of the billing address for the workshop</td>
+</tr>
+<tr>
+<td>customerPaymentMethods</td>
+<td>array(object)</td>
+<td>no</td>
+<td>A list of all payment methods that are accepted by the workshop</td>
+</tr>
+<tr>
+<td>customerPaymentMethods.id</td>
+<td>string</td>
+<td>yes</td>
+<td>The id of the payment method</td>
 </tr>
 <tr>
 <td>cvr</td>
