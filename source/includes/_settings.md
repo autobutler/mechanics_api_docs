@@ -91,6 +91,33 @@ jQuery.ajax({
   ],
   "contactName": "Foo Bar",
   "countryBilling": "",
+  "customerPaymentMethods": [
+      {
+        "accepted": false,
+        "id": "cash",
+        "name": "Cash"
+      },
+      {
+        "accepted": false,
+        "id": "credit_card",
+        "name": "Credit Card"
+      },
+      {
+        "accepted": false,
+        "id": "invoice",
+        "name": "Invoice"
+      },
+      {
+        "accepted": true,
+        "id": "financing",
+        "name": "Financing"
+      },
+      {
+        "accepted": true,
+        "id": "mobile_pay",
+        "name": "Mobilepay"
+      }
+    ],
   "cvr": "12345678",
   "description": "Test",
   "digestMode": "DAILY",
@@ -238,6 +265,10 @@ competencies.id                            | integer       | no            | The
 competencies.name                          | string        | no            | The name of the competency
 contactName                                | string        | yes           | The name of the contact person at the workshop
 countryBilling                             | string        | yes           | The country of the billing address for the workshop
+customerPaymentMethods                     | array(object) | no            | A list of all available payment methods with details about which ones are accepted by the workshop
+customerPaymentMethods.accepted            | boolean       | no            | Weather or not the payment method is accepted by the workshop
+customerPaymentMethods.id                  | string        | no            | The id of the payment method
+customerPaymentMethods.name                | string        | no            | The name of the payment method
 cvr                                        | string        | yes           | The VAT-number of the workshop
 description                                | string        | yes           | A short description of the workshop
 digestMode                                 | string        | no            | Frequency of digest mail sendouts
@@ -374,70 +405,7 @@ jQuery.ajax({
 
 ```json
 {
-  "settings": {
-    "allowMail": true,
-    "bidSettings": {
-      "auto": {
-        "active": true,
-        "guaranteeOnParts": 24,
-        "guaranteeOnWork": 24,
-        "hourlyRate": 479.0,
-        "nextFreeTimeDaysForward": 3,
-        "numberOfDaysValid": 30,
-        "priceOfCourtesyCar": 179.0,
-        "productDiscountPercent": 4.5,
-        "qualityOfParts": "OEM",
-        "timeDiscountPercent": 4.5
-      },
-      "courtesyCar": false,
-      "manual": {
-        "guaranteeOnParts": 48,
-        "guaranteeOnWork": 48,
-        "hourlyRate": 497.0,
-        "numberOfDaysValid": 30,
-        "priceOfCourtesyCar": 199.0,
-        "productDiscountPercent": 5.0,
-        "qualityOfParts": "ORIGINAL",
-        "timeDiscountPercent": 5.0
-      }
-    },
-    "digestMode": "DAILY",
-    "excludedJobTaskTypes": [
-      {
-        "id": 56,
-        "name": "brakes"
-      },
-      {
-        "id": 57,
-        "name": "car_care"
-      }
-    ],
-    "excludedMakes": [
-      {
-        "id": 39,
-        "name": "Oldsmobile"
-      },
-      {
-        "id": 4,
-        "name": "Toyota"
-      }
-    ],
-    "mecaDisabled": false,
-    "mecaPassword": "my_password",
-    "mecaUsername": "MyUsername",
-    "mecaViaCrm": false,
-    "mechanicOwnedFlowBookTimeUrl": "https://mechanicbooking.dk/dippels-testvaerksted/book",
-    "mechanicOwnedFlowEnabled": true,
-    "mechanicOwnedFlowTermsUrl": "http://dev.autobutler.dk:3000/dashboard/workshop_crm_terms",
-    "mechanicOwnedFlowUrl": "https://mechanicbooking.dk/dippels-testvaerksted",
-    "tolerancePassword": "my_password",
-    "toleranceTWMName": "Tolerance TWM",
-    "toleranceUsername": "MyUsername",
-    "usingAutofrontal": false,
-    "wantsGeneratorSms": true,
-    "wantsSms": true,
-    "wantsZeroJobsDigest": true
-  },
+  "settings": { },
   "success": true
 }
 ```
@@ -482,6 +450,8 @@ competencies                               | array(object) | no            | A l
 competencies.id                            | integer       | yes           | The id of the competency
 contactName                                | string        | no            | The name of the contact person at the workshop
 countryBilling                             | string        | no            | The country of the billing address for the workshop
+customerPaymentMethods                     | array(object) | no            | A list of all payment methods that are accepted by the workshop
+customerPaymentMethods.id                  | string        | yes           | The id of the payment method
 cvr                                        | string        | no            | The VAT-number of the workshop
 description                                | string        | no            | A short description of the workshop
 digestMode                                 | string        | no            | Frequency of digest mail sendouts
