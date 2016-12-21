@@ -586,6 +586,10 @@ on.</p>
       </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Beklædning/polstring "</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"coreProducts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"autobutler"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"generator"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="p">},</span><span class="w">
   </span><span class="nt">"contactName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Foo Bar"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"countryBilling"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
   </span><span class="nt">"customerPaymentMethods"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -1000,6 +1004,24 @@ on.</p>
 <td>string</td>
 <td>no</td>
 <td>The name of the competency</td>
+</tr>
+<tr>
+<td>coreProducts</td>
+<td>object</td>
+<td>no</td>
+<td>A set of core products, relevant for current user</td>
+</tr>
+<tr>
+<td>coreProducts.autobutler</td>
+<td>boolean</td>
+<td>no</td>
+<td>Presence of an Autobutler core product subscription for current user</td>
+</tr>
+<tr>
+<td>coreProducts.generator</td>
+<td>boolean</td>
+<td>no</td>
+<td>Presence of a Generator core product subscription for current user</td>
 </tr>
 <tr>
 <td>contactName</td>
