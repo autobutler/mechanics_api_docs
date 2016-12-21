@@ -129,6 +129,10 @@ jQuery.ajax({
       "name": "Beklædning/polstring "
     }
   ],
+  "coreProducts": {
+    "autobutler": true,
+    "generator": true
+  },
   "contactName": "Foo Bar",
   "countryBilling": "",
   "customerPaymentMethods": [
@@ -319,6 +323,9 @@ bidSettings.manual.timeDiscountPercent       | string        | yes           | T
 competencies                                 | array(object) | no            | A list of objects representing the different competencies of the workshop
 competencies.id                              | integer       | no            | The id of the competency
 competencies.name                            | string        | no            | The name of the competency
+coreProducts                                 | object        | no            | A set of core products, relevant for current user
+coreProducts.autobutler                      | boolean       | no            | Presence of an Autobutler core product subscription for current user 
+coreProducts.generator                       | boolean       | no            | Presence of a Generator core product subscription for current user
 contactName                                  | string        | yes           | The name of the contact person at the workshop
 countryBilling                               | string        | yes           | The country of the billing address for the workshop
 customerPaymentMethods                       | array(object) | no            | A list of all available payment methods with details about which ones are accepted by the workshop
