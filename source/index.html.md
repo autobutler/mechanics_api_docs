@@ -12,6 +12,7 @@ toc_footers:
 includes:
   - authentication
   - tokens
+  - content_pages
   - jobs
   - settings
   - objects
