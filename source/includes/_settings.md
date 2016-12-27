@@ -262,6 +262,7 @@ jQuery.ajax({
   "usingAutofrontal": false,
   "vatNumber": "DK32891799",
   "wantsGeneratorSms": false,
+  "wantsReviewNotifications": true,
   "wantsSms": true,
   "www": "www.foo.bar",
   "zip": "2300",
@@ -398,6 +399,7 @@ toleranceTWMName                             | string        | yes           | T
 toleranceUsername                            | string        | yes           | The Tolerance username the workshop
 usingAutofrontal                             | boolean       | no            | Weather or not the Autofrontal integration is enabled for the workshop
 wantsGeneratorSms                            | boolean       | no            | Weather or not the workshop wants to receive Generator related sms messages
+wantsReviewNotifications                     | boolean       | no            | Weather or not the workshop wants to receive email notifications on new reviews
 wantsSms                                     | boolean       | no            | Weather or not the workshop wants to receive Autobutler related sms messages
 www                                          | string        | yes           | The website address of the workshop
 zip                                          | string        | no            | The zip code where the workshop is located
@@ -629,6 +631,7 @@ jQuery.ajax({
   "usingAutofrontal": false,
   "vatNumber": "DK32891799",
   "wantsGeneratorSms": false,
+  "wantsReviewNotifications": true,
   "wantsSms": true,
   "www": "www.foo.bar",
   "zip": "2300",
@@ -752,6 +755,7 @@ toleranceTWMName                           | string        | no            | The
 toleranceUsername                          | string        | no            | The Tolerance username the workshop
 usingAutofrontal                           | boolean       | no            | Weather or not the Autofrontal integration is enabled for the workshop
 wantsGeneratorSms                          | boolean       | no            | Weather or not the workshop wants to receive Generator related sms messages
+wantsReviewNotifications                   | boolean       | no            | Weather or not the workshop wants to receive email notifications on new reviews
 wantsSms                                   | boolean       | no            | Weather or not the workshop wants to receive Autobutler related sms messages
 wantsZeroJobsDigest                        | boolean       | no            | Weather or not the workshop wants digest e-mails when he has no available jobs
 www                                        | string        | no            | The website address of the workshop
