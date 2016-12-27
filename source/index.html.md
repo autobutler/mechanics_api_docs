@@ -12,6 +12,7 @@ toc_footers:
 includes:
   - authentication
   - tokens
+  - data_bootstrap
   - content_pages
   - jobs
   - settings
