@@ -34,7 +34,7 @@ jQuery.ajax({
 
 ```json
 {
-  "digestOptions": [],
+  "digestOptions": {},
   "jobTaskTypes": [],
   "makes": []
 }
@@ -51,7 +51,7 @@ In the future, it will include all the static data, meaning the data, user will 
 
 Attribute                                    | Type          | Can be blank? | Description
 -------------------------------------------- | ------------- | ------------- | --------------------------------------------------------
-digestOptions                                | array(object) | no            | A list of option for populating the digest email options
+digestOptions                                | object        | no            | A list of option for populating the digest email options
 jobTaskTypes                                 | array(object) | yes           | A list of objects representing job task types, available for bidding
 jobTaskTypes.id                              | integer       | no            | The id of the job task type
 jobTaskTypes.name                            | string        | no            | The name of the job task type (used as an identifier)
