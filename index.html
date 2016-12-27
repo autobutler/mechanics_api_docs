@@ -330,6 +330,7 @@ by performing a new request to the token endpoint when it expires.</p>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"digestOptions"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
   </span><span class="nt">"jobTaskTypes"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
   </span><span class="nt">"makes"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -351,6 +352,12 @@ In the future, it will include all the static data, meaning the data, user will 
 <th>Description</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>digestOptions</td>
+<td>object</td>
+<td>no</td>
+<td>A list of option for populating the digest email options</td>
+</tr>
 <tr>
 <td>jobTaskTypes</td>
 <td>array(object)</td>
@@ -1376,6 +1383,7 @@ on.</p>
   </span><span class="nt">"usingAutofrontal"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
   </span><span class="nt">"vatNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DK32891799"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"wantsGeneratorSms"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"wantsReviewNotifications"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="nt">"wantsSms"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="nt">"www"</span><span class="p">:</span><span class="w"> </span><span class="s2">"www.foo.bar"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"zip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2300"</span><span class="p">,</span><span class="w">
@@ -2113,6 +2121,12 @@ on.</p>
 <td>Weather or not the workshop wants to receive Generator related sms messages</td>
 </tr>
 <tr>
+<td>wantsReviewNotifications</td>
+<td>boolean</td>
+<td>no</td>
+<td>Weather or not the workshop wants to receive email notifications on new reviews</td>
+</tr>
+<tr>
 <td>wantsSms</td>
 <td>boolean</td>
 <td>no</td>
@@ -2360,6 +2374,7 @@ on.</p>
   </span><span class="nt">"usingAutofrontal"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
   </span><span class="nt">"vatNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DK32891799"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"wantsGeneratorSms"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"wantsReviewNotifications"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="nt">"wantsSms"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="nt">"www"</span><span class="p">:</span><span class="w"> </span><span class="s2">"www.foo.bar"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"zip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2300"</span><span class="p">,</span><span class="w">
@@ -2956,6 +2971,12 @@ out of the request body. Notice that empty strings are not ignored.</p>
 <td>boolean</td>
 <td>no</td>
 <td>Weather or not the workshop wants to receive Generator related sms messages</td>
+</tr>
+<tr>
+<td>wantsReviewNotifications</td>
+<td>boolean</td>
+<td>no</td>
+<td>Weather or not the workshop wants to receive email notifications on new reviews</td>
 </tr>
 <tr>
 <td>wantsSms</td>
