@@ -237,6 +237,7 @@ jQuery.ajax({
   "organisation": "FREE",
   "ownerName": "Thomas Dippel",
   "phoneNumber": "77343221",
+  "phoneNumberJobRelated": "77343221",
   "place": "København S",
   "placeBilling": "København S",
   "properName": "Dippels Testværksted",
@@ -382,6 +383,7 @@ openingHours.7_end                           | string        | yes           | T
 organisation                                 | string        | no            | `"FREE"`: The workshop is not an authorized car make workshop<br>`"AUTHORISED"`: The workshop is an authorized car make workshop
 ownerName                                    | string        | yes           | The name of the workshop owner
 phoneNumber                                  | string        | yes           | The phone number of the workshop
+phoneNumberJobRelated                        | string        | yes           | The job related phone number of the workshop
 place                                        | string        | no            | The city where the workshop is located
 placeBilling                                 | string        | yes           | The city where invoices should be sent
 properName                                   | string        | yes           | The legal name of the workshop
@@ -608,6 +610,7 @@ jQuery.ajax({
   "organisation": "FREE",
   "ownerName": "Thomas Dippel",
   "phoneNumber": "77343221",
+  "phoneNumberJobRelated": "77343221",
   "place": "København S",
   "placeBilling": "København S",
   "properName": "Dippels Testværksted",
@@ -739,6 +742,7 @@ openingHours.7_end                         | string        | yes           | The
 ownerName                                  | string        | no            | The name of the workshop owner
 password                                   | string        | no            | A new password for the workshop
 phoneNumber                                | string        | no            | The phone number of the workshop
+phoneNumberJobRelated                      | string        | no            | The job related phone number of the workshop
 place                                      | string        | no            | The city where the workshop is located
 placeBilling                               | string        | no            | The city where invoices should be sent
 properName                                 | string        | no            | The legal name of the workshop
