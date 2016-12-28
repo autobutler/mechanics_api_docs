@@ -41,8 +41,7 @@ jQuery.ajax({
 }
 ```
 
-This endpoint provides lists of available job task types and car makes, a mechanic can potentially bid on.
-In the future, it will include all the static data, meaning the data, user will not be able to modify, while using an application, built on top of the API.
+This endpoint provides static data used to bootstrap the consumer of the API, meaning data, that the user will not be able to modify, while using an application.
 
 ### HTTP Request
 
