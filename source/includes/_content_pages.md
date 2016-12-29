@@ -46,7 +46,7 @@ jQuery.ajax({
 }
 ```
 
-This endpoint return a list of all Content Pages available for
+This endpoint returns a list of all Content Pages available for
 the workshop ordered by their title.
 
 ### HTTP Request
