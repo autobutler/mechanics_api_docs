@@ -36,6 +36,7 @@ jQuery.ajax({
 {
   "digestOptions": {},
   "chains": [],
+  "affiliations": [],
   "jobTaskTypes": [],
   "makes": []
 }
@@ -57,6 +58,10 @@ chains.chain.id                              | integer       | no            | T
 chains.chain.name                            | string        | yes           | The name of the chain
 chains.chain.rust                            | boolean       | no            | If the chain is an underseal provider
 chains.chain.logoUrl                         | string        | yes           | The url to the chains logo
+affiliations                                 | array(object) | yes           | A list of objects representing affiliations for mechanics country
+affiliations.affiliation.id                  | integer       | no            | The id of the affiliation
+affiliations.affiliation.name                | string        | yes           | The name of the affiliation
+affiliations.affiliation.logoUrl             | string        | yes           | The url to the affiliation logo
 jobTaskTypes                                 | array(object) | yes           | A list of objects representing job task types, available for bidding
 jobTaskTypes.id                              | integer       | no            | The id of the job task type
 jobTaskTypes.name                            | string        | no            | The name of the job task type (used as an identifier)
