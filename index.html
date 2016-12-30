@@ -332,6 +332,7 @@ by performing a new request to the token endpoint when it expires.</p>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"digestOptions"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
   </span><span class="nt">"chains"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="nt">"affiliations"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
   </span><span class="nt">"jobTaskTypes"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
   </span><span class="nt">"makes"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -387,6 +388,30 @@ by performing a new request to the token endpoint when it expires.</p>
 <td>string</td>
 <td>yes</td>
 <td>The url to the chains logo</td>
+</tr>
+<tr>
+<td>affiliations</td>
+<td>array(object)</td>
+<td>yes</td>
+<td>A list of objects representing affiliations for mechanics country</td>
+</tr>
+<tr>
+<td>affiliations.affiliation.id</td>
+<td>integer</td>
+<td>no</td>
+<td>The id of the affiliation</td>
+</tr>
+<tr>
+<td>affiliations.affiliation.name</td>
+<td>string</td>
+<td>yes</td>
+<td>The name of the affiliation</td>
+</tr>
+<tr>
+<td>affiliations.affiliation.logoUrl</td>
+<td>string</td>
+<td>yes</td>
+<td>The url to the affiliation logo</td>
 </tr>
 <tr>
 <td>jobTaskTypes</td>
