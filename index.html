@@ -331,12 +331,12 @@ by performing a new request to the token endpoint when it expires.</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"digestOptions"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+  </span><span class="nt">"chains"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
   </span><span class="nt">"jobTaskTypes"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
   </span><span class="nt">"makes"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>This endpoint provides lists of available job task types and car makes, a mechanic can potentially bid on. 
-In the future, it will include all the static data, meaning the data, user will not be able to modify, while using an application, built on top of the API.</p>
+<p>This endpoint provides static data used to bootstrap the consumer of the API, meaning data, that the user will not be able to modify, while using an application.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -357,6 +357,36 @@ In the future, it will include all the static data, meaning the data, user will 
 <td>object</td>
 <td>no</td>
 <td>A list of option for populating the digest email options</td>
+</tr>
+<tr>
+<td>chains</td>
+<td>array(object)</td>
+<td>yes</td>
+<td>A list of objects representing chains for mechanics country</td>
+</tr>
+<tr>
+<td>chains.chain.id</td>
+<td>integer</td>
+<td>no</td>
+<td>The id of the chain</td>
+</tr>
+<tr>
+<td>chains.chain.name</td>
+<td>string</td>
+<td>yes</td>
+<td>The name of the chain</td>
+</tr>
+<tr>
+<td>chains.chain.rust</td>
+<td>boolean</td>
+<td>no</td>
+<td>If the chain is an underseal provider</td>
+</tr>
+<tr>
+<td>chains.chain.logoUrl</td>
+<td>string</td>
+<td>yes</td>
+<td>The url to the chains logo</td>
 </tr>
 <tr>
 <td>jobTaskTypes</td>
