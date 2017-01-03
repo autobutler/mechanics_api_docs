@@ -1178,6 +1178,129 @@ on.</p>
 </tr>
 </tbody></table>
 
+          <h1 id="payment-subscriptions">Payment Subscriptions</h1>
+
+<h2 id="get-a-list-of-active-payment-subscriptions">Get a list of active Payment Subscriptions</h2>
+
+<blockquote>
+<p>To obtain a list of active Payment Subscriptions, use the following code:</p>
+</blockquote>
+<pre class="highlight shell"><code>curl -X <span class="s2">"GET"</span> <span class="s2">"https://www.autobutler.dk/api/v2/mechanics/payment_subscriptions"</span> <span class="se">\</span>
+     -H <span class="s2">"Authorization: token"</span>
+</code></pre><pre class="highlight javascript"><code><span class="nx">jQuery</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+    <span class="na">url</span><span class="p">:</span> <span class="s2">"https://www.autobutler.dk/api/v2/mechanics/payment_subscriptions"</span><span class="p">,</span>
+    <span class="na">type</span><span class="p">:</span> <span class="s2">"GET"</span><span class="p">,</span>
+    <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"Authorization"</span><span class="p">:</span> <span class="s2">"token"</span><span class="p">,</span>
+    <span class="p">},</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">textStatus</span><span class="p">,</span> <span class="nx">jqXHR</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"HTTP Request Succeeded: "</span> <span class="o">+</span> <span class="nx">jqXHR</span><span class="p">.</span><span class="nx">status</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">fail</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">jqXHR</span><span class="p">,</span> <span class="nx">textStatus</span><span class="p">,</span> <span class="nx">errorThrown</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"HTTP Request Failed"</span><span class="p">);</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">always</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="cm">/* ... */</span>
+<span class="p">});</span>
+
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"paymentSubscriptions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"accountNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0002064483"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"activatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2013-02-04T19:11:05.159+01:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2013-02-04T13:34:43.577+01:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">752</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"registrationNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4169"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nets_ls"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"activatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2013-01-24T14:11:44.139+01:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"cardNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXXXXXXXXXX7335"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2013-01-24T14:11:44.130+01:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">735</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"credit_card"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"activatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2013-01-24T12:04:05.191+01:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2013-01-24T12:04:05.171+01:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">732</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint returns a list of active payment subscriptions for the workshop.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://www.autobutler.dk/api/v2/mechanics/payment_subscriptions</code></p>
+
+<h3 id="response-json">Response JSON</h3>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Can be blank?</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>paymentSubscriptions</td>
+<td>array(object)</td>
+<td>no</td>
+<td>An array of objects representing the individual active subscriptions</td>
+</tr>
+<tr>
+<td>paymentSubscriptions.activatedAt</td>
+<td>string</td>
+<td>no</td>
+<td>A timestamp for when the subscription was activated</td>
+</tr>
+<tr>
+<td>paymentSubscriptions.createdAt</td>
+<td>string</td>
+<td>no</td>
+<td>A timestamp for when the subscription was created</td>
+</tr>
+<tr>
+<td>paymentSubscriptions.id</td>
+<td>integer</td>
+<td>no</td>
+<td>The id of the payment subscription</td>
+</tr>
+<tr>
+<td>paymentSubscriptions.type</td>
+<td>string</td>
+<td>no</td>
+<td>The type of subscription:<br><code class="prettyprint">&quot;credit_card&quot;</code>: A credit card subscription<br><code class="prettyprint">&quot;nets_ls&quot;</code>: A Nets Leverandørservice subscription<br><code class="prettyprint">&quot;unknown&quot;</code>: An unknown subscription</td>
+</tr>
+<tr>
+<td>paymentSubscriptions.registrationNumber</td>
+<td>integer</td>
+<td>yes</td>
+<td>The registration number for the associated bank account. Only available if <code class="prettyprint">type</code> is <code class="prettyprint">&quot;nets_ls&quot;</code></td>
+</tr>
+<tr>
+<td>paymentSubscriptions.accountNumber</td>
+<td>string</td>
+<td>yes</td>
+<td>The account number for the associated bank account. Only available if <code class="prettyprint">type</code> is <code class="prettyprint">&quot;nets_ls&quot;</code></td>
+</tr>
+<tr>
+<td>paymentSubscriptions.cardNumber</td>
+<td>string</td>
+<td>yes</td>
+<td>The masked credit card number. Only available if <code class="prettyprint">type</code> is <code class="prettyprint">&quot;credit_card&quot;</code></td>
+</tr>
+</tbody></table>
+
           <h1 id="settings">Settings</h1>
 
 <h2 id="get-mechanic-settings">Get mechanic settings</h2>
