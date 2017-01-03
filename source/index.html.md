@@ -15,6 +15,7 @@ includes:
   - data_bootstrap
   - content_pages
   - jobs
+  - payment_subscriptions
   - settings
   - objects
   - errors
