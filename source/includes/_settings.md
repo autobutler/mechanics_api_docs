@@ -207,6 +207,8 @@ jQuery.ajax({
       "name": "BMW"
     }
   ],
+  "latitude": 0.0,
+  "longitude": 0.0,
   "mecaDisabled": false,
   "mecaPassword": "my_password",
   "mecaUsername": "MyUsername",
@@ -354,6 +356,8 @@ invoiceReference                             | string        | yes           | A
 makes                                        | array(object) | no            | A list of objects representing the different makes that the workshop is officially authorized to service
 makes.id                                     | integer       | no            | The id of the make
 makes.name                                   | string        | no            | The name of the make
+latitude                                     | float         | no            | Latitude if the workshop
+longitude                                    | float         | no            | Longitude if the workshop
 mecaDisabled                                 | boolean       | no            | Weather or not spare part ordering through Meca is disabled
 mecaPassword                                 | string        | yes           | The Meca password of the workshop
 mecaUsername                                 | string        | yes           | The Meca username of the workshop
@@ -583,6 +587,8 @@ jQuery.ajax({
       "id": 66
     }
   ],
+  "latitude": 0.0,
+  "longitude": 0.0,
   "mecaDisabled": false,
   "mecaPassword": "my_password",
   "mecaUsername": "MyUsername",
@@ -716,6 +722,8 @@ excludedMakes                              | array(object) | no            | **D
 excludedMakes.id                           | integer       | yes           | **DEPRECATED:** The id of the car make
 faxNumber                                  | string        | no            | The fax number of the workshop
 invoiceReference                           | string        | no            | An identifier that will be printed on all invoices
+latitude                                   | float         | no            | Latitude if the workshop
+longitude                                  | float         | no            | Longitude if the workshop
 mecaDisabled                               | boolean       | no            | Weather or not spare part ordering through Meca is disabled
 mecaPassword                               | string        | no            | The Meca password of the workshop
 mecaUsername                               | string        | no            | The Meca username of the workshop
