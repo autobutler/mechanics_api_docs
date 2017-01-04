@@ -54,7 +54,7 @@ jQuery.ajax({
     }
   ],
   "allowMail": true,
-  "autobutlerProfileUrl": "https://www.autobutler.dk/autovaerksted/8600-silkeborg/dippels-testvaerksted"
+  "autobutlerProfileUrl": "https://www.autobutler.dk/autovaerksted/8600-silkeborg/dippels-testvaerksted",
   "bidSettings": {
     "auto": {
       "active": true,
