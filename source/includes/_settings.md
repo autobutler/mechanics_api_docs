@@ -54,6 +54,7 @@ jQuery.ajax({
     }
   ],
   "allowMail": true,
+  "autobutlerProfileUrl": "https://www.autobutler.dk/autovaerksted/8600-silkeborg/dippels-testvaerksted"
   "bidSettings": {
     "auto": {
       "active": true,
@@ -197,6 +198,8 @@ jQuery.ajax({
   ],
   "faxNumber": "",
   "invoiceReference": "",
+  "latitude": 0.0,
+  "longitude": 0.0,
   "makes": [
     {
       "id": 60,
@@ -207,8 +210,6 @@ jQuery.ajax({
       "name": "BMW"
     }
   ],
-  "latitude": 0.0,
-  "longitude": 0.0,
   "mecaDisabled": false,
   "mecaPassword": "my_password",
   "mecaUsername": "MyUsername",
@@ -290,6 +291,7 @@ affiliations                                 | array(object) | no            | A
 affiliations.id                              | integer       | no            | The id of the organisation
 affiliations.name                            | string        | no            | The name of the organisation
 allowMail                                    | boolean       | no            | Weather or not we are allowed to send newsletters
+autobutlerProfileUrl                         | string        | no            | Workshops public profile page on Autobutler
 bidSettings                                  | object        | no            | An object representing the different bid settings
 bidSettings.auto                             | object        | no            | An object representing the automatic bid settings
 bidSettings.auto.active                      | boolean       | no            | Weather or not automatic bidding is enabled
@@ -353,11 +355,11 @@ excludedMakes.id                             | integer       | no            | *
 excludedMakes.name                           | string        | no            | **DEPRECATED:** The name of the car make
 faxNumber                                    | string        | yes           | The fax number of the workshop
 invoiceReference                             | string        | yes           | An identifier that will be printed on all invoices
+latitude                                     | float         | no            | Latitude of the workshop
+longitude                                    | float         | no            | Longitude of the workshop
 makes                                        | array(object) | no            | A list of objects representing the different makes that the workshop is officially authorized to service
 makes.id                                     | integer       | no            | The id of the make
 makes.name                                   | string        | no            | The name of the make
-latitude                                     | float         | no            | Latitude of the workshop
-longitude                                    | float         | no            | Longitude of the workshop
 mecaDisabled                                 | boolean       | no            | Weather or not spare part ordering through Meca is disabled
 mecaPassword                                 | string        | yes           | The Meca password of the workshop
 mecaUsername                                 | string        | yes           | The Meca username of the workshop
@@ -579,6 +581,8 @@ jQuery.ajax({
   ],
   "faxNumber": "",
   "invoiceReference": "",
+  "latitude": 0.0,
+  "longitude": 0.0,
   "makes": [
     {
       "id": 60
@@ -587,8 +591,6 @@ jQuery.ajax({
       "id": 66
     }
   ],
-  "latitude": 0.0,
-  "longitude": 0.0,
   "mecaDisabled": false,
   "mecaPassword": "my_password",
   "mecaUsername": "MyUsername",
