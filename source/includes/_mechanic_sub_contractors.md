@@ -66,7 +66,7 @@ the workshop ordered by their chain's name.
 Attribute | Type    | Can be blank? | Description
 --------- | ------- | ------------- | --------------------------------------------------------
 id        | integer | no            | The id of the Mechanic sub contractor
-chainId   | integer | no            | The chains Id
+chainId   | integer | no            | The id of the chain that this Mechanic sub contractor is related to
 name      | string  | no            | The name of the Mechanic sub contractor
 address   | string  | yes           | The address of the Mechanic sub contractor
 zip       | integer | yes           | The zip of the Mechanic sub contractor
@@ -192,8 +192,8 @@ jQuery.ajax({
     },
     contentType: "application/json",
     data: JSON.stringify({
-        "title": "Foo Bar",
-        "text": "My wonderful text"
+        "name": "My name",
+        "address": "My address"
     })
 })
 .done(function(data, textStatus, jqXHR) {
