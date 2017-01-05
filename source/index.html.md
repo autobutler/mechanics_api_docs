@@ -13,7 +13,9 @@ includes:
   - authentication
   - tokens
   - data_bootstrap
+  - autosignatures
   - content_pages
+  - mechanic_sub_contractors
   - jobs
   - payment_subscriptions
   - settings
