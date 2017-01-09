@@ -78,3 +78,66 @@ paymentSubscriptions.type               | string        | no            | The ty
 paymentSubscriptions.registrationNumber | integer       | yes           | The registration number for the associated bank account. Only available if `type` is `"nets_ls"`
 paymentSubscriptions.accountNumber      | string        | yes           | The account number for the associated bank account. Only available if `type` is `"nets_ls"`
 paymentSubscriptions.cardNumber         | string        | yes           | The masked credit card number. Only available if `type` is `"credit_card"`
+
+## Cancel an active Payment Subscription
+
+> To cancel an active Payment Subscription, use the following code:
+
+```shell
+curl -X "DELETE" "https://www.autobutler.dk/api/v2/mechanics/payment_subscriptions/752" \
+     -H "Authorization: token"
+```
+
+```javascript
+jQuery.ajax({
+    url: "https://www.autobutler.dk/api/v2/mechanics/payment_subscriptions/752",
+    type: "DELETE",
+    headers: {
+        "Authorization": "token",
+    },
+})
+.done(function(data, textStatus, jqXHR) {
+    console.log("HTTP Request Succeeded: " + jqXHR.status);
+    console.log(data);
+})
+.fail(function(jqXHR, textStatus, errorThrown) {
+    console.log("HTTP Request Failed");
+})
+.always(function() {
+    /* ... */
+});
+
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "success": true
+}
+```
+
+This endpoint cancels the specified active Payment Subscription belonging to the
+workshop.
+
+### HTTP Request
+
+`DELETE https://www.autobutler.dk/api/v2/mechanics/payment_subscriptions/{id}`
+
+### URL Parameters
+
+Parameter | Default | Required? | Description
+--------- | ------- | --------- | ----------------------------------
+id        | nil     | yes       | The id of the Payment Subscription
+
+### Response JSON
+
+Attribute | Type    | Can be blank? | Description
+--------- | ------- | ------------- | -----------------------------------------------------
+success   | boolean | no            | `true` if the subscription was successfully cancelled
+
+### Potential Errors
+
+Error Code | Meaning
+---------- | -----------------------------------------------------------------------------------------
+404        | The Payment Subscription with the specified id could not be found or is already cancelled
