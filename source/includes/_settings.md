@@ -216,6 +216,7 @@ jQuery.ajax({
   "mecaViaCrm": false,
   "mechanicOwnedFlowBookTimeUrl": "https://mechanicbooking.dk/dippels-testvaerksted/book",
   "mechanicOwnedFlowEnabled": true,
+  "mechanicOwnedFlowOfferUrl": "https://mechanicbooking.dk/dippels-testvaerksted/offer",
   "mechanicOwnedFlowTermsUrl": "http://dev.autobutler.dk:3000/dashboard/workshop_crm_terms",
   "mechanicOwnedFlowUrl": "https://mechanicbooking.dk/dippels-testvaerksted",
   "mobilePhoneNumber": "",
@@ -366,6 +367,7 @@ mecaUsername                                 | string        | yes           | T
 mecaViaCrm                                   | boolean       | no            | If set to `true`, ordering og spare parts via Meca is configured to take place through their own CRM system
 mechanicOwnedFlowBookTimeUrl                 | string        | yes           | The unique Mechanicbooking book time URL for the workshop
 mechanicOwnedFlowEnabled                     | boolean       | no            | Weather or not Mechanicbooking is enabled
+mechanicOwnedFlowOfferUrl                    | string        | yes           | The unique Mechanicbooking quote requesting URL for the workshop
 mechanicOwnedFlowTermsUrl                    | string        | yes           | A url for the Mechanicbooking terms
 mechanicOwnedFlowUrl                         | string        | yes           | The unique Mechanicbooking flow URL for the workshop
 mobilePhoneNumber                            | string        | yes           | The mobile phone numer of the workshop
