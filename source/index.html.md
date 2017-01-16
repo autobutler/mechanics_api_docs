@@ -18,6 +18,7 @@ includes:
   - mechanic_sub_contractors
   - jobs
   - payment_subscriptions
+  - product_subscriptions
   - settings
   - objects
   - errors
