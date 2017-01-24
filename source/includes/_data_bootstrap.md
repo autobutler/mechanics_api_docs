@@ -41,10 +41,17 @@ jQuery.ajax({
   "makes": [],
   "user": {
     "countryId": 3,
-    "locale": "uk",
+    "countryCode": "dk",
+    "locale": "da",
     "name": "Pauls Workshop",
     "requireAutomaticPayment": false,
-    "vatFactor": 0.2
+    "vatFactor": 0.2,
+    "subMechanics": [{
+      "id": 1,
+      "name": "Pauls Workshop Amager",
+      "zip": 2300,
+      "city": "Copenhagen S"
+    }]
   }
 }
 ```
@@ -78,10 +85,16 @@ makes.id                         | integer       | no            | The id of the
 makes.name                       | string        | no            | The name of the make (human readable)
 user                             | object        | no            | An object representing the details of the current workshop
 user.countryId                   | integer       | no            | The id of the country to which the workshop belongs
+user.countryCode                 | string        | no            | The code of the country to which the workshop belongs
 user.locale                      | string        | no            | The locale of the country to which the workshop belongs
 user.name                        | string        | no            | The name of the workshop
 user.requireAutomaticPayment     | boolean       | no            | Weather or not the workshop is required to have a payment method set up
 user.vatFactor                   | float         | no            | The default VAT factor of the workshop
+user.subMechanics                | array(object) | yes           | A list of submechanics in case current user is a superbidder
+user.subMechanics.id             | integer       | no            | The id of a specific submechanic
+user.subMechanics.name           | string        | no            | The name of a specific submechanic
+user.subMechanics.zip            | string        | no            | ZIP code of the area where specific submechanic is located
+user.subMechanics.city           | string        | no            | Name of the city where specific submechanic is located
 
 ### Potential Errors
 
