@@ -46,6 +46,7 @@ jQuery.ajax({
     "name": "Pauls Workshop",
     "requireAutomaticPayment": false,
     "vatFactor": 0.2,
+    "isSuperbidder": true,
     "subMechanics": [{
       "id": 1,
       "name": "Pauls Workshop Amager",
@@ -88,8 +89,9 @@ user.countryId                   | integer       | no            | The id of the
 user.countryCode                 | string        | no            | The code of the country to which the workshop belongs
 user.locale                      | string        | no            | The locale of the country to which the workshop belongs
 user.name                        | string        | no            | The name of the workshop
-user.requireAutomaticPayment     | boolean       | no            | Weather or not the workshop is required to have a payment method set up
+user.requireAutomaticPayment     | boolean       | no            | Whether or not the workshop is required to have a payment method set up
 user.vatFactor                   | float         | no            | The default VAT factor of the workshop
+user.isSuperbidder               | boolean       | no            | Whether or not the workshop is a superbidder
 user.subMechanics                | array(object) | yes           | A list of submechanics in case current user is a superbidder
 user.subMechanics.id             | integer       | no            | The id of a specific submechanic
 user.subMechanics.name           | string        | no            | The name of a specific submechanic
