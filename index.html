@@ -342,6 +342,7 @@ by performing a new request to the token endpoint when it expires.</p>
     </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pauls Workshop"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"requireAutomaticPayment"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="nt">"vatFactor"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.2</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"isSuperbidder"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nt">"subMechanics"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
       </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
       </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pauls Workshop Amager"</span><span class="p">,</span><span class="w">
@@ -503,13 +504,19 @@ by performing a new request to the token endpoint when it expires.</p>
 <td>user.requireAutomaticPayment</td>
 <td>boolean</td>
 <td>no</td>
-<td>Weather or not the workshop is required to have a payment method set up</td>
+<td>Whether or not the workshop is required to have a payment method set up</td>
 </tr>
 <tr>
 <td>user.vatFactor</td>
 <td>float</td>
 <td>no</td>
 <td>The default VAT factor of the workshop</td>
+</tr>
+<tr>
+<td>user.isSuperbidder</td>
+<td>boolean</td>
+<td>no</td>
+<td>Whether or not the workshop is a superbidder</td>
 </tr>
 <tr>
 <td>user.subMechanics</td>
