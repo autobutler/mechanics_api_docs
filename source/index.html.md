@@ -15,6 +15,7 @@ includes:
   - data_bootstrap
   - autosignatures
   - content_pages
+  - mechanic_integrations
   - mechanic_sub_contractors
   - jobs
   - payment_subscriptions
