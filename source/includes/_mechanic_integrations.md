@@ -114,3 +114,106 @@ mechanicIntegrations.configuration                           | object        | y
 mechanicIntegrations.configuration.credentials               | object        | no            | The authentication credentials stored for the mechanic. Please be aware that this object might contain values thare are not part of the `authenticationFields`-value of the `integrationDetails`.
 mechanicIntegrations.configuration.id                        | integer       | no            | The id of this integration configuration
 mechanicIntegrations.configuration.options                   | object        | no            | The options stored for the mechanic. Please be aware that this object might contain values thare are not part of the `optionFields`-value of the `integrationDetails`.
+
+## Activate/Change an integration
+
+> To activate a new integration or update an already activate integration:
+
+```shell
+curl -X "PATCH" "https://www.autobutler.dk/api/v2/mechanics/mechanic_integrations/MechanicIntegrations::TWMIntegration" \
+     -H "Authorization: token" \
+     -d $'{"token": "bar", "username": "foo"}'
+```
+
+```javascript
+jQuery.ajax({
+    url: "https://www.autobutler.dk/api/v2/mechanics/mechanic_integrations/MechanicIntegrations::TWMIntegration",
+    type: "PATCH",
+    headers: {
+        "Authorization": "token",
+    },
+    contentType: "application/json",
+    data: JSON.stringify({
+        "token": "bar",
+        "username": "foo"
+    })
+})
+.done(function(data, textStatus, jqXHR) {
+    console.log("HTTP Request Succeeded: " + jqXHR.status);
+    console.log(data);
+})
+.fail(function(jqXHR, textStatus, errorThrown) {
+    console.log("HTTP Request Failed");
+})
+.always(function() {
+    /* ... */
+});
+```
+
+> The above command returns JSON structured like this when the response was successful:
+
+```json
+{
+  "configuration": {
+    "credentials": {
+      "token": "bar",
+      "username": "foo"
+    },
+    "id": 4,
+    "options": {}
+  },
+  "integrationDetails": {
+    "authenticationFields": [
+      "username",
+      "token"
+    ],
+    "authenticationType": "simple",
+    "features": {
+      "supportsCustomerLookup": false,
+      "supportsOpenJob": true
+    },
+    "name": "MechanicIntegrations::TWMIntegration",
+    "optionFields": []
+  },
+  "success": true
+}
+```
+
+> The above command returns JSON structured like this when the response was unsuccessful:
+
+```json
+{
+  "errors": {
+    "username": [
+      "must be filled out"
+    ]
+  },
+  "success": false
+}
+```
+
+This endpoint allows the activation of a new available integration for the workshop
+or the update of an already activated integration
+
+### HTTP Request
+
+`PATCH https://www.autobutler.dk/api/v2/mechanics/mechanic_integrations/{name}`
+
+### URL Parameters
+
+Parameter | Default | Required? | Description
+--------- | ------- | --------- | --------------------------
+name      | nil     | yes       | The name of the integration to activate/update
+
+### Request JSON
+
+The paramters that are required and avaiable varies for each different integration. See the `authenticationFields` and `optionFields` <a href="#get-a-list-of-mechanic-integrations">here</a>.
+
+### Response JSON
+
+Please note that the response also includes `configuration` and `integrationDetails`. These are the same as in <a href="#get-a-list-of-mechanic-integrations">Get a list of Mechanic Integrations</a>
+
+Attribute | Type          | Can be blank? | Description
+--------- | ------------- | ------------- | -----------
+success   | boolean       | no            | Weather or not the integration was successfully activated/updated
+errors    | object        | yes           | The errors that prevented the integration from being activated/updated
