@@ -217,3 +217,59 @@ Attribute | Type          | Can be blank? | Description
 --------- | ------------- | ------------- | -----------
 success   | boolean       | no            | Weather or not the integration was successfully activated/updated
 errors    | object        | yes           | The errors that prevented the integration from being activated/updated
+
+## Deactivate an integration
+
+> To deactivate an integration:
+
+```shell
+curl -X "DELETE" "https://www.autobutler.dk/api/v2/mechanics/mechanic_integrations/MechanicIntegrations::TWMIntegration" \
+     -H "Authorization: token"
+```
+
+```javascript
+jQuery.ajax({
+    url: "https://www.autobutler.dk/api/v2/mechanics/mechanic_integrations/MechanicIntegrations::TWMIntegration",
+    type: "DELETE",
+    headers: {
+        "Authorization": "token",
+    },
+    contentType: "application/json"
+})
+.done(function(data, textStatus, jqXHR) {
+    console.log("HTTP Request Succeeded: " + jqXHR.status);
+    console.log(data);
+})
+.fail(function(jqXHR, textStatus, errorThrown) {
+    console.log("HTTP Request Failed");
+})
+.always(function() {
+    /* ... */
+});
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "success": true
+}
+```
+
+This endpoint allows the deactivation of an integration for the workshop.
+
+### HTTP Request
+
+`DELETE https://www.autobutler.dk/api/v2/mechanics/mechanic_integrations/{name}`
+
+### URL Parameters
+
+Parameter | Default | Required? | Description
+--------- | ------- | --------- | --------------------------
+name      | nil     | yes       | The name of the integration to deactivate
+
+### Response JSON
+
+Attribute | Type          | Can be blank? | Description
+--------- | ------------- | ------------- | -----------
+success   | boolean       | no            | Weather or not the integration was successfully deactivated
