@@ -1877,6 +1877,81 @@ or the update of an already activated integration</p>
 </tr>
 </tbody></table>
 
+<h2 id="deactivate-an-integration">Deactivate an integration</h2>
+
+<blockquote>
+<p>To deactivate an integration:</p>
+</blockquote>
+<pre class="highlight shell"><code>curl -X <span class="s2">"DELETE"</span> <span class="s2">"https://www.autobutler.dk/api/v2/mechanics/mechanic_integrations/MechanicIntegrations::TWMIntegration"</span> <span class="se">\</span>
+     -H <span class="s2">"Authorization: token"</span>
+</code></pre><pre class="highlight javascript"><code><span class="nx">jQuery</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+    <span class="na">url</span><span class="p">:</span> <span class="s2">"https://www.autobutler.dk/api/v2/mechanics/mechanic_integrations/MechanicIntegrations::TWMIntegration"</span><span class="p">,</span>
+    <span class="na">type</span><span class="p">:</span> <span class="s2">"DELETE"</span><span class="p">,</span>
+    <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"Authorization"</span><span class="p">:</span> <span class="s2">"token"</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="na">contentType</span><span class="p">:</span> <span class="s2">"application/json"</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">textStatus</span><span class="p">,</span> <span class="nx">jqXHR</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"HTTP Request Succeeded: "</span> <span class="o">+</span> <span class="nx">jqXHR</span><span class="p">.</span><span class="nx">status</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">fail</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">jqXHR</span><span class="p">,</span> <span class="nx">textStatus</span><span class="p">,</span> <span class="nx">errorThrown</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"HTTP Request Failed"</span><span class="p">);</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">always</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="cm">/* ... */</span>
+<span class="p">});</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint allows the deactivation of an integration for the workshop.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">DELETE https://www.autobutler.dk/api/v2/mechanics/mechanic_integrations/{name}</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Required?</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>nil</td>
+<td>yes</td>
+<td>The name of the integration to deactivate</td>
+</tr>
+</tbody></table>
+
+<h3 id="response-json">Response JSON</h3>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Can be blank?</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>success</td>
+<td>boolean</td>
+<td>no</td>
+<td>Weather or not the integration was successfully deactivated</td>
+</tr>
+</tbody></table>
+
           <h1 id="mechanic-sub-contractors">Mechanic Sub-contractors</h1>
 
 <h2 id="get-a-list-of-mechanic-sub-contractors">Get a list of Mechanic Sub-contractors</h2>
