@@ -85,7 +85,8 @@ jQuery.ajax({
 {
   "job": {},
   "draftOffer": {},
-  "offer": {}
+  "offer": {},
+  "user": {}
 }
 ```
 
@@ -104,10 +105,11 @@ id        | nil     | yes       | The id of the job
 ### Response JSON
 
 Attribute  | Type    | Can be blank? | Description
----------- | ------- | ------------- | --------------------------------------------------------------------------------------------------------
+---------- | ------- | ------------- | -----------------------------------------------------------------------------------------------------------------------------
 job        | object  | no            | A <a href="#jobdetails">jobDetails</a> object that contains the details of the job
 draftOffer | object  | yes           | A <a href="#draftofferdetails">draftOfferDetails</a> object that contains the details of the draft offer
 offer      | object  | yes           | A <a href="#offerdetails">offerDetails</a> object that contains the details of the existing offer
+user       | object  | no            | A <a href="#useroverview">userOverview</a> object that contains basic information about the recommended mechanic for this job
 
 ### Potential Errors
 
