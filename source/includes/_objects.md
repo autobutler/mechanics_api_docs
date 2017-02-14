@@ -395,3 +395,24 @@ averagePrice   | float   | no            | The average market price for the job
 highestPrice   | float   | no            | The highest market price for the job
 averagePrice   | float   | no            | The lowest market price for the job
 mechanicsCount | integer | no            | The number of mechanics used in the market price calculation
+
+## userOverview
+
+> Example:
+
+```json
+{
+  "id": 2,
+  "name": "Robert Auto",
+  "city": "København Ø",
+  "zip": "2100"
+}
+```
+
+Attribute      | Type    | Can be blank? | Description
+-------------- | ------- | ------------- | --------------------------
+id             | int     | no            | id of the user
+name           | string  | no            | Name of the user
+city           | string  | no            | User's location - city
+zip            | string  | no            | User's location - zip code
+ 
