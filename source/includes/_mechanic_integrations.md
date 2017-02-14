@@ -41,6 +41,9 @@ jQuery.ajax({
           "password"
         ],
         "authenticationType": "simple",
+        "countries": [
+          "dk"
+        ],
         "features": {
           "supportsCustomerLookup": false,
           "supportsOpenJob": true
@@ -64,6 +67,10 @@ jQuery.ajax({
           "password"
         ],
         "authenticationType": "simple",
+        "countries": [
+          "dk",
+          "se"
+        ],
         "features": {
           "supportsCustomerLookup": true,
           "supportsOpenJob": true
@@ -79,6 +86,9 @@ jQuery.ajax({
           "token"
         ],
         "authenticationType": "simple",
+        "countries": [
+          "dk"
+        ],
         "features": {
           "supportsCustomerLookup": false,
           "supportsOpenJob": true
@@ -107,6 +117,7 @@ mechanicIntegrations                                         | array(object) | n
 mechanicIntegrations.integrationDetails                      | object        | no            | The details of this type of integration
 mechanicIntegrations.integrationDetails.authenticationFields | array(string) | no            | A list of user-definable fields that are used for authentication
 mechanicIntegrations.integrationDetails.authenticationType   | string        | no            | The authentication scheme used by this integration:<br>`"simple"`: This integration uses simple username/password/token authentication<br>`"oauth2"`: This integration uses OAuth2 authentication
+mechanicIntegrations.integrationDetails.countries            | array(string) | no            | A list of country codes of countries in which the integration is available
 mechanicIntegrations.integrationDetails.features             | object        | no            | Lists all the different features that are supported by the integration
 mechanicIntegrations.integrationDetails.name                 | string        | no            | The unique identifier for this integration
 mechanicIntegrations.integrationDetails.optionFields         | array(string) | no            | A list of user-definable fields that are used for setting various options for the integration
