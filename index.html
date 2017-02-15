@@ -1616,6 +1616,9 @@ which belongs to the workshop.</p>
           </span><span class="s2">"password"</span><span class="w">
         </span><span class="p">],</span><span class="w">
         </span><span class="nt">"authenticationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"simple"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"countries"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"dk"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
         </span><span class="nt">"features"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="nt">"supportsCustomerLookup"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
           </span><span class="nt">"supportsOpenJob"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
@@ -1639,6 +1642,10 @@ which belongs to the workshop.</p>
           </span><span class="s2">"password"</span><span class="w">
         </span><span class="p">],</span><span class="w">
         </span><span class="nt">"authenticationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"simple"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"countries"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"dk"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"se"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
         </span><span class="nt">"features"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="nt">"supportsCustomerLookup"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
           </span><span class="nt">"supportsOpenJob"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
@@ -1654,6 +1661,9 @@ which belongs to the workshop.</p>
           </span><span class="s2">"token"</span><span class="w">
         </span><span class="p">],</span><span class="w">
         </span><span class="nt">"authenticationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"simple"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"countries"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"dk"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
         </span><span class="nt">"features"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="nt">"supportsCustomerLookup"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
           </span><span class="nt">"supportsOpenJob"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
@@ -1706,6 +1716,12 @@ and active for the mechanic.</p>
 <td>string</td>
 <td>no</td>
 <td>The authentication scheme used by this integration:<br><code class="prettyprint">&quot;simple&quot;</code>: This integration uses simple username/password/token authentication<br><code class="prettyprint">&quot;oauth2&quot;</code>: This integration uses OAuth2 authentication</td>
+</tr>
+<tr>
+<td>mechanicIntegrations.integrationDetails.countries</td>
+<td>array(string)</td>
+<td>no</td>
+<td>A list of country codes of countries in which the integration is available</td>
 </tr>
 <tr>
 <td>mechanicIntegrations.integrationDetails.features</td>
@@ -2561,7 +2577,8 @@ on.</p>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"job"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
   </span><span class="nt">"draftOffer"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
-  </span><span class="nt">"offer"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+  </span><span class="nt">"offer"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+  </span><span class="nt">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint returns the details of a specific job.</p>
@@ -2615,6 +2632,12 @@ on.</p>
 <td>object</td>
 <td>yes</td>
 <td>A <a href="#offerdetails">offerDetails</a> object that contains the details of the existing offer</td>
+</tr>
+<tr>
+<td>user</td>
+<td>object</td>
+<td>no</td>
+<td>A <a href="#useroverview">userOverview</a> object that contains basic information about the recommended mechanic for this job</td>
 </tr>
 </tbody></table>
 
@@ -6248,6 +6271,52 @@ The JSON values in this nested object is the same as in the
 <td>integer</td>
 <td>no</td>
 <td>The number of mechanics used in the market price calculation</td>
+</tr>
+</tbody></table>
+
+<h2 id="useroverview">userOverview</h2>
+
+<blockquote>
+<p>Example:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Robert Auto"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"København Ø"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"zip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2100"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Can be blank?</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>int</td>
+<td>no</td>
+<td>id of the user</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>no</td>
+<td>Name of the user</td>
+</tr>
+<tr>
+<td>city</td>
+<td>string</td>
+<td>no</td>
+<td>User&rsquo;s location - city</td>
+</tr>
+<tr>
+<td>zip</td>
+<td>string</td>
+<td>no</td>
+<td>User&rsquo;s location - zip code</td>
 </tr>
 </tbody></table>
 
