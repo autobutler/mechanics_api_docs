@@ -284,3 +284,63 @@ name      | nil     | yes       | The name of the integration to deactivate
 Attribute | Type          | Can be blank? | Description
 --------- | ------------- | ------------- | -----------
 success   | boolean       | no            | Weather or not the integration was successfully deactivated
+
+## Get a URL for opening a job in an integration
+
+> To obtain a url for opening a job in an integration:
+
+```shell
+curl -X "GET" "https://www.autobutler.dk/api/v2/mechanics/mechanic_integrations/MechanicIntegrations::CrmpIntegration/job_urls/565973" \
+     -H "Authorization: token"
+```
+
+```javascript
+jQuery.ajax({
+    url: "https://www.autobutler.dk/api/v2/mechanics/mechanic_integrations/MechanicIntegrations::CrmpIntegration/job_urls/565973",
+    type: "GET",
+    headers: {
+        "Authorization": "token",
+    },
+})
+.done(function(data, textStatus, jqXHR) {
+    console.log("HTTP Request Succeeded: " + jqXHR.status);
+    console.log(data);
+})
+.fail(function(jqXHR, textStatus, errorThrown) {
+    console.log("HTTP Request Failed");
+})
+.always(function() {
+    /* ... */
+});
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "url": "http://APP.crmp.com/Login.aspx?Un=admin|1233213&PS=12345123&aup=123123123|352253"
+}
+```
+
+### HTTP Request
+
+`PATCH https://www.autobutler.dk/api/v2/mechanics/mechanic_integrations/{name}/job_urls/{id}`
+
+### URL Parameters
+
+Parameter | Default | Required? | Description
+--------- | ------- | --------- | --------------------------
+name      | nil     | yes       | The name of the integration to use
+id        | nil     | yes       | The id of the job to get an URL for
+
+### Response JSON
+
+Attribute | Type          | Can be blank? | Description
+--------- | ------------- | ------------- | -----------
+url       | string        | no            | The URL for opening the job in the integration
+
+### Potential Errors
+
+Error Code | Meaning
+---------- | -------------------------------------------------------
+400        | The specified integration does not support opening jobs
