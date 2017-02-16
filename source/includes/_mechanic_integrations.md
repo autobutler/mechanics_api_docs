@@ -344,3 +344,63 @@ url       | string        | no            | The URL for opening the job in the i
 Error Code | Meaning
 ---------- | -------------------------------------------------------
 400        | The specified integration does not support opening jobs
+
+## Get a URL for opening a car in an integration
+
+> To obtain a url for opening a car in an integration:
+
+```shell
+curl -X "GET" "https://www.autobutler.dk/api/v2/mechanics/mechanic_integrations/MechanicIntegrations::AutofrontalIntegration/car_urls/407340" \
+     -H "Authorization: token"
+```
+
+```javascript
+jQuery.ajax({
+    url: "https://www.autobutler.dk/api/v2/mechanics/mechanic_integrations/MechanicIntegrations::AutofrontalIntegration/car_urls/407340",
+    type: "GET",
+    headers: {
+        "Authorization": "token",
+    },
+})
+.done(function(data, textStatus, jqXHR) {
+    console.log("HTTP Request Succeeded: " + jqXHR.status);
+    console.log(data);
+})
+.fail(function(jqXHR, textStatus, errorThrown) {
+    console.log("HTTP Request Failed");
+})
+.always(function() {
+    /* ... */
+});
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "url": "autofrontal:/REG=AD61451"
+}
+```
+
+### HTTP Request
+
+`PATCH https://www.autobutler.dk/api/v2/mechanics/mechanic_integrations/{name}/car_urls/{id}`
+
+### URL Parameters
+
+Parameter | Default | Required? | Description
+--------- | ------- | --------- | --------------------------
+name      | nil     | yes       | The name of the integration to use
+id        | nil     | yes       | The id of the car to get an URL for
+
+### Response JSON
+
+Attribute | Type          | Can be blank? | Description
+--------- | ------------- | ------------- | -----------
+url       | string        | no            | The URL for opening the car in the integration
+
+### Potential Errors
+
+Error Code | Meaning
+---------- | -------------------------------------------------------
+400        | The specified integration does not support opening cars
