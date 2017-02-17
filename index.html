@@ -2002,7 +2002,7 @@ or the update of an already activated integration</p>
 </span></code></pre>
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">PATCH https://www.autobutler.dk/api/v2/mechanics/mechanic_integrations/{name}/job_urls/{id}</code></p>
+<p><code class="prettyprint">GET https://www.autobutler.dk/api/v2/mechanics/mechanic_integrations/{name}/job_urls/{id}</code></p>
 
 <h3 id="url-parameters">URL Parameters</h3>
 
@@ -2094,7 +2094,7 @@ or the update of an already activated integration</p>
 </span></code></pre>
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">PATCH https://www.autobutler.dk/api/v2/mechanics/mechanic_integrations/{name}/car_urls/{id}</code></p>
+<p><code class="prettyprint">GET https://www.autobutler.dk/api/v2/mechanics/mechanic_integrations/{name}/car_urls/{id}</code></p>
 
 <h3 id="url-parameters">URL Parameters</h3>
 
@@ -2149,6 +2149,336 @@ or the update of an already activated integration</p>
 <tr>
 <td>400</td>
 <td>The specified integration does not support opening cars</td>
+</tr>
+</tbody></table>
+
+<h2 id="build-an-offer-through-an-integration">Build an offer through an integration</h2>
+
+<blockquote>
+<p>To build an offer through an integration:</p>
+</blockquote>
+<pre class="highlight shell"><code>curl -X <span class="s2">"POST"</span> <span class="s2">"https://www.autobutler.dk/api/v2/mechanics/mechanic_integrations/MechanicIntegrations::TWMIntegration/offers"</span> <span class="se">\</span>
+     -H <span class="s2">"Authorization: token"</span>
+     -H <span class="s2">"Content-Type: application/json; charset=utf-8"</span> <span class="se">\</span>
+     -d <span class="s1">$'{"jobId": 565973, "remoteId": "10391678"}'</span>
+</code></pre><pre class="highlight javascript"><code><span class="nx">jQuery</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+    <span class="na">url</span><span class="p">:</span> <span class="s2">"https://www.autobutler.dk/api/v2/mechanics/mechanic_integrations/MechanicIntegrations::TWMIntegration/offers"</span><span class="p">,</span>
+    <span class="na">type</span><span class="p">:</span> <span class="s2">"POST"</span><span class="p">,</span>
+    <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"Authorization"</span><span class="p">:</span> <span class="s2">"token"</span><span class="p">,</span>
+        <span class="s2">"Content-Type"</span><span class="p">:</span> <span class="s2">"application/json; charset=utf-8"</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="na">contentType</span><span class="p">:</span> <span class="s2">"application/json"</span><span class="p">,</span>
+    <span class="na">data</span><span class="p">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
+        <span class="s2">"jobId"</span><span class="p">:</span> <span class="mi">565973</span><span class="p">,</span>
+        <span class="s2">"remoteId"</span><span class="p">:</span> <span class="s2">"10391678"</span>
+    <span class="p">})</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">textStatus</span><span class="p">,</span> <span class="nx">jqXHR</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"HTTP Request Succeeded: "</span> <span class="o">+</span> <span class="nx">jqXHR</span><span class="p">.</span><span class="nx">status</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">fail</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">jqXHR</span><span class="p">,</span> <span class="nx">textStatus</span><span class="p">,</span> <span class="nx">errorThrown</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"HTTP Request Failed"</span><span class="p">);</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">always</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="cm">/* ... */</span>
+<span class="p">});</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"offer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"acceptanceText"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"acceptedToCompleteAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"availableOn"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"body"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"cancelComment"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"cancelledAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"carPickupAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"completionNote"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"completionTimeOfDay"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"courtesyCar"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"declinedAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"draft"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"expirationDate"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"guaranteeOnParts"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"guaranteeOnWork"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"jobWillBeCompletedOn"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"lost"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"marketPrice"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"mechanicIntegrationData"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"MechanicIntegrations::TWMIntegration"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"raw_quotation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"case_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10391678"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"case_no"</span><span class="p">:</span><span class="w"> </span><span class="s2">"99"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"comments"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"internal_comments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Anhængertræk - Fastmonteret, 7-pole - Skal bruges til montering af cykelanhænger.\n"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"make_and_model"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"offer_length"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"our_ref"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"quotation_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-16T15:17:35.000+00:00"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"quotation_lines"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"quotation_line"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"case_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10391678"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"discount_percent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"product_category_no"</span><span class="p">:</span><span class="w"> </span><span class="s2">"101"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"product_no"</span><span class="p">:</span><span class="w"> </span><span class="s2">"001"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"product_text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEST 1"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"quotation_line_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"sub_total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100.0000"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"sub_total_incl_vat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"125.0000"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Stk."</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"unit_sales_price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100.0000"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"unit_sales_price_incl_vat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"125.0000"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"21505"</span><span class="w">
+              </span><span class="p">},</span><span class="w">
+              </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"case_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10391678"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"discount_percent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"product_category_no"</span><span class="p">:</span><span class="w"> </span><span class="s2">"101"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"product_no"</span><span class="p">:</span><span class="w"> </span><span class="s2">"002"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"product_text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEST 2"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"quotation_line_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"sub_total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"400.0000"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"sub_total_incl_vat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"500.0000"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Stk."</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"unit_sales_price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200.0000"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"unit_sales_price_incl_vat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"250.0000"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"21505"</span><span class="w">
+              </span><span class="p">},</span><span class="w">
+              </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"case_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10391678"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"discount_percent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"product_category_no"</span><span class="p">:</span><span class="w"> </span><span class="s2">"101"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"product_no"</span><span class="p">:</span><span class="w"> </span><span class="s2">"003"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"product_text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEST 3"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"quotation_line_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"sub_total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"900.0000"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"sub_total_incl_vat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1125.0000"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Timer"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"unit_sales_price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"300.0000"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"unit_sales_price_incl_vat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"375.0000"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"21505"</span><span class="w">
+              </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="nt">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"21505"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"your_ref"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nt">"remote_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10391678"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"pickupTimeOfDay"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"priceDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"lineItems"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"articleNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"001"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"category"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"customerPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">100.0</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEST 1"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"discountPercent"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"discountedCustomerPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">100.0</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"discountedCustomerPriceWithVat"</span><span class="p">:</span><span class="w"> </span><span class="mf">125.0</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"grossPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">100.0</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"manufacturer"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"mechanicIntegrationData"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"MechanicIntegrations::TWMIntegration"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nt">"case_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10391678"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"discount_percent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"product_category_no"</span><span class="p">:</span><span class="w"> </span><span class="s2">"101"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"product_no"</span><span class="p">:</span><span class="w"> </span><span class="s2">"001"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"product_text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEST 1"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"quotation_line_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"sub_total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100.0000"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"sub_total_incl_vat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"125.0000"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Stk."</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"unit_sales_price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100.0000"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"unit_sales_price_incl_vat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"125.0000"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"21505"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="nt">"netPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">100.0</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"partnerData"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+          </span><span class="nt">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"subtotal"</span><span class="p">:</span><span class="w"> </span><span class="mf">100.0</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"subtotalWithVat"</span><span class="p">:</span><span class="w"> </span><span class="mf">125.0</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pcs"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"articleNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"002"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"category"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"customerPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">200.0</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEST 2"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"discountPercent"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"discountedCustomerPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">200.0</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"discountedCustomerPriceWithVat"</span><span class="p">:</span><span class="w"> </span><span class="mf">250.0</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"grossPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">200.0</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"manufacturer"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"mechanicIntegrationData"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"MechanicIntegrations::TWMIntegration"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nt">"case_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10391678"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"discount_percent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"product_category_no"</span><span class="p">:</span><span class="w"> </span><span class="s2">"101"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"product_no"</span><span class="p">:</span><span class="w"> </span><span class="s2">"002"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"product_text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEST 2"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"quotation_line_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"sub_total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"400.0000"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"sub_total_incl_vat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"500.0000"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Stk."</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"unit_sales_price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200.0000"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"unit_sales_price_incl_vat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"250.0000"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"21505"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="nt">"netPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">200.0</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"partnerData"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+          </span><span class="nt">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mf">2.0</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"subtotal"</span><span class="p">:</span><span class="w"> </span><span class="mf">400.0</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"subtotalWithVat"</span><span class="p">:</span><span class="w"> </span><span class="mf">500.0</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pcs"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"articleNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"003"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"category"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"customerPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">300.0</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEST 3"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"discountPercent"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"discountedCustomerPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">300.0</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"discountedCustomerPriceWithVat"</span><span class="p">:</span><span class="w"> </span><span class="mf">375.0</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"grossPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">300.0</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"manufacturer"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"mechanicIntegrationData"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"MechanicIntegrations::TWMIntegration"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nt">"case_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10391678"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"discount_percent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"product_category_no"</span><span class="p">:</span><span class="w"> </span><span class="s2">"101"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"product_no"</span><span class="p">:</span><span class="w"> </span><span class="s2">"003"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"product_text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEST 3"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"quotation_line_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"sub_total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"900.0000"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"sub_total_incl_vat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1125.0000"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Timer"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"unit_sales_price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"300.0000"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"unit_sales_price_incl_vat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"375.0000"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"21505"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="nt">"netPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">300.0</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"partnerData"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+          </span><span class="nt">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mf">3.0</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"subtotal"</span><span class="p">:</span><span class="w"> </span><span class="mf">900.0</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"subtotalWithVat"</span><span class="p">:</span><span class="w"> </span><span class="mf">1125.0</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hours"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nt">"pricing"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LINE_ITEMS"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"subtotal"</span><span class="p">:</span><span class="w"> </span><span class="mf">1431.2</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"totalNumberOfHours"</span><span class="p">:</span><span class="w"> </span><span class="mf">3.0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"totalPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">1789.0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"totalsExcludingVat"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"priceOfCourtesyCar"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"priceOfParts"</span><span class="p">:</span><span class="w"> </span><span class="mf">500.0</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"priceOfWork"</span><span class="p">:</span><span class="w"> </span><span class="mf">900.0</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"priceOfWorkPerHour"</span><span class="p">:</span><span class="w"> </span><span class="mf">300.0</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"serviceFee"</span><span class="p">:</span><span class="w"> </span><span class="mf">31.2</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"totalsIncludingVat"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"priceOfCourtesyCar"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"priceOfParts"</span><span class="p">:</span><span class="w"> </span><span class="mf">625.0</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"priceOfWork"</span><span class="p">:</span><span class="w"> </span><span class="mf">1125.0</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"priceOfWorkPerHour"</span><span class="p">:</span><span class="w"> </span><span class="mf">375.0</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"serviceFee"</span><span class="p">:</span><span class="w"> </span><span class="mf">39.0</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"vat"</span><span class="p">:</span><span class="w"> </span><span class="mf">357.8</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"vatFactor"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.25</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"qualityOfParts"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"rejectedExplanation"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"rejectedReason"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint allows you to build an offer from the details stored
+in the remote integration system.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST https://www.autobutler.dk/api/v2/mechanics/mechanic_integrations/{name}/offers</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Required?</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>nil</td>
+<td>yes</td>
+<td>The name of the integration to use</td>
+</tr>
+</tbody></table>
+
+<h3 id="request-json">Request JSON</h3>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Required?</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>jobId</td>
+<td>integer</td>
+<td>yes</td>
+<td>The id of the job to build an offer for</td>
+</tr>
+<tr>
+<td>remoteId</td>
+<td>string</td>
+<td>yes</td>
+<td>The id of the remote offer from the integration</td>
+</tr>
+</tbody></table>
+
+<h3 id="potential-errors">Potential Errors</h3>
+
+<table><thead>
+<tr>
+<th>Error Code</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>400</td>
+<td>The specified integration does not support building offers</td>
 </tr>
 </tbody></table>
 
