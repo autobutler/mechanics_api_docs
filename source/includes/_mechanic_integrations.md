@@ -324,7 +324,7 @@ jQuery.ajax({
 
 ### HTTP Request
 
-`PATCH https://www.autobutler.dk/api/v2/mechanics/mechanic_integrations/{name}/job_urls/{id}`
+`GET https://www.autobutler.dk/api/v2/mechanics/mechanic_integrations/{name}/job_urls/{id}`
 
 ### URL Parameters
 
@@ -384,7 +384,7 @@ jQuery.ajax({
 
 ### HTTP Request
 
-`PATCH https://www.autobutler.dk/api/v2/mechanics/mechanic_integrations/{name}/car_urls/{id}`
+`GET https://www.autobutler.dk/api/v2/mechanics/mechanic_integrations/{name}/car_urls/{id}`
 
 ### URL Parameters
 
@@ -404,3 +404,301 @@ url       | string        | no            | The URL for opening the car in the i
 Error Code | Meaning
 ---------- | -------------------------------------------------------
 400        | The specified integration does not support opening cars
+
+## Build an offer through an integration
+
+> To build an offer through an integration:
+
+```shell
+curl -X "POST" "https://www.autobutler.dk/api/v2/mechanics/mechanic_integrations/MechanicIntegrations::TWMIntegration/offers" \
+     -H "Authorization: token"
+     -H "Content-Type: application/json; charset=utf-8" \
+     -d $'{"jobId": 565973, "remoteId": "10391678"}'
+```
+
+```javascript
+jQuery.ajax({
+    url: "https://www.autobutler.dk/api/v2/mechanics/mechanic_integrations/MechanicIntegrations::TWMIntegration/offers",
+    type: "POST",
+    headers: {
+        "Authorization": "token",
+        "Content-Type": "application/json; charset=utf-8",
+    },
+    contentType: "application/json",
+    data: JSON.stringify({
+        "jobId": 565973,
+        "remoteId": "10391678"
+    })
+})
+.done(function(data, textStatus, jqXHR) {
+    console.log("HTTP Request Succeeded: " + jqXHR.status);
+    console.log(data);
+})
+.fail(function(jqXHR, textStatus, errorThrown) {
+    console.log("HTTP Request Failed");
+})
+.always(function() {
+    /* ... */
+});
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "offer": {
+    "acceptanceText": null,
+    "acceptedToCompleteAt": null,
+    "availableOn": null,
+    "body": null,
+    "cancelComment": null,
+    "cancelledAt": null,
+    "carPickupAt": null,
+    "completionNote": null,
+    "completionTimeOfDay": null,
+    "courtesyCar": false,
+    "createdAt": null,
+    "declinedAt": null,
+    "draft": false,
+    "expirationDate": null,
+    "guaranteeOnParts": null,
+    "guaranteeOnWork": null,
+    "id": null,
+    "jobWillBeCompletedOn": null,
+    "lost": false,
+    "marketPrice": null,
+    "mechanicIntegrationData": {
+      "MechanicIntegrations::TWMIntegration": {
+        "raw_quotation": {
+          "case_id": "10391678",
+          "case_no": "99",
+          "comments": null,
+          "internal_comments": "Anhængertræk - Fastmonteret, 7-pole - Skal bruges til montering af cykelanhænger.\n",
+          "make_and_model": null,
+          "offer_length": null,
+          "our_ref": null,
+          "quotation_date": "2017-02-16T15:17:35.000+00:00",
+          "quotation_lines": {
+            "quotation_line": [
+              {
+                "case_id": "10391678",
+                "discount_percent": "0",
+                "product_category_no": "101",
+                "product_no": "001",
+                "product_text": "TEST 1",
+                "quantity": "1",
+                "quotation_line_id": "1",
+                "sub_total": "100.0000",
+                "sub_total_incl_vat": "125.0000",
+                "unit": "Stk.",
+                "unit_sales_price": "100.0000",
+                "unit_sales_price_incl_vat": "125.0000",
+                "user_id": "21505"
+              },
+              {
+                "case_id": "10391678",
+                "discount_percent": "0",
+                "product_category_no": "101",
+                "product_no": "002",
+                "product_text": "TEST 2",
+                "quantity": "2",
+                "quotation_line_id": "2",
+                "sub_total": "400.0000",
+                "sub_total_incl_vat": "500.0000",
+                "unit": "Stk.",
+                "unit_sales_price": "200.0000",
+                "unit_sales_price_incl_vat": "250.0000",
+                "user_id": "21505"
+              },
+              {
+                "case_id": "10391678",
+                "discount_percent": "0",
+                "product_category_no": "101",
+                "product_no": "003",
+                "product_text": "TEST 3",
+                "quantity": "3",
+                "quotation_line_id": "3",
+                "sub_total": "900.0000",
+                "sub_total_incl_vat": "1125.0000",
+                "unit": "Timer",
+                "unit_sales_price": "300.0000",
+                "unit_sales_price_incl_vat": "375.0000",
+                "user_id": "21505"
+              }
+            ]
+          },
+          "user_id": "21505",
+          "your_ref": null
+        },
+        "remote_id": "10391678"
+      }
+    },
+    "pickupTimeOfDay": null,
+    "priceDetails": {
+      "lineItems": [
+        {
+          "articleNumber": "001",
+          "category": null,
+          "createdAt": null,
+          "customerPrice": 100.0,
+          "description": "TEST 1",
+          "discountPercent": 0.0,
+          "discountedCustomerPrice": 100.0,
+          "discountedCustomerPriceWithVat": 125.0,
+          "grossPrice": 100.0,
+          "id": null,
+          "manufacturer": null,
+          "mechanicIntegrationData": {
+            "MechanicIntegrations::TWMIntegration": {
+              "case_id": "10391678",
+              "discount_percent": "0",
+              "product_category_no": "101",
+              "product_no": "001",
+              "product_text": "TEST 1",
+              "quantity": "1",
+              "quotation_line_id": "1",
+              "sub_total": "100.0000",
+              "sub_total_incl_vat": "125.0000",
+              "unit": "Stk.",
+              "unit_sales_price": "100.0000",
+              "unit_sales_price_incl_vat": "125.0000",
+              "user_id": "21505"
+            }
+          },
+          "netPrice": 100.0,
+          "partnerData": {},
+          "quantity": 1.0,
+          "subtotal": 100.0,
+          "subtotalWithVat": 125.0,
+          "type": "",
+          "unit": "pcs"
+        },
+        {
+          "articleNumber": "002",
+          "category": null,
+          "createdAt": null,
+          "customerPrice": 200.0,
+          "description": "TEST 2",
+          "discountPercent": 0.0,
+          "discountedCustomerPrice": 200.0,
+          "discountedCustomerPriceWithVat": 250.0,
+          "grossPrice": 200.0,
+          "id": null,
+          "manufacturer": null,
+          "mechanicIntegrationData": {
+            "MechanicIntegrations::TWMIntegration": {
+              "case_id": "10391678",
+              "discount_percent": "0",
+              "product_category_no": "101",
+              "product_no": "002",
+              "product_text": "TEST 2",
+              "quantity": "2",
+              "quotation_line_id": "2",
+              "sub_total": "400.0000",
+              "sub_total_incl_vat": "500.0000",
+              "unit": "Stk.",
+              "unit_sales_price": "200.0000",
+              "unit_sales_price_incl_vat": "250.0000",
+              "user_id": "21505"
+            }
+          },
+          "netPrice": 200.0,
+          "partnerData": {},
+          "quantity": 2.0,
+          "subtotal": 400.0,
+          "subtotalWithVat": 500.0,
+          "type": "",
+          "unit": "pcs"
+        },
+        {
+          "articleNumber": "003",
+          "category": null,
+          "createdAt": null,
+          "customerPrice": 300.0,
+          "description": "TEST 3",
+          "discountPercent": 0.0,
+          "discountedCustomerPrice": 300.0,
+          "discountedCustomerPriceWithVat": 375.0,
+          "grossPrice": 300.0,
+          "id": null,
+          "manufacturer": null,
+          "mechanicIntegrationData": {
+            "MechanicIntegrations::TWMIntegration": {
+              "case_id": "10391678",
+              "discount_percent": "0",
+              "product_category_no": "101",
+              "product_no": "003",
+              "product_text": "TEST 3",
+              "quantity": "3",
+              "quotation_line_id": "3",
+              "sub_total": "900.0000",
+              "sub_total_incl_vat": "1125.0000",
+              "unit": "Timer",
+              "unit_sales_price": "300.0000",
+              "unit_sales_price_incl_vat": "375.0000",
+              "user_id": "21505"
+            }
+          },
+          "netPrice": 300.0,
+          "partnerData": {},
+          "quantity": 3.0,
+          "subtotal": 900.0,
+          "subtotalWithVat": 1125.0,
+          "type": "",
+          "unit": "hours"
+        }
+      ],
+      "pricing": "LINE_ITEMS",
+      "subtotal": 1431.2,
+      "totalNumberOfHours": 3.0,
+      "totalPrice": 1789.0,
+      "totalsExcludingVat": {
+        "priceOfCourtesyCar": 0.0,
+        "priceOfParts": 500.0,
+        "priceOfWork": 900.0,
+        "priceOfWorkPerHour": 300.0,
+        "serviceFee": 31.2
+      },
+      "totalsIncludingVat": {
+        "priceOfCourtesyCar": 0.0,
+        "priceOfParts": 625.0,
+        "priceOfWork": 1125.0,
+        "priceOfWorkPerHour": 375.0,
+        "serviceFee": 39.0
+      },
+      "vat": 357.8,
+      "vatFactor": 0.25
+    },
+    "qualityOfParts": null,
+    "rejectedExplanation": null,
+    "rejectedReason": null
+  },
+  "success": true
+}
+```
+
+This endpoint allows you to build an offer from the details stored
+in the remote integration system.
+
+### HTTP Request
+
+`POST https://www.autobutler.dk/api/v2/mechanics/mechanic_integrations/{name}/offers`
+
+### URL Parameters
+
+Parameter | Default | Required? | Description
+--------- | ------- | --------- | ----------------------------------
+name      | nil     | yes       | The name of the integration to use
+
+### Request JSON
+
+Attribute | Type    | Required? | Description
+--------- | ------- | --------- | -----------------------------------------------
+jobId     | integer | yes       | The id of the job to build an offer for
+remoteId  | string  | yes       | The id of the remote offer from the integration
+
+### Potential Errors
+
+Error Code | Meaning
+---------- | ----------------------------------------------------------
+400        | The specified integration does not support building offers
