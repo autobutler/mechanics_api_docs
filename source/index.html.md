@@ -21,6 +21,7 @@ includes:
   - payment_subscriptions
   - product_subscriptions
   - settings
+  - vehicle_info
   - objects
   - errors
 
