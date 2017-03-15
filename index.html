@@ -5660,6 +5660,123 @@ out of the request body. Notice that empty strings are not ignored.</p>
 The JSON values in this nested object is the same as in the
 <a href="#get-mechanic-settings">show</a> endpoint.</p>
 
+          <h1 id="vehicle-info">Vehicle Info</h1>
+
+<h2 id="get-information-about-a-vehicle">Get information about a vehicle</h2>
+
+<blockquote>
+<p>To obtain information about a vehicle, use the following code:</p>
+</blockquote>
+<pre class="highlight shell"><code>curl -X <span class="s2">"GET"</span> <span class="s2">"https://www.autobutler.dk/api/v2/mechanics/vehicle_infos/AB12345"</span>
+</code></pre><pre class="highlight javascript"><code><span class="nx">jQuery</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+    <span class="na">url</span><span class="p">:</span> <span class="s2">"https://www.autobutler.dk/api/v2/mechanics/vehicle_infos/AB12345"</span><span class="p">,</span>
+    <span class="na">type</span><span class="p">:</span> <span class="s2">"GET"</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">textStatus</span><span class="p">,</span> <span class="nx">jqXHR</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"HTTP Request Succeeded: "</span> <span class="o">+</span> <span class="nx">jqXHR</span><span class="p">.</span><span class="nx">status</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">fail</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">jqXHR</span><span class="p">,</span> <span class="nx">textStatus</span><span class="p">,</span> <span class="nx">errorThrown</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"HTTP Request Failed"</span><span class="p">);</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">always</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="cm">/* ... */</span>
+<span class="p">});</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"registrationNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AB12345"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LOADED"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"chassisNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VF12RFL1H49621453"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"regDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2013-08-28"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"errorResponse"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"makeAndModelId"</span><span class="p">:</span><span class="w"> </span><span class="mi">2598</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"inspectionDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-09-10"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"make"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Renault"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Captur"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"variant"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.5 dCi 90 Authentique 5d"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint returns information about a vehicle.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://www.autobutler.dk/api/v2/mechanics/vehicle_infos/{registration_number}</code></p>
+
+<h3 id="response-json">Response JSON</h3>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Can be blank?</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>registrationNumber</td>
+<td>string</td>
+<td>no</td>
+<td>Registration number of the vehicle</td>
+</tr>
+<tr>
+<td>state</td>
+<td>string</td>
+<td>no</td>
+<td>State of this vehicle info. Can be one of QUEUED, PROCESSING, LOADED, NOT_FOUND, ERROR</td>
+</tr>
+<tr>
+<td>chassisNumber</td>
+<td>string</td>
+<td>yes</td>
+<td>Chassis number of the vehicle</td>
+</tr>
+<tr>
+<td>regDate</td>
+<td>string</td>
+<td>yes</td>
+<td>Registration date of the vehcile</td>
+</tr>
+<tr>
+<td>errorResponse</td>
+<td>string</td>
+<td>yes</td>
+<td>Error message from external data provider (if state is ERROR)</td>
+</tr>
+<tr>
+<td>makeAndModelId</td>
+<td>integer</td>
+<td>yes</td>
+<td>Make and model id of the vehicle</td>
+</tr>
+<tr>
+<td>inspectionDate</td>
+<td>string</td>
+<td>yes</td>
+<td>Inspection date of the vehicle</td>
+</tr>
+<tr>
+<td>make</td>
+<td>string</td>
+<td>yes</td>
+<td>Make of the vehicle</td>
+</tr>
+<tr>
+<td>model</td>
+<td>string</td>
+<td>yes</td>
+<td>Model of the vehicle</td>
+</tr>
+<tr>
+<td>variant</td>
+<td>string</td>
+<td>yes</td>
+<td>Variant of the vehicle</td>
+</tr>
+</tbody></table>
+
           <h1 id="common-json-objects">Common JSON objects</h1>
 
 <h2 id="joboverview">jobOverview</h2>
