@@ -24,6 +24,7 @@ includes:
   - vehicle_info
   - objects
   - errors
+  - conversations
 
 search: true
 ---
