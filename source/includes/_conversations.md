@@ -5,13 +5,13 @@
 > To obtain a list of conversations, use the following code:
 
 ```shell
-curl -X "GET" "https://www.autobutler.dk/api/v2/mechanics/conversations?page=1" \
+curl -X "GET" "https://www.autobutler.dk/api/v2/mechanics/conversations?page=1&filter=all" \
      -H "Authorization: token"
 ```
 
 ```javascript
 jQuery.ajax({
-    url: "https://www.autobutler.dk/api/v2/mechanics/conversations?page=1",
+    url: "https://www.autobutler.dk/api/v2/mechanics/conversations?page=1&filter=all",
     type: "GET",
     headers: {
         "Authorization": "token",
@@ -63,7 +63,8 @@ jQuery.ajax({
     }
   ],
   "page": 1,
-  "totalPages": 256
+  "totalPages": 256,
+  "filter": "all"
 }
 ```
 
@@ -71,7 +72,15 @@ This endpoint returns a list of conversations with customers for the workshop.
 
 ### HTTP Request
 
-`GET https://www.autobutler.dk/api/v2/mechanics/conversations?page={page}`
+`GET https://www.autobutler.dk/api/v2/mechanics/conversations?page={page}&filter={filter}`
+
+#### Request params
+* *page* - specifies a page number for queried conversations.
+* *filter* - specifies a filter for the queried conversations. Possible values:
+  * `all` - queries all conversations for the mechanic
+  * `unread` - queries all conversations for the mechanic with the latest message unread
+  * `unanswered` - queries all conversations for the mechanic with the latest message read, but unanswered
+  * `answered` - queries all conversations for the mechanic with the latest message answered
 
 ### Response JSON
 
@@ -99,6 +108,7 @@ conversations.latestComment.createdAt                       | string        | no
 conversations.latestComment.viewedAt                        | string        | yes           | The date of viewing of the latest comment
 page                                                        | integer       | no            | Current page number
 totalPages                                                  | integer       | no            | Total number of pages
+filter                                                      | string        | no            | Current filter
 
 
 ## Get a number of unread conversations for current mechanic
