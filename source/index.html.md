@@ -25,6 +25,7 @@ includes:
   - objects
   - errors
   - conversations
+  - reviews
 
 search: true
 ---
