@@ -414,5 +414,52 @@ Attribute      | Type    | Can be blank? | Description
 id             | int     | no            | id of the user
 name           | string  | no            | Name of the user
 city           | string  | no            | User's location - city
-zip            | string  | no            | User's location - zip code
- 
+zip            | string  | no            | User's location - zip code 
+
+## campaignDetails
+
+> Example:
+
+```json
+    {
+      "id": 106,
+      "name": "hjulskifteforaar17",
+      "title": "<p>marketing.campaign_pages.hjulskifteforaar17.card_headline</p>",
+      "backgroundUrl": "https://d2bythind2nctn.cloudfront.net/marketing/campaign_pages/106/Landingpage_tyre_bg2_original.jpg",
+      "link": "/marketing/campaign_pages/hjulskifteforaar17",
+      "lineItemPrice": 249,
+      "shortDescription": "Short description",
+      "fullDescription": "Full description",
+      "startDate": "2017-10-01",
+      "endDate": "2017-11-01",
+      "signupType": "signed_up_autobid",
+      "isNew": false,
+      "benefits": [
+        "Benefit 1",
+        "Benefit 2",
+        "Benefit 3"
+      ],
+      "conditions": [
+        "Condition 1",
+        "Condition 2",
+        "Condition 3"
+      ]
+    }
+```
+
+Attribute        | Type          | Can be blank? | Description
+---------------- | ------------- | ------------- | -----------------------------------------------------------------------------
+id               | integer       | yes           | The campaign id
+name             | string        | yes           | The campaign internal name
+title            | string        | yes           | The campaign title that is shown on the frontend
+backgroundUrl    | string        | yes           | The campaign background url that is shown on the frontend
+link             | string        | no            | The link to the campaign page on Autobutler
+lineItemPrice    | integer       | yes           | The line item price for jobs, related for current campaign
+shortDescription | string        | yes           | The short description text for current campaign 
+fullDescription  | string        | yes           | The full description text for current campaign
+statDate         | string        | no            | The start date of the first campaign's online period
+endDate          | string        | no            | The end date of the first campaign's online period
+signupType       | string        | yes           | The signup type for current mechanic on current campaign
+isNew            | boolean       | no            | The boolean representing if current campaign is new for current mechanic
+benefits         | array(string) | yes           | The array of strings representing benefits of current campaign
+conditions       | array(string) | yes           | The array of strings representing conditions for current campaign

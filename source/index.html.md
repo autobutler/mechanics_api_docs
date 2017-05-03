@@ -27,6 +27,7 @@ includes:
   - conversations
   - reviews
   - review_requests
+  - campaigns
 
 search: true
 ---
