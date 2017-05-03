@@ -26,6 +26,7 @@ includes:
   - errors
   - conversations
   - reviews
+  - review_requests
 
 search: true
 ---
