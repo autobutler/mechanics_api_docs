@@ -1,4 +1,4 @@
-# Conversations
+# Campaigns
 
 ## Get a list of campaigns relevant for current mechanic
 
@@ -46,7 +46,7 @@ jQuery.ajax({
       "fullDescription": null,
       "startDate": "2017-04-28",
       "endDate": "2017-06-09",
-      "signupType": null,
+      "isSignedUp": false,
       "isNew": true,
       "benefits": [],
       "conditions": []
@@ -64,7 +64,7 @@ jQuery.ajax({
       "fullDescription": "Full description",
       "startDate": "2017-10-01",
       "endDate": "2017-11-01",
-      "signupType": "signed_up_autobid",
+      "isSignedUp": true,
       "isNew": false,
       "benefits": [
         "Benefit 1",
@@ -93,3 +93,129 @@ Attribute                                                            | Type     
 campaigns                                                            | object        | no            | An object representing the individual campaigns
 campaigns.currentCampaignPages                                       | array(object) | yes           | The array of ongoing <a href="#campaigndetails">campaignDetails</a> objects, relevant for a mechanic
 campaigns.comingCampaignPages                                        | array(object) | yes           | The array of future <a href="#campaigndetails">campaignDetails</a> objects, relevant for a mechanic
+
+
+## Sign up a mechanic to a specific campaign
+
+> To sign up the mechanic to a specific campaign, use this code:
+
+```shell
+curl -X "POST" "https://www.autobutler.dk/api/v2/mechanics/campaigns/12/subscription" \
+     -H "Authorization: token" \
+     -H "Content-Type: application/json; charset=utf-8" \
+```
+
+```javascript
+jQuery.ajax({
+  url: "https://www.autobutler.dk/api/v2/mechanics/campaigns/12/subscription",
+  type: "POST",
+  headers: {
+    "Authorization": "token",
+    "Content-Type": "application/json; charset=utf-8",
+  },
+  contentType: "application/json"
+})
+.done(function(data, textStatus, jqXHR) {
+  console.log("HTTP Request Succeeded: " + jqXHR.status);
+  console.log(data);
+})
+.fail(function(jqXHR, textStatus, errorThrown) {
+  console.log("HTTP Request Failed");
+})
+.always(function() {
+  /* ... */
+});
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "success": true
+}
+```
+
+### HTTP Request
+
+`POST https://www.autobutler.dk/api/v2/mechanics/campaigns/:campaignPageId/subscription`
+
+### URL Parameters
+
+Parameter | Default | Required? | Description
+--------- | ------- | --------- | ---------------------------
+id        | nil     | yes       | The id of the Campaign Page 
+
+### Response JSON
+
+Attribute  | Type    | Can be blank? | Description
+---------- | ------- | ------------- | -------------------------------------
+success    | boolean | no            | true, if the operation was successful
+
+### Potential Errors
+
+Error Code | Meaning
+---------- | ----------------------------------------------------------
+404        | The Campaign Page with the specified id could not be found
+
+
+## Sign off a mechanic from a specific campaign
+
+> To sign off the mechanic from a specific campaign, use this code:
+
+```shell
+curl -X "DELETE" "https://www.autobutler.dk/api/v2/mechanics/campaigns/12/subscription" \
+     -H "Authorization: token" \
+     -H "Content-Type: application/json; charset=utf-8" \
+```
+
+```javascript
+jQuery.ajax({
+  url: "https://www.autobutler.dk/api/v2/mechanics/campaigns/12/subscription",
+  type: "DELETE",
+  headers: {
+    "Authorization": "token",
+    "Content-Type": "application/json; charset=utf-8",
+  },
+  contentType: "application/json"
+})
+.done(function(data, textStatus, jqXHR) {
+  console.log("HTTP Request Succeeded: " + jqXHR.status);
+  console.log(data);
+})
+.fail(function(jqXHR, textStatus, errorThrown) {
+  console.log("HTTP Request Failed");
+})
+.always(function() {
+  /* ... */
+});
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "success": true
+}
+```
+
+### HTTP Request
+
+`DELETE https://www.autobutler.dk/api/v2/mechanics/campaigns/:campaignPageId/subscription`
+
+### URL Parameters
+
+Parameter | Default | Required? | Description
+--------- | ------- | --------- | ---------------------------
+id        | nil     | yes       | The id of the campaign page 
+
+### Response JSON
+
+Attribute  | Type    | Can be blank? | Description
+---------- | ------- | ------------- | -------------------------------------
+success    | boolean | no            | true, if the operation was successful
+
+### Potential Errors
+
+Error Code | Meaning
+---------- | ----------------------------------------------------------
+404        | The Campaign Page with the specified id could not be found
