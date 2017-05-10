@@ -23,6 +23,7 @@ includes:
   - product_subscriptions
   - settings
   - vehicle_info
+  - archive
   - objects
   - errors
   - conversations
