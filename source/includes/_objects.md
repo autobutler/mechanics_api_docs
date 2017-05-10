@@ -259,6 +259,92 @@ jobZip.longitude                              | float         | no            | 
 jobZip.maxDistance                            | integer       | no            | The maximum driving distance selected by the car owner
 job.marketPrice                               | object        | yes           | A <a href="#marketprice">marketPrice</a> object with market pricing details of the job
 
+## offerDetails
+
+> Example:
+
+```json
+{
+  "acceptanceText": null,
+  "acceptedToCompleteAt": null,
+  "availableOn": "2017-05-10",
+  "body": "Here is your offer...",
+  "cancelComment": null,
+  "cancelledAt": null,
+  "carPickupAt": null,
+  "completionNote": null,
+  "completionTimeOfDay": null,
+  "courtesyCar": true,
+  "createdAt": "2017-05-08T09:55:06.322+02:00",
+  "declinedAt": null,
+  "draft": false,
+  "expirationDate": "2017-06-05",
+  "guaranteeOnParts": 36,
+  "guaranteeOnWork": 36,
+  "id": 1234567,
+  "jobWillBeCompletedOn": null,
+  "lost": false,
+  "marketPrice": null,
+  "mechanicIntegrationData": {},
+  "pickupTimeOfDay": null,
+  "priceDetails": {
+    "lineItems": [],
+    "pricing": "FIXED",
+    "subtotal": 2732.2,
+    "totalNumberOfHours": 0.0,
+    "totalPrice": 3415.25,
+    "totalsExcludingVat": {
+      "priceOfCourtesyCar": 1.0,
+      "priceOfParts": 0.0,
+      "priceOfWork": 2700.0,
+      "priceOfWorkPerHour": 0.0,
+      "serviceFee": 31.2
+    },
+    "totalsIncludingVat": {
+      "priceOfCourtesyCar": 1.25,
+      "priceOfParts": 0.0,
+      "priceOfWork": 3375.0,
+      "priceOfWorkPerHour": 0.0,
+      "serviceFee": 39.0
+    },
+    "vat": 683.05,
+    "vatFactor": 0.25
+  },
+  "qualityOfParts": "OEM",
+  "rejectedExplanation": null,
+  "rejectedReason": null
+}
+```
+
+Attribute               | Type    | Can be blank? | Description
+----------------------- | ------- | ------------- | ------------------------------------------------------------
+acceptanceText          | string  | yes           | An optional description of why the car owner chose this offer
+acceptedToCompleteAt    | string  | yes           | The date that the car owner requested the job to be completed on
+availableOn             | string  | no            | The next available date that the workshop specified when the offer was sent
+body                    | string  | no            | The description that the workshop sent with the offer to the car owner
+cancelComment           | string  | yes           | A comment about why the offer was cancelled
+cancelledAt             | string  | yes           | A timestamp for when the offer was cancelled
+carPickupAt             | string  | yes           | The date at which the car owner can pick up his car from the workshop
+completionNote          | string  | yes           | An optional comment that was given when the job was completed
+completionTimeOfDay     | string  | yes           | When during the day was the offer completed
+courtesyCar             | boolean | no            | Wether or not the offer includes a courtesy car
+createdAt               | string  | no            | A timestamp for when the offer was sent
+declinedAt              | string  | yes           | A timestamp for when the offer was declined
+draft                   | boolean | no            | Wether or not this offer is a draft offer
+expirationDate          | string  | no            | The date on which this offer expires
+guaranteeOnParts        | integer | no            | The number of months of guarantee offered on spare parts
+guaranteeOnWork         | integer | no            | The number of months of guarantee offered on labour
+id                      | integer | no            | The id of the offer
+jobWillBeCompletedOn    | string  | yes           | The date on which the job will be carried out by the workshop
+lost                    | boolean | no            | Wether or not the job was lost to a competing offer
+marketPrice             | float   | yes           | The typical market price for a similar offer on the job
+mechanicIntegrationData | object  | no            | Integration metadata
+pickupTimeOfDay         | string  | yes           | The time at which the car owner can pick up his car from the workshop
+priceDetails            | object  | no            | A <a href="#pricedetails">priceDetails</a> object
+qualityOfParts          | integer | no            | The quality of the spare parts included in the offer
+rejectedExplanation     | string  | yes           | An freehand explanation of why the offer was rejected
+rejectedReason          | string  | yes           | The selected reason for why the offer was rejected
+
 ## draftOfferOverview
 
 > Example:
@@ -287,94 +373,105 @@ priceDetails.totalPrice | float   | no            | The total price of the draft
   "id": 123456,
   "body": "Hi Peter, here is an offer for the job that you requested.",
   "createdAt": "2016-11-17T18:00:11.613+01:00",
-  "priceDetails": {
-    "pricing": "LINE_ITEMS",
-    "totalNumberOfHours": 2.0,
-    "subtotal": 1539.0,
-    "totalsExcludingVat": {
-      "priceOfWork": 500.0,
-      "priceOfWorkPerHour": 250.0,
-      "priceOfParts": 1000.0,
-      "priceOfCourtesyCar": 0.0,
-      "serviceFee": 39.0
-    },
-    "lineItems": [
-      {
-        "id": 1234,
-        "articleNumber": "0001",
-        "category": null,
-        "createdAt": "2016-11-17T18:00:11.613+01:00",
-        "description": "Working hours",
-        "manufacturer": null,
-        "partnerData": null,
-        "type": null,
-        "unit": "hours",
-        "customerPrice": 250.0,
-        "discountPercent": 0.0,
-        "grossPrice": 250.0,
-        "netPrice": 250.0,
-        "quantity": 2.0,
-        "discountedCustomerPrice": 250.0,
-        "subtotal": 500.0
-      },
-      {
-        "id": 1235,
-        "articleNumber": "BOSCH-BC00345",
-        "category": "brakes",
-        "createdAt": "2016-11-17T18:00:11.613+01:00",
-        "description": "Brake Calipers",
-        "manufacturer": "Bosch",
-        "partnerData": {
-          "some": "arbitrary",
-          "data": true
-        },
-        "type": "MecaOfferLineItem",
-        "unit": "pcs",
-        "customerPrice": 500.0,
-        "discountPercent": 0.0,
-        "grossPrice": 500.0,
-        "netPrice": 400.0,
-        "quantity": 2.0,
-        "discountedCustomerPrice": 500.0,
-        "subtotal": 1000.0
-      }
-    ]
-  }
+  "priceDetails": {}
 }
 ```
 
-Attribute                                          | Type          | Can be blank? | Description
--------------------------------------------------- | ------------- | ------------- | ------------------------------------------------------------
-id                                                 | integer       | no            | The if of the draft offer
-body                                               | string        | no            | The offer text for the car owner
-createdAt                                          | string        | no            | A timestamp for when the draft offer was created
-priceDetails                                       | object        | no            | An object representing the pricing details of the draft offer
-priceDetails.pricing                               | string        | no            | The type of pricing used for the draft offer. Possible values are:<br>`"LINE_ITEMS"`: This offer contains order lines with individual prices<br>`"FIXED"`: This offer contains order lines but a single fixed price<br>`"HOURLY"`: This offer has no order lines but instead consists of an hourly rate and a fixed price for spare parts
-priceDetails.totalNumberOfHours                    | float         | no            | The total number of working hours included in the draft offer
-priceDetails.subtotal                              | float         | no            | The sub total of the draft offer
-priceDetails.totalsExcludingVat                    | object        | no            | An object representing the totals of the draft offer excluding VAT
-priceDetails.totalsExcludingVat.priceOfWork        | float         | no            | The total labour price of the draft offer
-priceDetails.totalsExcludingVat.priceOfWorkPerHour | float         | no            | The total labour price of the offer divided by the total number of working hours
-priceDetails.totalsExcludingVat.priceOfParts       | float         | no            | The total price of spare parts
-priceDetails.totalsExcludingVat.priceOfCourtesyCar | float         | no            | The price of the courtesy car, regardless of weather it is included or not
-priceDetails.totalsExcludingVat.serviceFee         | float         | no            | The Autobutler service fee
-priceDetails.lineItems                             | array(object) | no            | An array of objects representing the individual order lines
-priceDetails.lineItems.id                          | integer       | no            | The id of the order line
-priceDetails.lineItems.articleNumber               | string        | yes           | An article number for the part
-priceDetails.lineItems.category                    | string        | yes           | A metadata category label
-priceDetails.lineItems.createdAt                   | string        | no            | A timestamp for when the line item was created
-priceDetails.lineItems.description                 | string        | no            | The description of the item
-priceDetails.lineItems.manufacturer                | string        | yes           | The manufacturer of the part
-priceDetails.lineItems.partnerData                 | object        | yes           | An object with arbitrary partner metadata
-priceDetails.lineItems.type                        | string        | yes           | Used to identify line items from third party integrations
-priceDetails.lineItems.unit                        | string        | no            | The type of unit used for the item. Possible values:<br>`"pcs"`: Pieces<br>`"liter"`: Liters<br>`"gram"`: Grams<br>`"kg"`: Kilograms<br>`"meter"`: Meters<br>`"set"`: Sets<br>`"hours"`: Working hours
-priceDetails.lineItems.customerPrice               | float         | no            | The price per unit that will be charged to the car owner
-priceDetails.lineItems.discountPercent             | float         | no            | A discount percentage that will be deducted from the price that the car owner will be charged
-priceDetails.lineItems.grossPrice                  | float         | no            | The listed sales price for the item
-priceDetails.lineItems.netPrice                    | float         | no            | The purchase price for the workshop
-priceDetails.lineItems.quantity                    | float         | no            | The number of units
-priceDetails.lineItems.discountedCustomerPrice     | float         | no            | The customer unit price minus discount
-priceDetails.lineItems.subtotal                    | float         | no            | The number of units multiplied by the discounted customer price
+Attribute    | Type          | Can be blank? | Description
+------------ | ------------- | ------------- | ------------------------------------------------------------
+id           | integer       | no            | The if of the draft offer
+body         | string        | no            | The offer text for the car owner
+createdAt    | string        | no            | A timestamp for when the draft offer was created
+priceDetails | object        | no            | A <a href="#pricedetails">priceDetails</a> object
+
+## priceDetails
+
+> Example:
+
+```json
+{
+  "pricing": "LINE_ITEMS",
+  "totalNumberOfHours": 2.0,
+  "subtotal": 1539.0,
+  "totalsExcludingVat": {
+    "priceOfWork": 500.0,
+    "priceOfWorkPerHour": 250.0,
+    "priceOfParts": 1000.0,
+    "priceOfCourtesyCar": 0.0,
+    "serviceFee": 39.0
+  },
+  "lineItems": [
+    {
+      "id": 1234,
+      "articleNumber": "0001",
+      "category": null,
+      "createdAt": "2016-11-17T18:00:11.613+01:00",
+      "description": "Working hours",
+      "manufacturer": null,
+      "partnerData": null,
+      "type": null,
+      "unit": "hours",
+      "customerPrice": 250.0,
+      "discountPercent": 0.0,
+      "grossPrice": 250.0,
+      "netPrice": 250.0,
+      "quantity": 2.0,
+      "discountedCustomerPrice": 250.0,
+      "subtotal": 500.0
+    },
+    {
+      "id": 1235,
+      "articleNumber": "BOSCH-BC00345",
+      "category": "brakes",
+      "createdAt": "2016-11-17T18:00:11.613+01:00",
+      "description": "Brake Calipers",
+      "manufacturer": "Bosch",
+      "partnerData": {
+        "some": "arbitrary",
+        "data": true
+      },
+      "type": "MecaOfferLineItem",
+      "unit": "pcs",
+      "customerPrice": 500.0,
+      "discountPercent": 0.0,
+      "grossPrice": 500.0,
+      "netPrice": 400.0,
+      "quantity": 2.0,
+      "discountedCustomerPrice": 500.0,
+      "subtotal": 1000.0
+    }
+  ]
+}
+```
+
+Attribute                             | Type          | Can be blank? | Description
+------------------------------------- | ------------- | ------------- | ------------------------------------------------------------
+pricing                               | string        | no            | The type of pricing used for the draft offer. Possible values are:<br>`"LINE_ITEMS"`: This offer contains order lines with individual prices<br>`"FIXED"`: This offer contains order lines but a single fixed price<br>`"HOURLY"`: This offer has no order lines but instead consists of an hourly rate and a fixed price for spare parts
+totalNumberOfHours                    | float         | no            | The total number of working hours included in the draft offer
+subtotal                              | float         | no            | The sub total of the draft offer
+totalsExcludingVat                    | object        | no            | An object representing the totals of the draft offer excluding VAT
+totalsExcludingVat.priceOfWork        | float         | no            | The total labour price of the draft offer
+totalsExcludingVat.priceOfWorkPerHour | float         | no            | The total labour price of the offer divided by the total number of working hours
+totalsExcludingVat.priceOfParts       | float         | no            | The total price of spare parts
+totalsExcludingVat.priceOfCourtesyCar | float         | no            | The price of the courtesy car, regardless of weather it is included or not
+totalsExcludingVat.serviceFee         | float         | no            | The Autobutler service fee
+lineItems                             | array(object) | no            | An array of objects representing the individual order lines
+lineItems.id                          | integer       | no            | The id of the order line
+lineItems.articleNumber               | string        | yes           | An article number for the part
+lineItems.category                    | string        | yes           | A metadata category label
+lineItems.createdAt                   | string        | no            | A timestamp for when the line item was created
+lineItems.description                 | string        | no            | The description of the item
+lineItems.manufacturer                | string        | yes           | The manufacturer of the part
+lineItems.partnerData                 | object        | yes           | An object with arbitrary partner metadata
+lineItems.type                        | string        | yes           | Used to identify line items from third party integrations
+lineItems.unit                        | string        | no            | The type of unit used for the item. Possible values:<br>`"pcs"`: Pieces<br>`"liter"`: Liters<br>`"gram"`: Grams<br>`"kg"`: Kilograms<br>`"meter"`: Meters<br>`"set"`: Sets<br>`"hours"`: Working hours
+lineItems.customerPrice               | float         | no            | The price per unit that will be charged to the car owner
+lineItems.discountPercent             | float         | no            | A discount percentage that will be deducted from the price that the car owner will be charged
+lineItems.grossPrice                  | float         | no            | The listed sales price for the item
+lineItems.netPrice                    | float         | no            | The purchase price for the workshop
+lineItems.quantity                    | float         | no            | The number of units
+lineItems.discountedCustomerPrice     | float         | no            | The customer unit price minus discount
+lineItems.subtotal                    | float         | no            | The number of units multiplied by the discounted customer price
 
 ## marketPrice
 
@@ -414,7 +511,7 @@ Attribute      | Type    | Can be blank? | Description
 id             | int     | no            | id of the user
 name           | string  | no            | Name of the user
 city           | string  | no            | User's location - city
-zip            | string  | no            | User's location - zip code 
+zip            | string  | no            | User's location - zip code
 
 ## campaignDetails
 
@@ -455,7 +552,7 @@ title            | string        | yes           | The campaign title that is sh
 backgroundUrl    | string        | yes           | The campaign background url that is shown on the frontend
 link             | string        | no            | The link to the campaign page on Autobutler
 lineItemPrice    | integer       | yes           | The line item price for jobs, related for current campaign
-shortDescription | string        | yes           | The short description text for current campaign 
+shortDescription | string        | yes           | The short description text for current campaign
 fullDescription  | string        | yes           | The full description text for current campaign
 statDate         | string        | no            | The start date of the first campaign's online period
 endDate          | string        | no            | The end date of the first campaign's online period
@@ -463,3 +560,44 @@ signupType       | string        | yes           | The signup type for current m
 isNew            | boolean       | no            | The boolean representing if current campaign is new for current mechanic
 benefits         | array(string) | yes           | The array of strings representing benefits of current campaign
 conditions       | array(string) | yes           | The array of strings representing conditions for current campaign
+
+## pagination
+
+> Example:
+
+```json
+{
+  "currentPage": 1,
+  "entriesPerPage": 20,
+  "totalEntries": 606,
+  "totalPages": 31
+}
+```
+
+Attribute        | Type          | Can be blank? | Description
+---------------- | ------------- | ------------- | -----------------------------------------------------------------------------
+currentPage      | integer       | no            | The page of the results that was returned
+entriesPerPage   | integer       | no            | How many entries that are returned per page
+totalEntries     | integer       | no            | How many entries there are in total
+totalPages       | integer       | no            | How many pages there are in total
+
+## jobFilter
+
+> Example:
+
+```json
+{
+  "attributes": {
+    "jobTaskTypeId": null,
+    "makeId": null
+  },
+  "search": null
+}
+```
+
+Attribute                | Type          | Can be blank? | Description
+------------------------ | ------------- | ------------- | -----------------------------------------------------------------------------
+attributes               | object        | no            | An object representing the direct attribute filters that were applied to the result
+attributes.jobTaskTypeId | integer       | yes           | The id of the job task type that was used to filter the results
+attributes.makeId        | integer       | yes           | The id of the car make that was used to filter the results
+search                   | string        | yes           | The search string that was used to filter the results
