@@ -18,10 +18,12 @@ includes:
   - mechanic_integrations
   - mechanic_sub_contractors
   - jobs
+  - offers
   - payment_subscriptions
   - product_subscriptions
   - settings
   - vehicle_info
+  - archive
   - objects
   - errors
   - conversations
