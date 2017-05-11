@@ -395,7 +395,7 @@ phoneNumber                                  | string        | yes           | T
 phoneNumberJobRelated                        | string        | yes           | The job related phone number of the workshop
 place                                        | string        | no            | The city where the workshop is located
 placeBilling                                 | string        | yes           | The city where invoices should be sent
-primaryDashboard                             | string        | no            | The users primary dashboard skin
+primaryDashboard                             | string        | no            | The user's primary dashboard skin
 properName                                   | string        | yes           | The legal name of the workshop
 showEmail                                    | boolean       | no            | Weather or not the e-mail address of the workshop can be shown publically
 showPhoneNumber                              | boolean       | no            | Weather or not the phone number of the workshop can be shown publically
