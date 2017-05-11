@@ -244,6 +244,7 @@ jQuery.ajax({
   "phoneNumberJobRelated": "77343221",
   "place": "København S",
   "placeBilling": "København S",
+  "primaryDashboard": "AUTOBUTLER",
   "properName": "Dippels Testværksted",
   "showEmail": false,
   "showPhoneNumber": true,
@@ -394,7 +395,8 @@ phoneNumber                                  | string        | yes           | T
 phoneNumberJobRelated                        | string        | yes           | The job related phone number of the workshop
 place                                        | string        | no            | The city where the workshop is located
 placeBilling                                 | string        | yes           | The city where invoices should be sent
-properName                                   | string        | yes           | The legal name of the workshop
+primaryDashboard                             | string        | no            | The user's primary dashboard skin
+properName                                   | string        | yes           | The legal name of the workshop
 showEmail                                    | boolean       | no            | Weather or not the e-mail address of the workshop can be shown publically
 showPhoneNumber                              | boolean       | no            | Weather or not the phone number of the workshop can be shown publically
 specialties                                  | array(object) | no            | A list of objects representing the different job task types that the workshop specilises in
