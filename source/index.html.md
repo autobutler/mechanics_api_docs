@@ -21,6 +21,7 @@ includes:
   - deleted_jobs
   - unreviewed_jobs
   - offers
+  - reviews
   - payment_subscriptions
   - product_subscriptions
   - settings
