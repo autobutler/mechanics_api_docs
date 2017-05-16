@@ -206,3 +206,56 @@ Attribute          | Type    | Can be blank? | Description
 ------------------ | ------- | ------------- | ------------------------------------------
 review_request     | object  | no            | A <a href="#reviewrequest">reviewRequest</a> object that contains the details of the review request
 
+## Review: Get reviews from review requests
+> To get reviews from review requests, use the following code:
+
+```shell
+curl -X "GET" "https://www.autobutler.dk/api/v2/mechanics/review_requests/reviews" \
+     -H "Authorization: token"
+```
+
+```javascript
+jQuery.ajax({
+    url: "https://www.autobutler.dk/api/v2/mechanics/review_requests/reviews",
+    type: "GET",
+    headers: {
+        "Authorization": "token",
+    },
+})
+.done(function(data, textStatus, jqXHR) {
+    console.log("HTTP Request Succeeded: " + jqXHR.status);
+    console.log(data);
+})
+.fail(function(jqXHR, textStatus, errorThrown) {
+    console.log("HTTP Request Failed");
+})
+.always(function() {
+    /* ... */
+});
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "reviews": [
+    {
+      "review": {},
+      "reviewRequest": {}
+    }
+  ]
+}
+```
+
+This endpoint returns a list of reviews that came from a review request.
+
+### HTTP Request
+
+`GET https://www.autobutler.dk/api/v2/mechanics/review_requests/reviews`
+
+### Response JSON
+
+Attribute       | Type    | Can be blank? | Description
+--------------- | ------- | ------------- | -----------------------------------------------------------------------------------------------------------------------------
+review          | object  | no            | A <a href="#jobdetails">jobDetails</a> object that contains the details of the job
+review_request  | object  | no            | A <a href="#reviewrequest">reviewRequest</a> object that contains the details of the review request
