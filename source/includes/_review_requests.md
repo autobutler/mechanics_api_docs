@@ -35,18 +35,8 @@ jQuery.ajax({
 {
   "reviewRequests": [
     {
-      "id": 1,
-      "name": "John Doe",
-      "email": "some@email",
-      "phoneNumber": "12345678",
-      "registrationNumber": "AA11111",
-      "make": "Ford",
-      "model": "Focus",
-      "comment": "Some comment",
-      "createdAt": "2017-01-01",
-      "expiresAt": "2017-01-01",
-      "jobName": "Service"
-    },
+      "reviewRequest": {}
+    }
   ]
 }
 ```
@@ -62,17 +52,7 @@ ordered by their title.
 
 Attribute          | Type    | Can be blank? | Description
 ------------------ | ------- | ------------- | ------------------------------------------
-id                 | integer | no            | The id of the Review Request
-name               | string  | yes           | The name of the car owner
-email              | string  | yes           | The email of the car owner
-phoneNumner        | string  | yes           | The phone number of the car owner
-registrationNumber | string  | yes           | The registration number of the car
-make               | string  | yes           | The make of the car
-model              | string  | yes           | The model of the car
-comment            | string  | yes           | The comment for the review requst
-createdAt          | string  | yes           | The timestamp when the request was created
-expiresAt          | string  | yes           | The timestamp when the request expires
-jobName            | string  | yes           | The translated name for the job tasks
+review_request     | object  | no            | A <a href="#reviewrequest">reviewRequest</a> object that contains the details of the review request
 
 ## Create new Review Request
 
@@ -204,19 +184,7 @@ jQuery.ajax({
 
 ```json
 {
-  "reviewRequest": {
-    "id": 1,
-    "name": "John Doe",
-    "email": "some@email",
-    "phoneNumber": "12345678",
-    "registrationNumber": "AA11111",
-    "make": "Ford",
-    "model": "Focus",
-    "comment": "Some comment",
-    "createdAt": "2017-01-01",
-    "expiresAt": "2017-01-01",
-    "jobName": "Service"
-  }
+  "reviewRequest": {}
 }
 ```
 
@@ -236,14 +204,5 @@ id        | nil     | yes       | The id of the Review Request
 
 Attribute          | Type    | Can be blank? | Description
 ------------------ | ------- | ------------- | ------------------------------------------
-id                 | integer | no            | The id of the Review Request
-name               | string  | yes           | The name of the car owner
-email              | string  | yes           | The email of the car owner
-phoneNumner        | string  | yes           | The phone number of the car owner
-registrationNumber | string  | yes           | The registration number of the car
-make               | string  | yes           | The make of the car
-model              | string  | yes           | The model of the car
-comment            | string  | yes           | The comment for the review requst
-createdAt          | string  | yes           | The timestamp when the request was created
-expiresAt          | string  | yes           | The timestamp when the request expires
-jobName            | string  | yes           | The translated name for the job tasks
+review_request     | object  | no            | A <a href="#reviewrequest">reviewRequest</a> object that contains the details of the review request
+

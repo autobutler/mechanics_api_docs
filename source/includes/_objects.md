@@ -601,3 +601,31 @@ attributes               | object        | no            | An object representin
 attributes.jobTaskTypeId | integer       | yes           | The id of the job task type that was used to filter the results
 attributes.makeId        | integer       | yes           | The id of the car make that was used to filter the results
 search                   | string        | yes           | The search string that was used to filter the results
+
+## reviewRequest
+
+> Example:
+
+```json
+{
+  "id": 1,
+  "name": "Foo",
+  "email": "foo@example.com",
+  "phoneNumber": "12345678",
+  "registrationNumber": "AB12345",
+  "make": "Renault",
+  "model": "2598",
+  "comment": "Hello..."
+}
+```
+
+Attribute          | Type    | Can be blank? | Description
+------------------ | ------- | ------------- | ------------------------------------------
+id                 | integer | no            | The id of the Review Request
+name               | string  | yes           | The name of the car owner
+email              | string  | yes           | The email of the car owner
+phoneNumner        | string  | yes           | The phone number of the car owner
+registrationNumber | string  | yes           | The registration number of the car
+make               | string  | yes           | The make of the car
+model              | string  | yes           | The model of the car
+comment            | string  | yes           | The comment for the review requst
