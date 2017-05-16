@@ -26,6 +26,8 @@ includes:
   - objects
   - errors
   - conversations
+  - reviews
+  - review_requests
   - campaigns
 
 search: true
