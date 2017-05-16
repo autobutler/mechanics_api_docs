@@ -257,5 +257,5 @@ This endpoint returns a list of reviews that came from a review request.
 
 Attribute       | Type    | Can be blank? | Description
 --------------- | ------- | ------------- | -----------------------------------------------------------------------------------------------------------------------------
-review          | object  | no            | A <a href="#jobdetails">jobDetails</a> object that contains the details of the job
+review          | object  | no            | A <a href="#review">review</a> object that contains the details of the review
 review_request  | object  | no            | A <a href="#reviewrequest">reviewRequest</a> object that contains the details of the review request
