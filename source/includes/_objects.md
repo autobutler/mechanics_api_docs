@@ -601,3 +601,74 @@ attributes               | object        | no            | An object representin
 attributes.jobTaskTypeId | integer       | yes           | The id of the job task type that was used to filter the results
 attributes.makeId        | integer       | yes           | The id of the car make that was used to filter the results
 search                   | string        | yes           | The search string that was used to filter the results
+
+## review
+
+> Example:
+
+```json
+{
+  "id": 70116,
+  "author": "Lars Larsen",
+  "createdAt": "2017-05-01T15:45:25.852+02:00",
+  "comment": "",
+  "additionalComment": "",
+  "rating": 3,
+  "reviewRatings": [
+    {
+      "rating": null,
+      "category": "Test 3"
+    },
+    {
+      "rating": null,
+      "category": "Test 2"
+    },
+    {
+      "rating": null,
+      "category": "Test 1"
+    }
+  ]
+}
+```
+
+
+Attribute                    | Type          | Can be blank? | Description
+---------------------------- | -------       | ------------- | -----------------
+review                       | object        | no            | The review object
+review.id                    | integer       | no            | The id of the review
+review.author                | string        | no            | Author of the review
+review.createdAt             | string        | no            | A timestamp for when the review was created
+review.comment               | string        | yes           | A comment the author wrote for the review
+review.additionalComment     | string        | yes           | An additional comment the author wrote for the review
+review.rating                | integer       | no            | A number from 1-5 the author gave
+review.reviewRatings         | array(object) | no            | An array of ratings included in the review
+review.reviewRatings.rating  | integer       | yes           | A number from 1-5 for additional ratings
+review.reviewRatings.category| string        | no            | A description of the additional rating
+
+## reviewRequest
+
+> Example:
+
+```json
+{
+  "id": 1,
+  "name": "Foo",
+  "email": "foo@example.com",
+  "phoneNumber": "12345678",
+  "registrationNumber": "AB12345",
+  "make": "Renault",
+  "model": "2598",
+  "comment": "Hello..."
+}
+```
+
+Attribute          | Type    | Can be blank? | Description
+------------------ | ------- | ------------- | ------------------------------------------
+id                 | integer | no            | The id of the Review Request
+name               | string  | yes           | The name of the car owner
+email              | string  | yes           | The email of the car owner
+phoneNumner        | string  | yes           | The phone number of the car owner
+registrationNumber | string  | yes           | The registration number of the car
+make               | string  | yes           | The make of the car
+model              | string  | yes           | The model of the car
+comment            | string  | yes           | The comment for the review requst
