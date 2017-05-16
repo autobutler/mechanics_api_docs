@@ -3222,6 +3222,206 @@ on.</p>
 </tr>
 </tbody></table>
 
+          <h1 id="unreviewed-jobs">Unreviewed Jobs</h1>
+
+<h2 id="get-a-list-of-jobs-without-a-review">Get a list of jobs without a review</h2>
+
+<blockquote>
+<p>To obtain a list of jobs, use the following code:</p>
+</blockquote>
+<pre class="highlight shell"><code>curl -X <span class="s2">"GET"</span> <span class="s2">"https://www.autobutler.dk/api/v2/mechanics/unreviewed_jobs"</span> <span class="se">\</span>
+     -H <span class="s2">"Authorization: token"</span>
+</code></pre><pre class="highlight javascript"><code><span class="nx">jQuery</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s2">"https://www.autobutler.dk/api/v2/mechanics/unreviewed_jobs"</span><span class="p">,</span>
+  <span class="na">type</span><span class="p">:</span> <span class="s2">"GET"</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"Authorization"</span><span class="p">:</span> <span class="s2">"token"</span><span class="p">,</span>
+  <span class="p">},</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">textStatus</span><span class="p">,</span> <span class="nx">jqXHR</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"HTTP Request Succeeded: "</span> <span class="o">+</span> <span class="nx">jqXHR</span><span class="p">.</span><span class="nx">status</span><span class="p">);</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">fail</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">jqXHR</span><span class="p">,</span> <span class="nx">textStatus</span><span class="p">,</span> <span class="nx">errorThrown</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"HTTP Request Failed"</span><span class="p">);</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">always</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="cm">/* ... */</span>
+<span class="p">});</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"jobs"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint returns a list of completed jobs without a review.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://www.autobutler.dk/api/v2/mechanics/unreviewed_jobs</code></p>
+
+<h3 id="response-json">Response JSON</h3>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Can be blank?</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>job</td>
+<td>object</td>
+<td>no</td>
+<td>A <a href="#jobdetails">jobDetails</a> object that contains the details of the job</td>
+</tr>
+<tr>
+<td>offer</td>
+<td>object</td>
+<td>yes</td>
+<td>A <a href="#offerdetails">offerDetails</a> object that contains the details of the existing offer</td>
+</tr>
+</tbody></table>
+
+          <h1 id="offers">Offers</h1>
+
+<h2 id="get-a-list-of-sent-offers">Get a list of sent offers</h2>
+
+<blockquote>
+<p>To obtain a list of sent offers, use the following code:</p>
+</blockquote>
+<pre class="highlight shell"><code>curl -X <span class="s2">"GET"</span> <span class="s2">"https://www.autobutler.dk/api/v2/mechanics/offers"</span> <span class="se">\</span>
+     -H <span class="s2">"Authorization: token"</span>
+</code></pre><pre class="highlight javascript"><code><span class="nx">jQuery</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s2">"https://www.autobutler.dk/api/v2/mechanics/offers"</span><span class="p">,</span>
+  <span class="na">type</span><span class="p">:</span> <span class="s2">"GET"</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"Authorization"</span><span class="p">:</span> <span class="s2">"token"</span><span class="p">,</span>
+  <span class="p">},</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">textStatus</span><span class="p">,</span> <span class="nx">jqXHR</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"HTTP Request Succeeded: "</span> <span class="o">+</span> <span class="nx">jqXHR</span><span class="p">.</span><span class="nx">status</span><span class="p">);</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">fail</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">jqXHR</span><span class="p">,</span> <span class="nx">textStatus</span><span class="p">,</span> <span class="nx">errorThrown</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"HTTP Request Failed"</span><span class="p">);</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">always</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="cm">/* ... */</span>
+<span class="p">});</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"offers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"job"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+      </span><span class="nt">"offer"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"pagination"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"currentPage"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"entriesPerPage"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"totalEntries"</span><span class="p">:</span><span class="w"> </span><span class="mi">4144</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"totalPages"</span><span class="p">:</span><span class="w"> </span><span class="mi">208</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"filter"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"jobTaskTypeId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"makeId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"search"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint returns a list of offers that have been sent by the workshop.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://www.autobutler.dk/api/v2/mechanics/offers</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Required?</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>page</td>
+<td>1</td>
+<td>no</td>
+<td>The page of the result to return</td>
+</tr>
+<tr>
+<td>makeId</td>
+<td>null</td>
+<td>no</td>
+<td>Only show offers for jobs where the car is of the given make</td>
+</tr>
+<tr>
+<td>jobTaskTypeId</td>
+<td>null</td>
+<td>no</td>
+<td>Only show offers for jobs that contain at least one job task of the given type</td>
+</tr>
+<tr>
+<td>search</td>
+<td>null</td>
+<td>no</td>
+<td>Only show offers for jobs where the reference number, registration number, car make, car model or job name matches the given string</td>
+</tr>
+</tbody></table>
+
+<h3 id="response-json">Response JSON</h3>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Can be blank?</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>offers</td>
+<td>array</td>
+<td>no</td>
+<td>A list of offers along with their job.</td>
+</tr>
+<tr>
+<td>offers.job</td>
+<td>object</td>
+<td>no</td>
+<td>A <a href="#joboverview">jobOverview</a> object</td>
+</tr>
+<tr>
+<td>offers.offer</td>
+<td>object</td>
+<td>no</td>
+<td>A <a href="#offerdetails">offerDetails</a> object</td>
+</tr>
+<tr>
+<td>pagination</td>
+<td>object</td>
+<td>no</td>
+<td>A <a href="#pagination">pagination</a> object</td>
+</tr>
+<tr>
+<td>filter</td>
+<td>object</td>
+<td>no</td>
+<td>A <a href="#jobfilter">jobFilter</a> object</td>
+</tr>
+</tbody></table>
+
           <h1 id="payment-subscriptions">Payment Subscriptions</h1>
 
 <h2 id="get-a-list-of-active-payment-subscriptions">Get a list of active Payment Subscriptions</h2>
@@ -7467,6 +7667,178 @@ The JSON values in this nested object is the same as in the
 </tr>
 </tbody></table>
 
+<h2 id="review">review</h2>
+
+<blockquote>
+<p>Example:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">70116</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"author"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lars Larsen"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-05-01T15:45:25.852+02:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"comment"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"additionalComment"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"rating"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"reviewRatings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"rating"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test 3"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"rating"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test 2"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"rating"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test 1"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Can be blank?</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>review</td>
+<td>object</td>
+<td>no</td>
+<td>The review object</td>
+</tr>
+<tr>
+<td>review.id</td>
+<td>integer</td>
+<td>no</td>
+<td>The id of the review</td>
+</tr>
+<tr>
+<td>review.author</td>
+<td>string</td>
+<td>no</td>
+<td>Author of the review</td>
+</tr>
+<tr>
+<td>review.createdAt</td>
+<td>string</td>
+<td>no</td>
+<td>A timestamp for when the review was created</td>
+</tr>
+<tr>
+<td>review.comment</td>
+<td>string</td>
+<td>yes</td>
+<td>A comment the author wrote for the review</td>
+</tr>
+<tr>
+<td>review.additionalComment</td>
+<td>string</td>
+<td>yes</td>
+<td>An additional comment the author wrote for the review</td>
+</tr>
+<tr>
+<td>review.rating</td>
+<td>integer</td>
+<td>no</td>
+<td>A number from 1-5 the author gave</td>
+</tr>
+<tr>
+<td>review.reviewRatings</td>
+<td>array(object)</td>
+<td>no</td>
+<td>An array of ratings included in the review</td>
+</tr>
+<tr>
+<td>review.reviewRatings.rating</td>
+<td>integer</td>
+<td>yes</td>
+<td>A number from 1-5 for additional ratings</td>
+</tr>
+<tr>
+<td>review.reviewRatings.category</td>
+<td>string</td>
+<td>no</td>
+<td>A description of the additional rating</td>
+</tr>
+</tbody></table>
+
+<h2 id="reviewrequest">reviewRequest</h2>
+
+<blockquote>
+<p>Example:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Foo"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"foo@example.com"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"registrationNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AB12345"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"make"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Renault"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2598"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"comment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hello..."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Can be blank?</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>no</td>
+<td>The id of the Review Request</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>yes</td>
+<td>The name of the car owner</td>
+</tr>
+<tr>
+<td>email</td>
+<td>string</td>
+<td>yes</td>
+<td>The email of the car owner</td>
+</tr>
+<tr>
+<td>phoneNumner</td>
+<td>string</td>
+<td>yes</td>
+<td>The phone number of the car owner</td>
+</tr>
+<tr>
+<td>registrationNumber</td>
+<td>string</td>
+<td>yes</td>
+<td>The registration number of the car</td>
+</tr>
+<tr>
+<td>make</td>
+<td>string</td>
+<td>yes</td>
+<td>The make of the car</td>
+</tr>
+<tr>
+<td>model</td>
+<td>string</td>
+<td>yes</td>
+<td>The model of the car</td>
+</tr>
+<tr>
+<td>comment</td>
+<td>string</td>
+<td>yes</td>
+<td>The comment for the review requst</td>
+</tr>
+</tbody></table>
+
           <h1 id="errors">Errors</h1>
 
 <aside class="notice">This error section is stored in a separate file in `includes/_errors.md`. Slate allows you to optionally separate out your docs into many files&hellip;just save them to the `includes` folder and add them to the top of your `index.md`&rsquo;s frontmatter. Files are included in the order listed.</aside>
@@ -7814,6 +8186,719 @@ The JSON values in this nested object is the same as in the
 <td>integer</td>
 <td>no</td>
 <td>The number of conversations for current mechanic, that have unread messages</td>
+</tr>
+</tbody></table>
+
+          <h1 id="reviews">Reviews</h1>
+
+<h2 id="get-a-list-of-reviews">Get a list of reviews</h2>
+
+<blockquote>
+<p>To obtain a list of reviews, use the following code:</p>
+</blockquote>
+<pre class="highlight shell"><code>curl -X <span class="s2">"GET"</span> <span class="s2">"https://www.autobutler.dk/api/v2/mechanics/reviews"</span> <span class="se">\</span>
+     -H <span class="s2">"Authorization: token"</span>
+</code></pre><pre class="highlight javascript"><code><span class="nx">jQuery</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+    <span class="na">url</span><span class="p">:</span> <span class="s2">"https://www.autobutler.dk/api/v2/mechanics/reviews"</span><span class="p">,</span>
+    <span class="na">type</span><span class="p">:</span> <span class="s2">"GET"</span><span class="p">,</span>
+    <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"Authorization"</span><span class="p">:</span> <span class="s2">"token"</span><span class="p">,</span>
+    <span class="p">},</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">textStatus</span><span class="p">,</span> <span class="nx">jqXHR</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"HTTP Request Succeeded: "</span> <span class="o">+</span> <span class="nx">jqXHR</span><span class="p">.</span><span class="nx">status</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">fail</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">jqXHR</span><span class="p">,</span> <span class="nx">textStatus</span><span class="p">,</span> <span class="nx">errorThrown</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"HTTP Request Failed"</span><span class="p">);</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">always</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="cm">/* ... */</span>
+<span class="p">});</span>
+
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"reviews"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"review"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">70116</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"author"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lars Larsen"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-05-01T15:45:25.852+02:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"comment"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"additionalComment"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"rating"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"reviewRatings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"rating"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test 3"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"rating"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test 2"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"rating"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test 1"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"offer"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+      </span><span class="nt">"job"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint returns a list of reviews for the workshop filtered by year and month.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://www.autobutler.dk/api/v2/mechanics/reviews</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>year</td>
+<td>integer</td>
+<td><code class="prettyprint">null</code></td>
+<td>no</td>
+<td>Filter the results to reviews that were created within this year. Defaults to the current year.</td>
+</tr>
+<tr>
+<td>month</td>
+<td>integer</td>
+<td><code class="prettyprint">null</code></td>
+<td>no</td>
+<td>Filter the results to reviews that were created within this month number. Defaults to the current month number.</td>
+</tr>
+</tbody></table>
+
+<h3 id="response-json">Response JSON</h3>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Can be blank?</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>review</td>
+<td>object</td>
+<td>no</td>
+<td>The review object</td>
+</tr>
+<tr>
+<td>review.id</td>
+<td>integer</td>
+<td>no</td>
+<td>The id of the review</td>
+</tr>
+<tr>
+<td>review.author</td>
+<td>string</td>
+<td>no</td>
+<td>Author of the review</td>
+</tr>
+<tr>
+<td>review.createdAt</td>
+<td>string</td>
+<td>no</td>
+<td>A timestamp for when the review was created</td>
+</tr>
+<tr>
+<td>review.comment</td>
+<td>string</td>
+<td>yes</td>
+<td>A comment the author wrote for the review</td>
+</tr>
+<tr>
+<td>review.additionalComment</td>
+<td>string</td>
+<td>yes</td>
+<td>An additional comment the author wrote for the review</td>
+</tr>
+<tr>
+<td>review.rating</td>
+<td>integer</td>
+<td>no</td>
+<td>A number from 1-5 the author gave</td>
+</tr>
+<tr>
+<td>review.reviewRatings</td>
+<td>array(object)</td>
+<td>no</td>
+<td>An array of ratings included in the review</td>
+</tr>
+<tr>
+<td>review.reviewRatings.rating</td>
+<td>integer</td>
+<td>yes</td>
+<td>A number from 1-5 for additional ratings</td>
+</tr>
+<tr>
+<td>review.reviewRatings.category</td>
+<td>string</td>
+<td>no</td>
+<td>A description of the additional rating</td>
+</tr>
+<tr>
+<td>offer</td>
+<td>object</td>
+<td>yes</td>
+<td>An <a href="#offerdetails">offerDetails</a> object associated with the review. Is empty if the review came from a review request</td>
+</tr>
+<tr>
+<td>job</td>
+<td>object</td>
+<td>yes</td>
+<td>A <a href="#jobdetails">jobDetails</a> object associated with the review. Is empty if the review came from a review request</td>
+</tr>
+</tbody></table>
+
+<h2 id="respond-to-a-review">Respond to a review</h2>
+
+<blockquote>
+<p>To respond to a review, use the following code:</p>
+</blockquote>
+<pre class="highlight shell"><code>curl -X <span class="s2">"POST"</span> <span class="s2">"https://www.autobutler.dk/api/v2/mechanics/reviews/{reviewId}/respond"</span> <span class="se">\</span>
+     -H <span class="s2">"Authorization: token"</span> <span class="se">\</span>
+     -H <span class="s2">"Content-Type: application/json; charset=utf-8"</span> <span class="se">\</span>
+     -d <span class="s2">"{</span><span class="se">\"</span><span class="s2">body</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">Some respond.</span><span class="se">\"</span><span class="s2">}"</span>
+</code></pre><pre class="highlight javascript"><code><span class="nx">jQuery</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+    <span class="na">url</span><span class="p">:</span> <span class="s2">"https://www.autobutler.dk/api/v2/mechanics/reviews/{reviewId}/respond"</span><span class="p">,</span>
+    <span class="na">type</span><span class="p">:</span> <span class="s2">"POST"</span><span class="p">,</span>
+    <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"Authorization"</span><span class="p">:</span> <span class="s2">"token"</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="na">contentType</span><span class="p">:</span> <span class="s2">"application/json"</span><span class="p">,</span>
+    <span class="na">data</span><span class="p">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
+        <span class="s2">"body"</span><span class="p">:</span> <span class="s2">"Some respond."</span>
+    <span class="p">})</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">textStatus</span><span class="p">,</span> <span class="nx">jqXHR</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"HTTP Request Succeeded: "</span> <span class="o">+</span> <span class="nx">jqXHR</span><span class="p">.</span><span class="nx">status</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">fail</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">jqXHR</span><span class="p">,</span> <span class="nx">textStatus</span><span class="p">,</span> <span class="nx">errorThrown</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"HTTP Request Failed"</span><span class="p">);</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">always</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="cm">/* ... */</span>
+<span class="p">});</span>
+
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint creates a respond to a review.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST https://www.autobutler.dk/api/v2/mechanics/reviews/{reviewId}/respond</code></p>
+
+<h3 id="request-json">Request JSON</h3>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Required?</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>body</td>
+<td>string</td>
+<td>yes</td>
+<td>The respond text</td>
+</tr>
+</tbody></table>
+
+<h3 id="response-json">Response JSON</h3>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Can be blank?</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>success</td>
+<td>boolean</td>
+<td>no</td>
+<td>Indicates whether or not a respond to the review was created</td>
+</tr>
+</tbody></table>
+
+          <h1 id="review-request">Review Request</h1>
+
+<h2 id="get-a-list-of-review-requests">Get a list of Review Requests</h2>
+
+<blockquote>
+<p>To obtain a list of Review Requests, use the following code:</p>
+</blockquote>
+<pre class="highlight shell"><code>curl -X <span class="s2">"GET"</span> <span class="s2">"https://www.autobutler.dk/api/v2/mechanics/review_requests"</span> <span class="se">\</span>
+     -H <span class="s2">"Authorization: token"</span>
+</code></pre><pre class="highlight javascript"><code><span class="nx">jQuery</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+    <span class="na">url</span><span class="p">:</span> <span class="s2">"https://www.autobutler.dk/api/v2/mechanics/review_requests"</span><span class="p">,</span>
+    <span class="na">type</span><span class="p">:</span> <span class="s2">"GET"</span><span class="p">,</span>
+    <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"Authorization"</span><span class="p">:</span> <span class="s2">"token"</span><span class="p">,</span>
+    <span class="p">},</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">textStatus</span><span class="p">,</span> <span class="nx">jqXHR</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"HTTP Request Succeeded: "</span> <span class="o">+</span> <span class="nx">jqXHR</span><span class="p">.</span><span class="nx">status</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">fail</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">jqXHR</span><span class="p">,</span> <span class="nx">textStatus</span><span class="p">,</span> <span class="nx">errorThrown</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"HTTP Request Failed"</span><span class="p">);</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">always</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="cm">/* ... */</span>
+<span class="p">});</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"reviewRequests"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"reviewRequest"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint returns a list of all review requests for the mechanic
+ordered by their title.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://www.autobutler.dk/api/v2/mechanics/review_requests</code></p>
+
+<h3 id="response-json">Response JSON</h3>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Can be blank?</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>review_request</td>
+<td>object</td>
+<td>no</td>
+<td>A <a href="#reviewrequest">reviewRequest</a> object that contains the details of the review request</td>
+</tr>
+</tbody></table>
+
+<h2 id="create-new-review-request">Create new Review Request</h2>
+
+<blockquote>
+<p>To create a new Review Request, use the following code:</p>
+</blockquote>
+<pre class="highlight shell"><code>curl -X <span class="s2">"POST"</span> <span class="s2">"https://www.autobutler.dk/api/v2/mechanics/review_requests"</span> <span class="se">\</span>
+<span class="gp">&gt; </span>-H <span class="s2">"token"</span> <span class="se">\</span>
+<span class="gp">&gt; </span>-H <span class="s2">"Content-Type: application/json; charset=utf-8"</span> <span class="se">\</span>
+<span class="gp">&gt; </span>-d <span class="s2">"{</span><span class="se">\"</span><span class="s2">title</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">Wubba Lubba</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">signature</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">dub dub</span><span class="se">\"</span><span class="s2">}"</span>
+</code></pre><pre class="highlight javascript"><code><span class="nx">jQuery</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+    <span class="na">url</span><span class="p">:</span> <span class="s2">"https://www.autobutler.dk/api/v2/mechanics/review_requests"</span><span class="p">,</span>
+    <span class="na">type</span><span class="p">:</span> <span class="s2">"POST"</span><span class="p">,</span>
+    <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"Authorization"</span><span class="p">:</span> <span class="s2">"token"</span><span class="p">,</span>
+        <span class="s2">"Content-Type"</span><span class="p">:</span> <span class="s2">"application/json; charset=utf-8"</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="na">contentType</span><span class="p">:</span> <span class="s2">"application/json"</span><span class="p">,</span>
+    <span class="na">data</span><span class="p">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
+      <span class="s2">"reviewRequest"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"John Doe"</span><span class="p">,</span>
+        <span class="s2">"email"</span><span class="p">:</span> <span class="s2">"some@gemail"</span><span class="p">,</span>
+        <span class="s2">"phoneNumber"</span><span class="p">:</span> <span class="s2">"12345678"</span><span class="p">,</span>
+        <span class="s2">"registrationNumber"</span><span class="p">:</span> <span class="s2">"AA11111"</span><span class="p">,</span>
+        <span class="s2">"make"</span><span class="p">:</span> <span class="s2">"Ford"</span><span class="p">,</span>
+        <span class="s2">"model"</span><span class="p">:</span> <span class="s2">"Focus"</span><span class="p">,</span>
+        <span class="s2">"comment"</span><span class="p">:</span> <span class="s2">"Some comment"</span><span class="p">,</span>
+        <span class="s2">"jobTaskTypeIds"</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+      <span class="p">}</span>
+    <span class="p">})</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">textStatus</span><span class="p">,</span> <span class="nx">jqXHR</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"HTTP Request Succeeded: "</span> <span class="o">+</span> <span class="nx">jqXHR</span><span class="p">.</span><span class="nx">status</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">fail</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">jqXHR</span><span class="p">,</span> <span class="nx">textStatus</span><span class="p">,</span> <span class="nx">errorThrown</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"HTTP Request Failed"</span><span class="p">);</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">always</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="cm">/* ... */</span>
+<span class="p">});</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this when the Review Request was created successfully:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this when the Review Request could not be created:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint creates a new Review Request for the workshop.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST https://www.autobutler.dk/api/v2/mechanics/review_requests</code></p>
+
+<h3 id="request-json">Request JSON</h3>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Can be blank?</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>yes</td>
+<td>The name of the car owner</td>
+</tr>
+<tr>
+<td>email</td>
+<td>string</td>
+<td>yes</td>
+<td>The email of the car owner</td>
+</tr>
+<tr>
+<td>phoneNumner</td>
+<td>string</td>
+<td>yes</td>
+<td>The phone number of the car owner</td>
+</tr>
+<tr>
+<td>registrationNumber</td>
+<td>string</td>
+<td>yes</td>
+<td>The registration number of the car</td>
+</tr>
+<tr>
+<td>make</td>
+<td>string</td>
+<td>yes</td>
+<td>The make of the car</td>
+</tr>
+<tr>
+<td>model</td>
+<td>string</td>
+<td>yes</td>
+<td>The model of the car</td>
+</tr>
+<tr>
+<td>comment</td>
+<td>string</td>
+<td>yes</td>
+<td>The comment for the review requst</td>
+</tr>
+<tr>
+<td>createdAt</td>
+<td>string</td>
+<td>yes</td>
+<td>The timestamp when the request was created</td>
+</tr>
+<tr>
+<td>expiresAt</td>
+<td>string</td>
+<td>yes</td>
+<td>The timestamp when the request expires</td>
+</tr>
+<tr>
+<td>jobTaskTypeIds</td>
+<td>array</td>
+<td>yes</td>
+<td>The ids of the job task types</td>
+</tr>
+</tbody></table>
+
+<h3 id="response-json">Response JSON</h3>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Can be blank?</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>success</td>
+<td>boolean</td>
+<td>no</td>
+<td>Weather or not the Review Request could be created</td>
+</tr>
+</tbody></table>
+
+<h3 id="potential-errors">Potential Errors</h3>
+
+<table><thead>
+<tr>
+<th>Error Code</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>400</td>
+<td>The Review Request could not be created. See the <code class="prettyprint">errors</code>-value in the response for details</td>
+</tr>
+</tbody></table>
+
+<h2 id="get-an-existing-review-request">Get an existing Review Request</h2>
+
+<blockquote>
+<p>To get an existing Review Request, use the following code:</p>
+</blockquote>
+<pre class="highlight shell"><code>curl -X <span class="s2">"GET"</span> <span class="s2">"https://www.autobutler.dk/api/v2/mechanics/review_requests/1"</span> <span class="se">\</span>
+     -H <span class="s2">"Authorization: token"</span> <span class="se">\</span>
+     -H <span class="s2">"Content-Type: application/json; charset=utf-8"</span>
+</code></pre><pre class="highlight javascript"><code><span class="nx">jQuery</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+    <span class="na">url</span><span class="p">:</span> <span class="s2">"https://www.autobutler.dk/api/v2/mechanics/review_requests/1"</span><span class="p">,</span>
+    <span class="na">type</span><span class="p">:</span> <span class="s2">"GET"</span><span class="p">,</span>
+    <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"Authorization"</span><span class="p">:</span> <span class="s2">"token"</span><span class="p">,</span>
+        <span class="s2">"Content-Type"</span><span class="p">:</span> <span class="s2">"application/json; charset=utf-8"</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="na">contentType</span><span class="p">:</span> <span class="s2">"application/json"</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">textStatus</span><span class="p">,</span> <span class="nx">jqXHR</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"HTTP Request Succeeded: "</span> <span class="o">+</span> <span class="nx">jqXHR</span><span class="p">.</span><span class="nx">status</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">fail</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">jqXHR</span><span class="p">,</span> <span class="nx">textStatus</span><span class="p">,</span> <span class="nx">errorThrown</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"HTTP Request Failed"</span><span class="p">);</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">always</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="cm">/* ... */</span>
+<span class="p">});</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this when the Review Request was updated successfully:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"reviewRequest"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint gets an existing Review Request that belongs to the workshop.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://www.autobutler.dk/api/v2/mechanics/review_requests/{id}</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Required?</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>nil</td>
+<td>yes</td>
+<td>The id of the Review Request</td>
+</tr>
+</tbody></table>
+
+<h3 id="response-json">Response JSON</h3>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Can be blank?</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>review_request</td>
+<td>object</td>
+<td>no</td>
+<td>A <a href="#reviewrequest">reviewRequest</a> object that contains the details of the review request</td>
+</tr>
+</tbody></table>
+
+<h2 id="review-get-reviews-from-review-requests">Review: Get reviews from review requests</h2>
+
+<blockquote>
+<p>To get reviews from review requests, use the following code:</p>
+</blockquote>
+<pre class="highlight shell"><code>curl -X <span class="s2">"GET"</span> <span class="s2">"https://www.autobutler.dk/api/v2/mechanics/review_requests/reviews"</span> <span class="se">\</span>
+     -H <span class="s2">"Authorization: token"</span>
+</code></pre><pre class="highlight javascript"><code><span class="nx">jQuery</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+    <span class="na">url</span><span class="p">:</span> <span class="s2">"https://www.autobutler.dk/api/v2/mechanics/review_requests/reviews"</span><span class="p">,</span>
+    <span class="na">type</span><span class="p">:</span> <span class="s2">"GET"</span><span class="p">,</span>
+    <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"Authorization"</span><span class="p">:</span> <span class="s2">"token"</span><span class="p">,</span>
+    <span class="p">},</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">textStatus</span><span class="p">,</span> <span class="nx">jqXHR</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"HTTP Request Succeeded: "</span> <span class="o">+</span> <span class="nx">jqXHR</span><span class="p">.</span><span class="nx">status</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">fail</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">jqXHR</span><span class="p">,</span> <span class="nx">textStatus</span><span class="p">,</span> <span class="nx">errorThrown</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"HTTP Request Failed"</span><span class="p">);</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">always</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="cm">/* ... */</span>
+<span class="p">});</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"reviews"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"review"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+      </span><span class="nt">"reviewRequest"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint returns a list of reviews that came from a review request.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://www.autobutler.dk/api/v2/mechanics/review_requests/reviews</code></p>
+
+<h3 id="response-json">Response JSON</h3>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Can be blank?</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>review</td>
+<td>object</td>
+<td>no</td>
+<td>A <a href="#review">review</a> object that contains the details of the review</td>
+</tr>
+<tr>
+<td>review_request</td>
+<td>object</td>
+<td>no</td>
+<td>A <a href="#reviewrequest">reviewRequest</a> object that contains the details of the review request</td>
+</tr>
+</tbody></table>
+
+<h2 id="review-respond-to-a-review">Review: Respond to a review</h2>
+
+<blockquote>
+<p>To respond to a review from a review request, use the following code:</p>
+</blockquote>
+<pre class="highlight shell"><code>curl -X <span class="s2">"POST"</span> <span class="s2">"https://www.autobutler.dk/api/v2/mechanics/review_requests/reviews/{reviewId}/respond"</span> <span class="se">\</span>
+     -H <span class="s2">"Authorization: token"</span> <span class="se">\</span>
+     -H <span class="s2">"Content-Type: application/json; charset=utf-8"</span> <span class="se">\</span>
+     -d <span class="s2">"{</span><span class="se">\"</span><span class="s2">body</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">Some respond.</span><span class="se">\"</span><span class="s2">}"</span>
+</code></pre><pre class="highlight javascript"><code><span class="nx">jQuery</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+    <span class="na">url</span><span class="p">:</span> <span class="s2">"https://www.autobutler.dk/api/v2/mechanics/review_requests/reviews/{reviewId}/respond"</span><span class="p">,</span>
+    <span class="na">type</span><span class="p">:</span> <span class="s2">"POST"</span><span class="p">,</span>
+    <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"Authorization"</span><span class="p">:</span> <span class="s2">"token"</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="na">contentType</span><span class="p">:</span> <span class="s2">"application/json"</span><span class="p">,</span>
+    <span class="na">data</span><span class="p">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
+        <span class="s2">"body"</span><span class="p">:</span> <span class="s2">"Some respond."</span>
+    <span class="p">})</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">textStatus</span><span class="p">,</span> <span class="nx">jqXHR</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"HTTP Request Succeeded: "</span> <span class="o">+</span> <span class="nx">jqXHR</span><span class="p">.</span><span class="nx">status</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">fail</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">jqXHR</span><span class="p">,</span> <span class="nx">textStatus</span><span class="p">,</span> <span class="nx">errorThrown</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"HTTP Request Failed"</span><span class="p">);</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">always</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="cm">/* ... */</span>
+<span class="p">});</span>
+
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint creates a respond to a review from a review request.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST https://www.autobutler.dk/api/v2/mechanics/review_requests/reviews/{reviewId}/respond</code></p>
+
+<h3 id="request-json">Request JSON</h3>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Required?</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>body</td>
+<td>string</td>
+<td>yes</td>
+<td>The respond text</td>
+</tr>
+</tbody></table>
+
+<h3 id="response-json">Response JSON</h3>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Can be blank?</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>success</td>
+<td>boolean</td>
+<td>no</td>
+<td>Indicates whether or not a respond to the review was created</td>
 </tr>
 </tbody></table>
 
