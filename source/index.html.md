@@ -18,6 +18,7 @@ includes:
   - mechanic_integrations
   - mechanic_sub_contractors
   - jobs
+  - deleted_jobs
   - unreviewed_jobs
   - offers
   - payment_subscriptions
