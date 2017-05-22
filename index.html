@@ -3551,6 +3551,100 @@ on.</p>
 </tr>
 </tbody></table>
 
+<h2 id="mark-an-offer-as-won">Mark an offer as won</h2>
+
+<blockquote>
+<p>To manually mark an offer as won, use the following code:</p>
+</blockquote>
+<pre class="highlight shell"><code>curl -X <span class="s2">"GET"</span> <span class="s2">"https://www.autobutler.dk/api/v2/mechanics/jobs/12345/offer/mark_as_won"</span> <span class="se">\</span>
+     -H <span class="s2">"Authorization: token"</span>
+</code></pre><pre class="highlight javascript"><code><span class="nx">jQuery</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s2">"https://www.autobutler.dk/api/v2/mechanics/jobs/12345/offer/mark_as_won"</span><span class="p">,</span>
+  <span class="na">type</span><span class="p">:</span> <span class="s2">"GET"</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"Authorization"</span><span class="p">:</span> <span class="s2">"token"</span><span class="p">,</span>
+  <span class="p">},</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">textStatus</span><span class="p">,</span> <span class="nx">jqXHR</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"HTTP Request Succeeded: "</span> <span class="o">+</span> <span class="nx">jqXHR</span><span class="p">.</span><span class="nx">status</span><span class="p">);</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">fail</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">jqXHR</span><span class="p">,</span> <span class="nx">textStatus</span><span class="p">,</span> <span class="nx">errorThrown</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"HTTP Request Failed"</span><span class="p">);</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">always</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="cm">/* ... */</span>
+<span class="p">});</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint marks an offer as won. You should only use this endpoint in case
+the car owner actually accepted your offer but did so by calling you on the
+phone.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://www.autobutler.dk/api/v2/mechanics/jobs/{jobId}/offer/mark_as_won</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Required?</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>jobId</td>
+<td>null</td>
+<td>yes</td>
+<td>The id of the job of the offer to mark as won</td>
+</tr>
+</tbody></table>
+
+<h3 id="response-json">Response JSON</h3>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Can be blank?</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>success</td>
+<td>boolean</td>
+<td>no</td>
+<td>Wether or not the offer was successfully marked as won</td>
+</tr>
+</tbody></table>
+
+<h3 id="potential-errors">Potential Errors</h3>
+
+<table><thead>
+<tr>
+<th>Error Code</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>400</td>
+<td>The offer could not be marked as won. Maybe a competing offer was already accepted</td>
+</tr>
+<tr>
+<td>404</td>
+<td>There doesn&rsquo;t exist an offer for the givet job by the workshop</td>
+</tr>
+</tbody></table>
+
           <h1 id="payment-subscriptions">Payment Subscriptions</h1>
 
 <h2 id="get-a-list-of-active-payment-subscriptions">Get a list of active Payment Subscriptions</h2>
