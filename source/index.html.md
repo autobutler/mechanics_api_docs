@@ -32,6 +32,7 @@ includes:
   - reviews
   - review_requests
   - campaigns
+  - counters
 
 search: true
 ---
