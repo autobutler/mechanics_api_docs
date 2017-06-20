@@ -8752,63 +8752,6 @@ The JSON values in this nested object is the same as in the
 </tr>
 </tbody></table>
 
-<h2 id="get-a-number-of-unread-conversations-for-current-mechanic">Get a number of unread conversations for current mechanic</h2>
-
-<blockquote>
-<p>To obtain a number of unread conversations, use the following code:</p>
-</blockquote>
-<pre class="highlight shell"><code>curl -X <span class="s2">"GET"</span> <span class="s2">"https://www.autobutler.dk/api/v2/mechanics/conversations/unread_counter"</span> <span class="se">\</span>
-     -H <span class="s2">"Authorization: token"</span>
-</code></pre><pre class="highlight javascript"><code><span class="nx">jQuery</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
-    <span class="na">url</span><span class="p">:</span> <span class="s2">"https://www.autobutler.dk/api/v2/mechanics/conversations/unread_counter"</span><span class="p">,</span>
-    <span class="na">type</span><span class="p">:</span> <span class="s2">"GET"</span><span class="p">,</span>
-    <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">"Authorization"</span><span class="p">:</span> <span class="s2">"token"</span><span class="p">,</span>
-    <span class="p">},</span>
-<span class="p">})</span>
-<span class="p">.</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">textStatus</span><span class="p">,</span> <span class="nx">jqXHR</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"HTTP Request Succeeded: "</span> <span class="o">+</span> <span class="nx">jqXHR</span><span class="p">.</span><span class="nx">status</span><span class="p">);</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
-<span class="p">})</span>
-<span class="p">.</span><span class="nx">fail</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">jqXHR</span><span class="p">,</span> <span class="nx">textStatus</span><span class="p">,</span> <span class="nx">errorThrown</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"HTTP Request Failed"</span><span class="p">);</span>
-<span class="p">})</span>
-<span class="p">.</span><span class="nx">always</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="cm">/* ... */</span>
-<span class="p">});</span>
-
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"unreadConversationsCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">454</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>This endpoint returns a number of unread conversations with customers for the workshop</p>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">GET https://www.autobutler.dk/api/v2/mechanics/conversations/counters</code></p>
-
-<h3 id="response-json">Response JSON</h3>
-
-<table><thead>
-<tr>
-<th>Attribute</th>
-<th>Type</th>
-<th>Can be blank?</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>unreadConversationsCount</td>
-<td>integer</td>
-<td>no</td>
-<td>The number of conversations for current mechanic, that have unread messages</td>
-</tr>
-</tbody></table>
-
           <h1 id="reviews">Reviews</h1>
 
 <h2 id="get-a-list-of-reviews">Get a list of reviews</h2>
@@ -9809,6 +9752,238 @@ ordered by their title.</p>
 <tr>
 <td>404</td>
 <td>The Campaign Page with the specified id could not be found</td>
+</tr>
+</tbody></table>
+
+          <h1 id="counters">Counters</h1>
+
+<h2 id="get-all-necessary-counters-to-show-the-dashboard-correctly">Get all necessary counters to show the dashboard correctly</h2>
+
+<blockquote>
+<p>To obtain the counters, use the following code:</p>
+</blockquote>
+<pre class="highlight shell"><code>curl -X <span class="s2">"GET"</span> <span class="s2">"https://www.autobutler.dk/api/v2/mechanics/counters"</span> <span class="se">\</span>
+     -H <span class="s2">"Authorization: token"</span>
+</code></pre><pre class="highlight javascript"><code><span class="nx">jQuery</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+    <span class="na">url</span><span class="p">:</span> <span class="s2">"https://www.autobutler.dk/api/v2/mechanics/counters"</span><span class="p">,</span>
+    <span class="na">type</span><span class="p">:</span> <span class="s2">"GET"</span><span class="p">,</span>
+    <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"Authorization"</span><span class="p">:</span> <span class="s2">"token"</span><span class="p">,</span>
+    <span class="p">},</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">textStatus</span><span class="p">,</span> <span class="nx">jqXHR</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"HTTP Request Succeeded: "</span> <span class="o">+</span> <span class="nx">jqXHR</span><span class="p">.</span><span class="nx">status</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">fail</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">jqXHR</span><span class="p">,</span> <span class="nx">textStatus</span><span class="p">,</span> <span class="nx">errorThrown</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"HTTP Request Failed"</span><span class="p">);</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">always</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="cm">/* ... */</span>
+<span class="p">});</span>
+
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"newCampaignsCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"unreadConversationsCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"ongoingJobsCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"directIncomingJobsCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint returns all necessary counters to show the dashboard correctly.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://www.autobutler.dk/api/v2/mechanics/counters</code></p>
+
+<h4 id="request-params">Request params</h4>
+
+<p>No request params necessary</p>
+
+<h3 id="response-json">Response JSON</h3>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Can be blank?</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>newCampaignsCount</td>
+<td>integer</td>
+<td>no</td>
+<td>The number of new campaigns for the mechanic</td>
+</tr>
+<tr>
+<td>unreadConversationsCount</td>
+<td>integer</td>
+<td>no</td>
+<td>The number of new messages for the mechanic</td>
+</tr>
+<tr>
+<td>ongoingJobsCount</td>
+<td>integer</td>
+<td>no</td>
+<td>The number of ongoing jobs for the mechanic</td>
+</tr>
+<tr>
+<td>directIncomingJobsCount</td>
+<td>integer</td>
+<td>no</td>
+<td>The number of incoming leads for the mechanic</td>
+</tr>
+</tbody></table>
+
+          <h1 id="limbo">Limbo</h1>
+
+<h2 id="get-limbo-details">Get limbo details</h2>
+<pre class="highlight shell"><code>curl -X <span class="s2">"GET"</span> <span class="s2">"https://www.autobutler.dk/api/v2/mechanics/limbo"</span> <span class="se">\</span>
+     -H <span class="s2">"Authorization: token"</span>
+</code></pre><pre class="highlight javascript"><code><span class="nx">jQuery</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+    <span class="na">url</span><span class="p">:</span> <span class="s2">"https://www.autobutler.dk/api/v2/mechanics/limbo"</span><span class="p">,</span>
+    <span class="na">type</span><span class="p">:</span> <span class="s2">"GET"</span><span class="p">,</span>
+    <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"Authorization"</span><span class="p">:</span> <span class="s2">"token"</span><span class="p">,</span>
+    <span class="p">},</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">textStatus</span><span class="p">,</span> <span class="nx">jqXHR</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"HTTP Request Succeeded: "</span> <span class="o">+</span> <span class="nx">jqXHR</span><span class="p">.</span><span class="nx">status</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">fail</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">jqXHR</span><span class="p">,</span> <span class="nx">textStatus</span><span class="p">,</span> <span class="nx">errorThrown</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"HTTP Request Failed"</span><span class="p">);</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">always</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="cm">/* ... */</span>
+<span class="p">});</span>
+
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"display"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"needsToAcceptSubscriptions"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"subscriptionsToAccept"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="nt">"needToAcceptTerms"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"needToAcceptGeneratorTerms"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"needToAcceptPartnerTerms"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"termsToAccept"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="nt">"needToSetPaymentMethods"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"needToFillInFields"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"requiredFields"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+    </span><span class="nt">"requiredMechanicFields"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+    </span><span class="nt">"requiredMechanicConfigFields"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+    </span><span class="nt">"leadsAreHidden"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"haveOverdueInvoices"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"hasOverdueJobs"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint returns actions the mechanic needs to perform in order for the account to be valid.
+Used to show notifications about new product subscriptions, terms, overdue invoices, overdue jobs etc.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://www.autobutler.dk/api/v2/mechanics/limbo</code></p>
+
+<h3 id="response-json">Response JSON</h3>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Can be blank?</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>needsToAcceptSubscriptions</td>
+<td>boolean</td>
+<td>no</td>
+<td>Whether the mechanic needs to accept product subscriptions</td>
+</tr>
+<tr>
+<td>subscriptionsToAccept</td>
+<td>array(object)</td>
+<td>yes</td>
+<td>A list of product subscriptions the mechanics has yet to accept</td>
+</tr>
+<tr>
+<td>needToAcceptTerms</td>
+<td>boolean</td>
+<td>no</td>
+<td>Whether the mechanic needs to accept terms</td>
+</tr>
+<tr>
+<td>needToAcceptGeneratorTerms</td>
+<td>boolean</td>
+<td>no</td>
+<td>Whether the mechanic needs to accept related to Generator</td>
+</tr>
+<tr>
+<td>needToAcceptPartnerTerms</td>
+<td>boolean</td>
+<td>no</td>
+<td>Whether the mechanic needs to accept related to of Autobutler&rsquo;s partners</td>
+</tr>
+<tr>
+<td>termsToAccept</td>
+<td>array(object)</td>
+<td>yes</td>
+<td>A list of terms the mechanic needs to accept</td>
+</tr>
+<tr>
+<td>needToSetPaymentMethods</td>
+<td>boolean</td>
+<td>no</td>
+<td>Whether the mechanic needs to set payments methods</td>
+</tr>
+<tr>
+<td>needToFillInFields</td>
+<td>boolean</td>
+<td>no</td>
+<td>Whether the mechanic needs to fill in fields to make the account valid</td>
+</tr>
+<tr>
+<td>requiredFields</td>
+<td>hash</td>
+<td>yes</td>
+<td>A list of the required fields the mechanic needs to fill in to make the account valid</td>
+</tr>
+<tr>
+<td>requiredMechanicFields</td>
+<td>hash</td>
+<td>yes</td>
+<td>A list of the required fields from the users table the mechanic needs to fill in to make the account valid (for internal use)</td>
+</tr>
+<tr>
+<td>requiredMechanicConfigFields</td>
+<td>hash</td>
+<td>yes</td>
+<td>A list of the required fields from the mechanic_configs table the mechanic needs to fill in to make the account valid (for internal use)</td>
+</tr>
+<tr>
+<td>leadsAreHidden</td>
+<td>boolean</td>
+<td>no</td>
+<td>Whether leads are hidden from the mechanic</td>
+</tr>
+<tr>
+<td>haveOverdueInvoices</td>
+<td>boolean</td>
+<td>no</td>
+<td>Whether the mechanic has any overdue invoices</td>
+</tr>
+<tr>
+<td>hasOverdueJobs</td>
+<td>boolean</td>
+<td>no</td>
+<td>Whether the mechanic has any Autobutler jobs that has surpassed the completion date by 7 days</td>
 </tr>
 </tbody></table>
 
