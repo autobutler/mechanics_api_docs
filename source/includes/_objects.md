@@ -276,6 +276,7 @@ job.marketPrice                               | object        | yes           | 
   "completionTimeOfDay": null,
   "courtesyCar": true,
   "createdAt": "2017-05-08T09:55:06.322+02:00",
+  "deadlineMet": true,
   "declinedAt": null,
   "draft": false,
   "expirationDate": "2017-06-05",
@@ -329,6 +330,7 @@ completionNote          | string  | yes           | An optional comment that was
 completionTimeOfDay     | string  | yes           | When during the day was the offer completed
 courtesyCar             | boolean | no            | Wether or not the offer includes a courtesy car
 createdAt               | string  | no            | A timestamp for when the offer was sent
+deadlineMet             | boolean | no            | Whether or not the deadline (the date the job will be completed + 7 days) has been met
 declinedAt              | string  | yes           | A timestamp for when the offer was declined
 draft                   | boolean | no            | Wether or not this offer is a draft offer
 expirationDate          | string  | no            | The date on which this offer expires
