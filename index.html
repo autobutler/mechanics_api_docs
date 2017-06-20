@@ -7462,6 +7462,7 @@ The JSON values in this nested object is the same as in the
   </span><span class="nt">"completionTimeOfDay"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="nt">"courtesyCar"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="nt">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-05-08T09:55:06.322+02:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"deadlineMet"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="nt">"declinedAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="nt">"draft"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
   </span><span class="nt">"expirationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-06-05"</span><span class="p">,</span><span class="w">
@@ -7574,6 +7575,12 @@ The JSON values in this nested object is the same as in the
 <td>string</td>
 <td>no</td>
 <td>A timestamp for when the offer was sent</td>
+</tr>
+<tr>
+<td>deadlineMet</td>
+<td>boolean</td>
+<td>no</td>
+<td>Whether or not the deadline (the date the job will be completed + 7 days) has been met</td>
 </tr>
 <tr>
 <td>declinedAt</td>
