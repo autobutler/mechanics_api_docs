@@ -33,6 +33,7 @@ includes:
   - review_requests
   - campaigns
   - counters
+  - limbo
 
 search: true
 ---
