@@ -121,6 +121,7 @@ pricingDetails.vat_factor           | integer       | no            | The vat pe
 pricingDetails.service_fee          | string        | no            | The value charged for using autobutler
 pricingDetails.service_fee_treshold | string        | no            | The minimum price for an offer to be charged the service fee
 pricingDetails.minimum_offer_price  | object        | no            | The minimum price for an offer to be able to be sent
+pricingDetails.overdue_fee          | float         | no            | The fee charged for jobs with overdue completion
 
 ### Potential Errors
 
