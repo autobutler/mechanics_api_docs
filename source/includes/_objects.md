@@ -30,6 +30,9 @@
         "name": "Brakes"
       }
     ],
+    "leadInformation": {
+      "deleted": true
+    },
     "car": {
       "id": 371762,
       "registrationNumber": "AB12345",
@@ -79,6 +82,7 @@ job.selected                   | boolean       | no            | A boolean indic
 job.jobTasks                   | array(object) | no            | An array of job tasks included in the job
 job.jobTasks.jobTaskTypeId     | integer       | no            | The id of the job task type for this task
 job.jobTasks.name              | string        | no            | A label describing the type of the task
+job.leadInformation.deleted    | boolean       | no            | A boolean indicating if the Mechanic is not interested in this Job Lead
 job.car                        | object        | no            | A JSON object with details of the car
 job.car.id                     | integer       | no            | The id of the car
 job.car.registrationNumber     | string        | yes           | The registration number of the car
@@ -155,6 +159,9 @@ offer.priceDetails.totalPrice  | float         | no            | The total price
       "jobFiles": []
     }
   ],
+  "leadInformation": {
+    "deleted": true
+  },
   "car": {
     "id": 388148,
     "chassisNumber": "123456789",
@@ -227,6 +234,7 @@ jobTasks.jobFiles.url                         | string        | no            | 
 jobTasks.jobFiles.image                       | boolean       | no            | `true` if the uploaded file is an image, otherwise `false`
 jobTasks.jobFiles.thumbUrl                    | string        | yes           | The url for a thumbnail version of the file. Only available for images
 jobTasks.jobFiles.largeUrl                    | string        | yes           | The url for a large version of the file. Only available for images
+job.leadInformation.deleted                   | boolean       | no            | A boolean indicating if the Mechanic is not interested in this Job Lead
 car                                           | object        | no            | An object representing the details of the car
 car.id                                        | integer       | no            | The id of the car
 car.chassisNumber                             | string        | yes           | The chassis number of the car
