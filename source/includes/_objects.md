@@ -395,6 +395,13 @@ priceDetails | object        | no            | A <a href="#pricedetails">priceDe
   "pricing": "LINE_ITEMS",
   "totalNumberOfHours": 2.0,
   "subtotal": 1539.0,
+  "totalsIncludingVat": {
+    "priceOfWork": 625.0,
+    "priceOfWorkPerHour": 312.5,
+    "priceOfParts": 1250.0,
+    "priceOfCourtesyCar": 0.0,
+    "serviceFee": 48.75
+  },
   "totalsExcludingVat": {
     "priceOfWork": 500.0,
     "priceOfWorkPerHour": 250.0,
@@ -451,12 +458,18 @@ Attribute                             | Type          | Can be blank? | Descript
 pricing                               | string        | no            | The type of pricing used for the draft offer. Possible values are:<br>`"LINE_ITEMS"`: This offer contains order lines with individual prices<br>`"FIXED"`: This offer contains order lines but a single fixed price<br>`"HOURLY"`: This offer has no order lines but instead consists of an hourly rate and a fixed price for spare parts
 totalNumberOfHours                    | float         | no            | The total number of working hours included in the draft offer
 subtotal                              | float         | no            | The sub total of the draft offer
+totalsIncludingVat                    | object        | no            | An object representing the totals of the draft offer including VAT
+totalsIncludingVat.priceOfWork        | float         | no            | The total labour price of the draft offer including VAT
+totalsIncludingVat.priceOfWorkPerHour | float         | no            | The total labour price of the offer divided by the total number of working hours including VAT
+totalsIncludingVat.priceOfParts       | float         | no            | The total price of spare parts including VAT
+totalsIncludingVat.priceOfCourtesyCar | float         | no            | The price of the courtesy car, regardless of weather it is included or not including VAT
+totalsIncludingVat.serviceFee         | float         | no            | The Autobutler service fee including VAT
 totalsExcludingVat                    | object        | no            | An object representing the totals of the draft offer excluding VAT
-totalsExcludingVat.priceOfWork        | float         | no            | The total labour price of the draft offer
-totalsExcludingVat.priceOfWorkPerHour | float         | no            | The total labour price of the offer divided by the total number of working hours
-totalsExcludingVat.priceOfParts       | float         | no            | The total price of spare parts
-totalsExcludingVat.priceOfCourtesyCar | float         | no            | The price of the courtesy car, regardless of weather it is included or not
-totalsExcludingVat.serviceFee         | float         | no            | The Autobutler service fee
+totalsExcludingVat.priceOfWork        | float         | no            | The total labour price of the draft offer excluding VAT
+totalsExcludingVat.priceOfWorkPerHour | float         | no            | The total labour price of the offer divided by the total number of working hours excluding VAT
+totalsExcludingVat.priceOfParts       | float         | no            | The total price of spare parts excluding VAT
+totalsExcludingVat.priceOfCourtesyCar | float         | no            | The price of the courtesy car, regardless of weather it is included or not excluding VAT
+totalsExcludingVat.serviceFee         | float         | no            | The Autobutler service fee excluding VAT
 lineItems                             | array(object) | no            | An array of objects representing the individual order lines
 lineItems.id                          | integer       | no            | The id of the order line
 lineItems.articleNumber               | string        | yes           | An article number for the part
