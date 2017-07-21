@@ -58,7 +58,6 @@ jQuery.ajax({
           }
         ]
       },
-      "offer": {},
       "job": {}
     }
   ]
@@ -92,7 +91,6 @@ review.rating                | integer       | no            | A number from 1-5
 review.reviewRatings         | array(object) | no            | An array of ratings included in the review
 review.reviewRatings.rating  | integer       | yes           | A number from 1-5 for additional ratings
 review.reviewRatings.category| string        | no            | A description of the additional rating
-offer                        | object        | yes           | An <a href="#offerdetails">offerDetails</a> object associated with the review. Is empty if the review came from a review request
 job                          | object        | yes           | A <a href="#jobdetails">jobDetails</a> object associated with the review. Is empty if the review came from a review request
 
 ## Respond to a review
