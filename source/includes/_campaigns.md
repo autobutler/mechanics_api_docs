@@ -143,7 +143,7 @@ jQuery.ajax({
 
 Parameter | Default | Required? | Description
 --------- | ------- | --------- | ---------------------------
-id        | nil     | yes       | The id of the Campaign Page 
+id        | nil     | yes       | The id of the Campaign Page
 
 ### Response JSON
 
@@ -206,7 +206,7 @@ jQuery.ajax({
 
 Parameter | Default | Required? | Description
 --------- | ------- | --------- | ---------------------------
-id        | nil     | yes       | The id of the campaign page 
+id        | nil     | yes       | The id of the campaign page
 
 ### Response JSON
 

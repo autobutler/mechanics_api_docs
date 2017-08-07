@@ -34,6 +34,7 @@ includes:
   - campaigns
   - counters
   - limbo
+  - support_followups
 
 search: true
 ---
