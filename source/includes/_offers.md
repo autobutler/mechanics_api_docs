@@ -143,3 +143,77 @@ Error Code | Meaning
 ---------- | ----------------------------------------------------------------------------------
 400        | The offer could not be marked as won. Maybe a competing offer was already accepted
 404        | There doesn't exist an offer for the givet job by the workshop
+
+## PATCH Complete
+
+> Complete a job for which the offer from the mechanic is the accepted one
+
+```shell
+curl -X "PATCH" "https://www.autobutler.dk/api/v2/mechanics/jobs/12345/offer/complete" \
+     -H "Authorization: token" \
+     -H "Content-Type: application/json; charset=utf-8" \
+     -d "{\"carPickupAt\":\"2017-08-30\", \"completionNote\":\"Some note...\", \"courtesyCar\": true, \"includeServiceFee\": true,
+          \"jobWillbeCompletedOn\":\"2017-08-30\", \"offerLineItems\": [{}], \"priceOfCourtesyCar\": 0, \"pricing\": \"LINE_ITEMS\"
+         }"
+```
+
+```javascript
+jQuery.ajax({
+  url: "https://www.autobutler.dk/api/v2/mechanics/jobs/12345/offer/complete",
+  type: "PATCH",
+  headers: {
+    "Authorization": "token",
+    "Content-Type": "application/json; charset=utf-8",
+  },
+  contentType: "application/json",
+  data: JSON.stringify({
+    "carPickupAt": "2017-08-30",
+    "completionNote": "Some note...",
+    "courtesyCar": true,
+    "includeServiceFee": true,
+    "jobWillbeCompletedOn": "2017-08-30",
+    "offerLineItems": [
+      {}
+    ],
+    "priceOfCourtesyCar": 0,
+    "pricing": "LINE_ITEMS"
+  })
+})
+.done(function(data, textStatus, jqXHR) {
+  console.log("HTTP Request Succeeded: " + jqXHR.status);
+  console.log(data);
+})
+.fail(function(jqXHR, textStatus, errorThrown) {
+  console.log("HTTP Request Failed");
+})
+.always(function() {
+  /* ... */
+});
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "success": true
+}
+```
+
+Complete a job for which the offer from the mechanic is the accepted one.
+
+### HTTP Request
+
+`PATCH https://www.autobutler.dk/api/v2/mechanics/jobs/{jobId}/offer/complete`
+
+### Request JSON
+
+Attribute            | Type          | Required? | Description
+---------------------| --------------| ----------|--------------
+carPickupAt          | string        | true      | The date when the car is ready to be picked up by the car owner.
+completionNote       | string        | true      | A note the mechanic can make when completing the offer.      
+courtesyCar          | boolean       | true      | Whether the car owner had a courtesy car.
+includeServiceFee    | boolean       | true      | Whether the service fee should be included.
+jobWillbeCompletedOn | string        | true      | The date when the car is handed in to the mechanic.
+offerLineItems       | array(object) | true      | An array containing the offer line items.
+priceOfCourtesyCar   | decimal       | false     | Price of the courtesy car.
+pricing              | string        | true      | Possible values are:<br>`"LINE_ITEMS"`: This offer contains order lines with individual prices<br>`"FIXED"`: This offer contains order lines but a single fixed price<br>`"HOURLY"`: This offer has no order lines but instead consists of an hourly rate and a fixed price for spare parts
