@@ -264,7 +264,8 @@ jobId         | null    | yes       | The id of the job
 
 Attribute    | Type    | Can be blank? | Description
 ------------ | ------- | ------------- | ------------------------------------------------------
-success      | boolean | no            | Offer comparison response
+yourOffer    | object  | no            | Information about the mechanic offer
+otherOffers  | array   | no            | A list containing other mechanic offers information
 
 ### Potential Errors
 
