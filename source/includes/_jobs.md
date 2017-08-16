@@ -118,8 +118,6 @@ Error Code | Meaning
 404        | The job with the specified id could not be found or is not available for the workshop
 410        | The job is not visible by current mechanic, because it was completed by other mechanic
 
-
-
 ## Compare the offers of an accepted job
 
 > To manually get the comparison of the offers for an accepted job, use the following code:
