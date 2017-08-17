@@ -8,4 +8,4 @@ ADD Gemfile* /usr/src/app/
 
 RUN gem install bundler && bundle install
 
-CMD ["bundle", "exec", "middleman", "server"]
+CMD ["bundle", "exec", "middleman", "server", "--watcher-force-polling"]
