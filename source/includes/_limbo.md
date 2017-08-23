@@ -45,7 +45,8 @@ jQuery.ajax({
     "requiredMechanicConfigFields": {},
     "leadsAreHidden": false,
     "haveOverdueInvoices": true,
-    "hasOverdueJobs": true
+    "hasOverdueJobs": true,
+    "hasJobsWithoutCompletionDate": true
 }
 ```
 
@@ -75,3 +76,4 @@ requiredMechanicConfigFields | hash           | yes           | A list of the re
 leadsAreHidden               | boolean        | no            | Whether leads are hidden from the mechanic
 haveOverdueInvoices          | boolean        | no            | Whether the mechanic has any overdue invoices
 hasOverdueJobs               | boolean        | no            | Whether the mechanic has any Autobutler jobs that has surpassed the completion date by 7 days
+hasJobsWithCompletionDateWarning | boolean        | no            | Whether the mechanic has any jobs that has accepted more than 3 days ago without a completion date set
