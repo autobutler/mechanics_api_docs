@@ -419,7 +419,8 @@ priceDetails | object        | no            | A <a href="#pricedetails">priceDe
       "netPrice": 250.0,
       "quantity": 2.0,
       "discountedCustomerPrice": 250.0,
-      "subtotal": 500.0
+      "subtotal": 500.0,
+      "locked": false
     },
     {
       "id": 1235,
@@ -440,7 +441,8 @@ priceDetails | object        | no            | A <a href="#pricedetails">priceDe
       "netPrice": 400.0,
       "quantity": 2.0,
       "discountedCustomerPrice": 500.0,
-      "subtotal": 1000.0
+      "subtotal": 1000.0,
+      "locked": false
     }
   ]
 }
@@ -474,6 +476,7 @@ lineItems.netPrice                    | float         | no            | The purc
 lineItems.quantity                    | float         | no            | The number of units
 lineItems.discountedCustomerPrice     | float         | no            | The customer unit price minus discount
 lineItems.subtotal                    | float         | no            | The number of units multiplied by the discounted customer price
+lineItems.locked                      | boolean       | yes           | Is the line item allowed to be edited or not.
 
 ## marketPrice
 
