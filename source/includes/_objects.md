@@ -275,6 +275,7 @@ job.marketPrice                               | object        | yes           | 
   "completionNote": null,
   "completionTimeOfDay": null,
   "completionOverdue": false,
+  "completionDateWarning": true,
   "courtesyCar": true,
   "createdAt": "2017-05-08T09:55:06.322+02:00",
   "declinedAt": null,
@@ -328,6 +329,7 @@ cancelledAt             | string  | yes           | A timestamp for when the off
 carPickupAt             | string  | yes           | The date at which the car owner can pick up his car from the workshop
 completionNote          | string  | yes           | An optional comment that was given when the job was completed
 completionOverdue       | boolean | no            | Whether or not the deadline (the date the job will be completed + 7 days) has been met
+completionDateWarning   | boolean | no            | Whether or not the offer was accepted more than 3 days ago, has no completion date set and no message from mechanic in the last 3 days
 completionTimeOfDay     | string  | yes           | When during the day was the offer completed
 courtesyCar             | boolean | no            | Wether or not the offer includes a courtesy car
 createdAt               | string  | no            | A timestamp for when the offer was sent
