@@ -210,10 +210,79 @@ Complete a job for which the offer from the mechanic is the accepted one.
 Attribute            | Type          | Required? | Description
 ---------------------| --------------| ----------|--------------
 carPickupAt          | string        | true      | The date when the car is ready to be picked up by the car owner.
-completionNote       | string        | true      | A note the mechanic can make when completing the offer.      
+completionNote       | string        | true      | A note the mechanic can make when completing the offer.
 courtesyCar          | boolean       | true      | Whether the car owner had a courtesy car.
 includeServiceFee    | boolean       | true      | Whether the service fee should be included.
 jobWillbeCompletedOn | string        | true      | The date when the car is handed in to the mechanic.
 offerLineItems       | array(object) | true      | An array containing the offer line items.
 priceOfCourtesyCar   | decimal       | false     | Price of the courtesy car.
 pricing              | string        | true      | Possible values are:<br>`"LINE_ITEMS"`: This offer contains order lines with individual prices<br>`"FIXED"`: This offer contains order lines but a single fixed price<br>`"HOURLY"`: This offer has no order lines but instead consists of an hourly rate and a fixed price for spare parts
+
+## Marks the car owner as unreachable for an accepted offer
+
+> To manually marks the car owner as unreachable for an accepted offer, use the following code:
+
+```shell
+curl -X "GET" "https://www.autobutler.dk/api/v2/mechanics/jobs/12345/offer/unreachable_car_owner" \
+     -H "Authorization: token"
+```
+
+```javascript
+jQuery.ajax({
+  url: "https://www.autobutler.dk/api/v2/mechanics/jobs/12345/offer/unreachable_car_owner",
+  type: "GET",
+  headers: {
+    "Authorization": "token",
+  },
+})
+.done(function(data, textStatus, jqXHR) {
+  console.log("HTTP Request Succeeded: " + jqXHR.status);
+  console.log(data);
+})
+.fail(function(jqXHR, textStatus, errorThrown) {
+  console.log("HTTP Request Failed");
+})
+.always(function() {
+  /* ... */
+});
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "success": true
+}
+```
+
+This endpoint marks a car owner as unreachable (mechanic couldn't contact him) for an accepted offer.
+
+### HTTP Request
+
+`PATCH https://www.autobutler.dk/api/v2/mechanics/jobs/{jobId}/offer/unreachable_car_owner`
+
+### URL Parameters
+
+Parameter     | Default | Required? | Description
+------------- | ------- | --------- | ---------------------------------------------
+jobId         | null    | yes       | The id of the job of the offer to mark as won
+
+### Request JSON
+
+Attribute            | Type          | Required? | Description
+---------------------| --------------| ----------|--------------
+unreachableCarOwner  | boolean       | true      | Whether the car owner is unreachable or not for the accepted offer
+
+### Response JSON
+
+Attribute  | Type    | Can be blank? | Description
+---------- | ------- | ------------- | ---------------------------------------------------------
+errors     | array   | yes           | Errors that prevented the booking from being updated
+success    | boolean | no            | Wether or not the car owner was succesfully marked as unreachable for the accepted offer
+
+### Potential Errors
+
+Error Code | Meaning
+---------- | --------------------------------------------------------------------------------------------
+401        | Invalid or missing Authorization header
+404        | Job not found, not accepted or not won by the mechanic
