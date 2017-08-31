@@ -35,6 +35,7 @@ includes:
   - counters
   - limbo
   - support_followups
+  - messages
 
 search: true
 ---
