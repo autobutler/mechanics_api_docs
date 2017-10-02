@@ -36,6 +36,7 @@ includes:
   - limbo
   - support_followups
   - messages
+  - statistics
 
 search: true
 ---
