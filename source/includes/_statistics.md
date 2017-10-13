@@ -59,3 +59,77 @@ interval       | 1       | no        | The number of days each data point repres
 startTime      | mechanics first accepted subscription date    | no        | filter jobs by start time
 endTime        | the current time    | no        | filter jobs by end time
 jobOwner       | null    | no        | Filter jobs by owner `mechanic` or `autobutler`
+
+## Revenue Counter
+Returns the total revenue for the jobs in one of the following groups `incoming`, `ongoing`, `toBeCompleted`.
+
+In the case of the `incoming` jobs the revenue is estimated based on the average price of offers in the mechanics area.
+
+```shell
+curl -X "GET" "https://www.autobutler.dk/api/v2/mechanics/statistics/job_revenue?jobGroup=ongoing" \
+     -H "Authorization: token"
+```
+
+```javascript
+jQuery.ajax({
+  url: "https://www.autobutler.dk/api/v2/mechanics/statistics/job_revenue?jobGroup=ongoing",
+  type: "GET",
+  headers: {
+    "Authorization": "token",
+  },
+})
+.done(function(data, textStatus, jqXHR) {
+  console.log("HTTP Request Succeeded: " + jqXHR.status);
+  console.log(data);
+})
+.fail(function(jqXHR, textStatus, errorThrown) {
+  console.log("HTTP Request Failed");
+})
+.always(function() {
+  /* ... */
+});
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "count": 123
+}
+```
+
+## Job Counter
+Returns the total count for the jobs in one of the following groups `incoming`, `ongoing`, `toBeCompleted`
+
+```shell
+curl -X "GET" "https://www.autobutler.dk/api/v2/mechanics/statistics/job_counter?jobGroup=ongoing" \
+     -H "Authorization: token"
+```
+
+```javascript
+jQuery.ajax({
+  url: "https://www.autobutler.dk/api/v2/mechanics/statistics/job_counter?jobGroup=ongoing",
+  type: "GET",
+  headers: {
+    "Authorization": "token",
+  },
+})
+.done(function(data, textStatus, jqXHR) {
+  console.log("HTTP Request Succeeded: " + jqXHR.status);
+  console.log(data);
+})
+.fail(function(jqXHR, textStatus, errorThrown) {
+  console.log("HTTP Request Failed");
+})
+.always(function() {
+  /* ... */
+});
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "revenue": 123
+}
+```
