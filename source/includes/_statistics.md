@@ -46,7 +46,7 @@ jQuery.ajax({
 }
 ```
 
-This endpoint returns a data series for a particular statistic specified by the `statisticName` which can be `jobOffersSentt` or `jobsCompleted`.
+This endpoint returns a data series for a particular statistic specified by the `statisticName` which can be `jobOffersSent`, `jobOffersWon`, `jobsCompletedRevenue`.
 
 An array of data points grouped by the interval in days are returned as well as an overall value representing the same statistic for the whole data series.
 
