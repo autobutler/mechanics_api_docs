@@ -37,6 +37,7 @@ includes:
   - support_followups
   - messages
   - statistics
+  - features
 
 search: true
 ---
