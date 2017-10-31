@@ -3232,6 +3232,161 @@ on.</p>
 </tr>
 </tbody></table>
 
+<h2 id="update-the-booking-dates-of-an-accepted-job-won-by-the-mechanic">Update the booking dates of an accepted job won by the mechanic</h2>
+
+<blockquote>
+<p>To update booking dates, use the following code:</p>
+</blockquote>
+<pre class="highlight shell"><code>curl -X <span class="s2">"PATCH"</span> <span class="s2">"https://www.autobutler.dk/api/v2/mechanics/jobs/{job_id}/booking"</span> <span class="se">\</span>
+     -H <span class="s2">"Authorization: token"</span> <span class="se">\</span>
+     -H <span class="s2">"Content-Type: application/json; charset=utf-8"</span> <span class="se">\</span>
+     -d <span class="s2">"{</span><span class="se">\"</span><span class="s2">booking</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">job_will_be_completed_on</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">string</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">car_pickup_at</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">string</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">completion_time_of_day</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">string</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">pickup_time_of_day</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">string</span><span class="se">\"</span><span class="s2">}}"</span>
+</code></pre><pre class="highlight javascript"><code><span class="nx">jQuery</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+    <span class="na">url</span><span class="p">:</span> <span class="s2">"https://www.autobutler.dk/api/v2/mechanics/jobs/{job_id}/booking"</span><span class="p">,</span>
+    <span class="na">type</span><span class="p">:</span> <span class="s2">"PATCH"</span><span class="p">,</span>
+    <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"Authorization"</span><span class="p">:</span> <span class="s2">"token"</span><span class="p">,</span>
+        <span class="s2">"Content-Type"</span><span class="p">:</span> <span class="s2">"application/json; charset=utf-8"</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="na">contentType</span><span class="p">:</span> <span class="s2">"application/json"</span><span class="p">,</span>
+    <span class="na">data</span><span class="p">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
+      <span class="s2">"booking"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"job_will_be_completed_on"</span><span class="p">:</span> <span class="s2">"string"</span><span class="p">,</span>
+        <span class="s2">"car_pickup_at"</span><span class="p">:</span> <span class="s2">"string"</span><span class="p">,</span>
+        <span class="s2">"completion_time_of_day"</span><span class="p">:</span> <span class="s2">"string"</span><span class="p">,</span>
+        <span class="s2">"pickup_time_of_day"</span><span class="p">:</span> <span class="s2">"string"</span>
+      <span class="p">}</span>
+    <span class="p">})</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">textStatus</span><span class="p">,</span> <span class="nx">jqXHR</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"HTTP Request Succeeded: "</span> <span class="o">+</span> <span class="nx">jqXHR</span><span class="p">.</span><span class="nx">status</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">fail</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">jqXHR</span><span class="p">,</span> <span class="nx">textStatus</span><span class="p">,</span> <span class="nx">errorThrown</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"HTTP Request Failed"</span><span class="p">);</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">always</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="cm">/* ... */</span>
+<span class="p">});</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint updates the booking dates of an accepted job won by the mechanic.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">PATCH https://www.autobutler.dk/api/v2/mechanics/jobs/{job_id}/booking</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Required?</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>job_id</td>
+<td>nil</td>
+<td>yes</td>
+<td>The id of the Job</td>
+</tr>
+</tbody></table>
+
+<h3 id="request-json">Request JSON</h3>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Required?</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>booking</td>
+<td>object</td>
+<td>yes</td>
+<td>Details of the booking</td>
+</tr>
+<tr>
+<td>booking.job_will_be_completed_on</td>
+<td>string</td>
+<td>yes</td>
+<td>The date when the accepted job will be completed</td>
+</tr>
+<tr>
+<td>booking.car_pickup_at</td>
+<td>string</td>
+<td>yes</td>
+<td>The car pickup date for the accepted job</td>
+</tr>
+<tr>
+<td>booking.completion_time_of_day.</td>
+<td>string</td>
+<td>yes</td>
+<td>The completion time for the accepted job</td>
+</tr>
+<tr>
+<td>booking.pickup_time_of_day.</td>
+<td>string</td>
+<td>yes</td>
+<td>The car pickup time for the accepted job</td>
+</tr>
+</tbody></table>
+
+<h3 id="response-json">Response JSON</h3>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Can be blank?</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>errors</td>
+<td>array</td>
+<td>yes</td>
+<td>Errors that prevented the booking from being updated</td>
+</tr>
+<tr>
+<td>success</td>
+<td>boolean</td>
+<td>no</td>
+<td>Weather or not the booking could be updated</td>
+</tr>
+</tbody></table>
+
+<h3 id="potential-errors">Potential Errors</h3>
+
+<table><thead>
+<tr>
+<th>Error Code</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>401</td>
+<td>Invalid or missing Authorization header</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Job not found, not accepted or not won by the mechanic</td>
+</tr>
+</tbody></table>
+
           <h1 id="deleted-jobs">Deleted Jobs</h1>
 
 <h2 id="get-a-list-of-deleted-jobs">Get a list of deleted jobs</h2>
@@ -3652,6 +3807,238 @@ phone.</p>
 <tr>
 <td>404</td>
 <td>There doesn&rsquo;t exist an offer for the givet job by the workshop</td>
+</tr>
+</tbody></table>
+
+<h2 id="patch-complete">PATCH Complete</h2>
+
+<blockquote>
+<p>Complete a job for which the offer from the mechanic is the accepted one</p>
+</blockquote>
+<pre class="highlight shell"><code>curl -X <span class="s2">"PATCH"</span> <span class="s2">"https://www.autobutler.dk/api/v2/mechanics/jobs/12345/offer/complete"</span> <span class="se">\</span>
+     -H <span class="s2">"Authorization: token"</span> <span class="se">\</span>
+     -H <span class="s2">"Content-Type: application/json; charset=utf-8"</span> <span class="se">\</span>
+     -d <span class="s2">"{</span><span class="se">\"</span><span class="s2">carPickupAt</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">2017-08-30</span><span class="se">\"</span><span class="s2">, </span><span class="se">\"</span><span class="s2">completionNote</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">Some note...</span><span class="se">\"</span><span class="s2">, </span><span class="se">\"</span><span class="s2">courtesyCar</span><span class="se">\"</span><span class="s2">: true, </span><span class="se">\"</span><span class="s2">includeServiceFee</span><span class="se">\"</span><span class="s2">: true,
+          </span><span class="se">\"</span><span class="s2">jobWillbeCompletedOn</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">2017-08-30</span><span class="se">\"</span><span class="s2">, </span><span class="se">\"</span><span class="s2">offerLineItems</span><span class="se">\"</span><span class="s2">: [{}], </span><span class="se">\"</span><span class="s2">priceOfCourtesyCar</span><span class="se">\"</span><span class="s2">: 0, </span><span class="se">\"</span><span class="s2">pricing</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">LINE_ITEMS</span><span class="se">\"</span><span class="s2">
+         }"</span>
+</code></pre><pre class="highlight javascript"><code><span class="nx">jQuery</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s2">"https://www.autobutler.dk/api/v2/mechanics/jobs/12345/offer/complete"</span><span class="p">,</span>
+  <span class="na">type</span><span class="p">:</span> <span class="s2">"PATCH"</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"Authorization"</span><span class="p">:</span> <span class="s2">"token"</span><span class="p">,</span>
+    <span class="s2">"Content-Type"</span><span class="p">:</span> <span class="s2">"application/json; charset=utf-8"</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="na">contentType</span><span class="p">:</span> <span class="s2">"application/json"</span><span class="p">,</span>
+  <span class="na">data</span><span class="p">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
+    <span class="s2">"carPickupAt"</span><span class="p">:</span> <span class="s2">"2017-08-30"</span><span class="p">,</span>
+    <span class="s2">"completionNote"</span><span class="p">:</span> <span class="s2">"Some note..."</span><span class="p">,</span>
+    <span class="s2">"courtesyCar"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">"includeServiceFee"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">"jobWillbeCompletedOn"</span><span class="p">:</span> <span class="s2">"2017-08-30"</span><span class="p">,</span>
+    <span class="s2">"offerLineItems"</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{}</span>
+    <span class="p">],</span>
+    <span class="s2">"priceOfCourtesyCar"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s2">"pricing"</span><span class="p">:</span> <span class="s2">"LINE_ITEMS"</span>
+  <span class="p">})</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">textStatus</span><span class="p">,</span> <span class="nx">jqXHR</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"HTTP Request Succeeded: "</span> <span class="o">+</span> <span class="nx">jqXHR</span><span class="p">.</span><span class="nx">status</span><span class="p">);</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">fail</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">jqXHR</span><span class="p">,</span> <span class="nx">textStatus</span><span class="p">,</span> <span class="nx">errorThrown</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"HTTP Request Failed"</span><span class="p">);</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">always</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="cm">/* ... */</span>
+<span class="p">});</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Complete a job for which the offer from the mechanic is the accepted one.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">PATCH https://www.autobutler.dk/api/v2/mechanics/jobs/{jobId}/offer/complete</code></p>
+
+<h3 id="request-json">Request JSON</h3>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Required?</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>carPickupAt</td>
+<td>string</td>
+<td>true</td>
+<td>The date when the car is ready to be picked up by the car owner.</td>
+</tr>
+<tr>
+<td>completionNote</td>
+<td>string</td>
+<td>true</td>
+<td>A note the mechanic can make when completing the offer.</td>
+</tr>
+<tr>
+<td>courtesyCar</td>
+<td>boolean</td>
+<td>true</td>
+<td>Whether the car owner had a courtesy car.</td>
+</tr>
+<tr>
+<td>includeServiceFee</td>
+<td>boolean</td>
+<td>true</td>
+<td>Whether the service fee should be included.</td>
+</tr>
+<tr>
+<td>jobWillbeCompletedOn</td>
+<td>string</td>
+<td>true</td>
+<td>The date when the car is handed in to the mechanic.</td>
+</tr>
+<tr>
+<td>offerLineItems</td>
+<td>array(object)</td>
+<td>true</td>
+<td>An array containing the offer line items.</td>
+</tr>
+<tr>
+<td>priceOfCourtesyCar</td>
+<td>decimal</td>
+<td>false</td>
+<td>Price of the courtesy car.</td>
+</tr>
+<tr>
+<td>pricing</td>
+<td>string</td>
+<td>true</td>
+<td>Possible values are:<br><code class="prettyprint">&quot;LINE_ITEMS&quot;</code>: This offer contains order lines with individual prices<br><code class="prettyprint">&quot;FIXED&quot;</code>: This offer contains order lines but a single fixed price<br><code class="prettyprint">&quot;HOURLY&quot;</code>: This offer has no order lines but instead consists of an hourly rate and a fixed price for spare parts</td>
+</tr>
+</tbody></table>
+
+<h2 id="marks-the-car-owner-as-unreachable-for-an-accepted-offer">Marks the car owner as unreachable for an accepted offer</h2>
+
+<blockquote>
+<p>To manually marks the car owner as unreachable for an accepted offer, use the following code:</p>
+</blockquote>
+<pre class="highlight shell"><code>curl -X <span class="s2">"GET"</span> <span class="s2">"https://www.autobutler.dk/api/v2/mechanics/jobs/12345/offer/unreachable_car_owner"</span> <span class="se">\</span>
+     -H <span class="s2">"Authorization: token"</span>
+</code></pre><pre class="highlight javascript"><code><span class="nx">jQuery</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s2">"https://www.autobutler.dk/api/v2/mechanics/jobs/12345/offer/unreachable_car_owner"</span><span class="p">,</span>
+  <span class="na">type</span><span class="p">:</span> <span class="s2">"GET"</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"Authorization"</span><span class="p">:</span> <span class="s2">"token"</span><span class="p">,</span>
+  <span class="p">},</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">textStatus</span><span class="p">,</span> <span class="nx">jqXHR</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"HTTP Request Succeeded: "</span> <span class="o">+</span> <span class="nx">jqXHR</span><span class="p">.</span><span class="nx">status</span><span class="p">);</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">fail</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">jqXHR</span><span class="p">,</span> <span class="nx">textStatus</span><span class="p">,</span> <span class="nx">errorThrown</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"HTTP Request Failed"</span><span class="p">);</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">always</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="cm">/* ... */</span>
+<span class="p">});</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint marks a car owner as unreachable (mechanic couldn&rsquo;t contact him) for an accepted offer.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">PATCH https://www.autobutler.dk/api/v2/mechanics/jobs/{jobId}/offer/unreachable_car_owner</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Required?</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>jobId</td>
+<td>null</td>
+<td>yes</td>
+<td>The id of the job of the offer to mark as won</td>
+</tr>
+</tbody></table>
+
+<h3 id="request-json">Request JSON</h3>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Required?</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>unreachableCarOwner</td>
+<td>boolean</td>
+<td>true</td>
+<td>Whether the car owner is unreachable or not for the accepted offer</td>
+</tr>
+</tbody></table>
+
+<h3 id="response-json">Response JSON</h3>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Can be blank?</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>errors</td>
+<td>array</td>
+<td>yes</td>
+<td>Errors that prevented the booking from being updated</td>
+</tr>
+<tr>
+<td>success</td>
+<td>boolean</td>
+<td>no</td>
+<td>Wether or not the car owner was succesfully marked as unreachable for the accepted offer</td>
+</tr>
+</tbody></table>
+
+<h3 id="potential-errors">Potential Errors</h3>
+
+<table><thead>
+<tr>
+<th>Error Code</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>401</td>
+<td>Invalid or missing Authorization header</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Job not found, not accepted or not won by the mechanic</td>
 </tr>
 </tbody></table>
 
@@ -7471,6 +7858,8 @@ The JSON values in this nested object is the same as in the
   </span><span class="nt">"completionNote"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="nt">"completionTimeOfDay"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="nt">"completionOverdue"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"completionDateWarning"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"unreachableCarOwner"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
   </span><span class="nt">"courtesyCar"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="nt">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-05-08T09:55:06.322+02:00"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"declinedAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
@@ -7573,6 +7962,18 @@ The JSON values in this nested object is the same as in the
 <td>boolean</td>
 <td>no</td>
 <td>Whether or not the deadline (the date the job will be completed + 7 days) has been met</td>
+</tr>
+<tr>
+<td>completionDateWarning</td>
+<td>boolean</td>
+<td>no</td>
+<td>Whether or not the offer was accepted more than 3 days ago, has no completion date set and no message from mechanic in the last 3 days</td>
+</tr>
+<tr>
+<td>unreachableCarOwner</td>
+<td>boolean</td>
+<td>no</td>
+<td>Set to true when the mechanic states they are unable to contact the car owner</td>
 </tr>
 <tr>
 <td>completionTimeOfDay</td>
@@ -8825,7 +9226,6 @@ The JSON values in this nested object is the same as in the
           </span><span class="p">}</span><span class="w">
         </span><span class="p">]</span><span class="w">
       </span><span class="p">},</span><span class="w">
-      </span><span class="nt">"offer"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
       </span><span class="nt">"job"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
@@ -8933,12 +9333,6 @@ The JSON values in this nested object is the same as in the
 <td>string</td>
 <td>no</td>
 <td>A description of the additional rating</td>
-</tr>
-<tr>
-<td>offer</td>
-<td>object</td>
-<td>yes</td>
-<td>An <a href="#offerdetails">offerDetails</a> object associated with the review. Is empty if the review came from a review request</td>
 </tr>
 <tr>
 <td>job</td>
@@ -10001,6 +10395,468 @@ Used to show notifications about new product subscriptions, terms, overdue invoi
 <td>boolean</td>
 <td>no</td>
 <td>Whether the mechanic has any Autobutler jobs that has surpassed the completion date by 7 days</td>
+</tr>
+</tbody></table>
+
+          <h1 id="support-followups">Support Followups</h1>
+
+<h2 id="create-a-new-record-for-support-to-follow-up-on-the-interest-of-a-user">Create a new record for support to follow up on the interest of a user.</h2>
+
+<blockquote>
+<p>To create a new record, use this code:</p>
+</blockquote>
+<pre class="highlight shell"><code>curl -X <span class="s2">"POST"</span> <span class="s2">"https://www.autobutler.dk/api/v2/mechanics/support_followups"</span> <span class="se">\</span>
+     -H <span class="s2">"Authorization: token"</span> <span class="se">\</span>
+     -H <span class="s2">"Content-Type: application/json; charset=utf-8"</span> <span class="se">\</span>
+</code></pre><pre class="highlight javascript"><code><span class="nx">jQuery</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s2">"https://www.autobutler.dk/api/v2/mechanics/support_followups"</span><span class="p">,</span>
+  <span class="na">type</span><span class="p">:</span> <span class="s2">"POST"</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"Authorization"</span><span class="p">:</span> <span class="s2">"token"</span><span class="p">,</span>
+    <span class="s2">"Content-Type"</span><span class="p">:</span> <span class="s2">"application/json; charset=utf-8"</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="na">contentType</span><span class="p">:</span> <span class="s2">"application/json"</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">textStatus</span><span class="p">,</span> <span class="nx">jqXHR</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"HTTP Request Succeeded: "</span> <span class="o">+</span> <span class="nx">jqXHR</span><span class="p">.</span><span class="nx">status</span><span class="p">);</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">fail</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">jqXHR</span><span class="p">,</span> <span class="nx">textStatus</span><span class="p">,</span> <span class="nx">errorThrown</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"HTTP Request Failed"</span><span class="p">);</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">always</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="cm">/* ... */</span>
+<span class="p">});</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST https://www.autobutler.dk/api/v2/mechanics/support_followups</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Required?</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>emailOrPhoneNumber</td>
+<td>nil</td>
+<td>yes</td>
+<td>The email or phone number to follow up on</td>
+</tr>
+<tr>
+<td>website</td>
+<td>nil</td>
+<td>yes</td>
+<td>The website that the user is interested in</td>
+</tr>
+</tbody></table>
+
+<h3 id="response-json">Response JSON</h3>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Can be blank?</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>success</td>
+<td>boolean</td>
+<td>no</td>
+<td>true, if the operation was successful</td>
+</tr>
+</tbody></table>
+
+<h3 id="potential-errors">Potential Errors</h3>
+
+<table><thead>
+<tr>
+<th>Error Code</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>404</td>
+<td>The Website was not found</td>
+</tr>
+</tbody></table>
+
+          <h1 id="messages">Messages</h1>
+
+<h2 id="get-the-most-recent-message-for-a-mechanic">Get the most recent message for a Mechanic</h2>
+
+<blockquote>
+<p>To obtain the most recent message for a Mechanic, use the following code:</p>
+</blockquote>
+<pre class="highlight shell"><code>curl -X <span class="s2">"GET"</span> <span class="s2">"https://www.autobutler.dk/api/v2/mechanics/messages/most_recent"</span> <span class="se">\</span>
+     -H <span class="s2">"Authorization: token"</span>
+</code></pre><pre class="highlight javascript"><code><span class="nx">jQuery</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+    <span class="na">url</span><span class="p">:</span> <span class="s2">"https://www.autobutler.dk/api/v2/mechanics/messages/most_recent"</span><span class="p">,</span>
+    <span class="na">type</span><span class="p">:</span> <span class="s2">"GET"</span><span class="p">,</span>
+    <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"Authorization"</span><span class="p">:</span> <span class="s2">"token"</span><span class="p">,</span>
+    <span class="p">},</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">textStatus</span><span class="p">,</span> <span class="nx">jqXHR</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"HTTP Request Succeeded: "</span> <span class="o">+</span> <span class="nx">jqXHR</span><span class="p">.</span><span class="nx">status</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">fail</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">jqXHR</span><span class="p">,</span> <span class="nx">textStatus</span><span class="p">,</span> <span class="nx">errorThrown</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"HTTP Request Failed"</span><span class="p">);</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">always</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="cm">/* ... */</span>
+<span class="p">});</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">365</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Message Title"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Message Body"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-08-28T17:18:34.009+02:00"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint returns the most recent message for a Mechanic</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">https://www.autobutler.dk/api/v2/mechanics/messages/most_recent</code></p>
+
+<h3 id="response-json">Response JSON</h3>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Can be blank?</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>no</td>
+<td>The id of the message</td>
+</tr>
+<tr>
+<td>title</td>
+<td>string</td>
+<td>yes</td>
+<td>The title of the message</td>
+</tr>
+<tr>
+<td>body</td>
+<td>string</td>
+<td>yes</td>
+<td>The body of the message</td>
+</tr>
+<tr>
+<td>createdAt</td>
+<td>string</td>
+<td>no</td>
+<td>The date of creation of the message</td>
+</tr>
+</tbody></table>
+
+<h2 id="mark-message-as-viewed-by-a-mechanic">Mark message as viewed by a Mechanic</h2>
+
+<blockquote>
+<p>To mark message as viewed by a Mechanic, use the following code:</p>
+</blockquote>
+<pre class="highlight shell"><code>curl -X <span class="s2">"POST"</span> <span class="s2">"https://www.autobutler.dk/api/v2/mechanics/messages/1/view"</span> <span class="se">\</span>
+     -H <span class="s2">"Authorization: token"</span> <span class="se">\</span>
+     -H <span class="s2">"Content-Type: application/json; charset=utf-8"</span> <span class="se">\</span>
+     -d <span class="s2">"{</span><span class="se">\"</span><span class="s2">chainId</span><span class="se">\"</span><span class="s2">:1,</span><span class="se">\"</span><span class="s2">name</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">Rasmus</span><span class="se">\"</span><span class="s2">}"</span>
+</code></pre><pre class="highlight javascript"><code><span class="nx">jQuery</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+    <span class="na">url</span><span class="p">:</span> <span class="s2">"https://www.autobutler.dk/api/v2/mechanics/messages/1/view"</span><span class="p">,</span>
+    <span class="na">type</span><span class="p">:</span> <span class="s2">"POST"</span><span class="p">,</span>
+    <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"Authorization"</span><span class="p">:</span> <span class="s2">"token"</span><span class="p">,</span>
+        <span class="s2">"Content-Type"</span><span class="p">:</span> <span class="s2">"application/json; charset=utf-8"</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="na">contentType</span><span class="p">:</span> <span class="s2">"application/json"</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">textStatus</span><span class="p">,</span> <span class="nx">jqXHR</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"HTTP Request Succeeded: "</span> <span class="o">+</span> <span class="nx">jqXHR</span><span class="p">.</span><span class="nx">status</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">fail</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">jqXHR</span><span class="p">,</span> <span class="nx">textStatus</span><span class="p">,</span> <span class="nx">errorThrown</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"HTTP Request Failed"</span><span class="p">);</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">always</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="cm">/* ... */</span>
+<span class="p">});</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this when the message was marked as viewed successfully:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint marks message as viewed by a Mechanic.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST https://www.autobutler.dk/api/v2/mechanics/messages/1/view</code></p>
+
+<h3 id="potential-errors">Potential Errors</h3>
+
+<table><thead>
+<tr>
+<th>Error Code</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>404</td>
+<td>The message was not found in the system</td>
+</tr>
+</tbody></table>
+
+          <h1 id="statistics">Statistics</h1>
+
+<h2 id="get-mechanic-statistics">Get mechanic statistics</h2>
+
+<blockquote>
+<p>To get the statistics for a mechanic, use this code:</p>
+</blockquote>
+<pre class="highlight shell"><code>curl -X <span class="s2">"GET"</span> <span class="s2">"https://www.autobutler.dk/api/v2/mechanics/statistics?statisticName=jobOffersSent&amp;startTime=2017-10-03T00:00:00+02:00&amp;endTime=2017-10-10T00:00:00+02:00&amp;jobOwner=autobutler&amp;interval=2"</span> <span class="se">\</span>
+     -H <span class="s2">"Authorization: token"</span>
+</code></pre><pre class="highlight javascript"><code><span class="nx">jQuery</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s2">"https://www.autobutler.dk/api/v2/mechanics/statistics?statisticName=jobOffersSent&amp;startTime=2017-10-03T00:00:00+02:00&amp;endTime=2017-10-10T00:00:00+02:00&amp;jobOwner=autobutler&amp;interval=2"</span><span class="p">,</span>
+  <span class="na">type</span><span class="p">:</span> <span class="s2">"GET"</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"Authorization"</span><span class="p">:</span> <span class="s2">"token"</span><span class="p">,</span>
+  <span class="p">},</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">textStatus</span><span class="p">,</span> <span class="nx">jqXHR</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"HTTP Request Succeeded: "</span> <span class="o">+</span> <span class="nx">jqXHR</span><span class="p">.</span><span class="nx">status</span><span class="p">);</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">fail</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">jqXHR</span><span class="p">,</span> <span class="nx">textStatus</span><span class="p">,</span> <span class="nx">errorThrown</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"HTTP Request Failed"</span><span class="p">);</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">always</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="cm">/* ... */</span>
+<span class="p">});</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:[</span><span class="w">
+    </span><span class="p">{</span><span class="nt">"dateTime"</span><span class="p">:</span><span class="s2">"2017-08-20T00:00:00.000+00:00"</span><span class="p">,</span><span class="nt">"value"</span><span class="p">:</span><span class="mi">0</span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="nt">"dateTime"</span><span class="p">:</span><span class="s2">"2017-08-21T00:00:00.000+00:00"</span><span class="p">,</span><span class="nt">"value"</span><span class="p">:</span><span class="mi">0</span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="nt">"dateTime"</span><span class="p">:</span><span class="s2">"2017-08-22T00:00:00.000+00:00"</span><span class="p">,</span><span class="nt">"value"</span><span class="p">:</span><span class="mi">0</span><span class="p">},</span><span class="w">
+    </span><span class="err">...</span><span class="w">
+    </span><span class="p">{</span><span class="nt">"dateTime"</span><span class="p">:</span><span class="s2">"2017-09-15T00:00:00.000+00:00"</span><span class="p">,</span><span class="nt">"value"</span><span class="p">:</span><span class="mi">1</span><span class="p">}</span><span class="w">
+    </span><span class="err">...</span><span class="w">
+    </span><span class="p">{</span><span class="nt">"dateTime"</span><span class="p">:</span><span class="s2">"2017-09-19T00:00:00.000+00:00"</span><span class="p">,</span><span class="nt">"value"</span><span class="p">:</span><span class="mi">0</span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"dataOverall"</span><span class="p">:</span><span class="mi">1</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint returns a data series for a particular statistic specified by the <code class="prettyprint">statisticName</code> which can be <code class="prettyprint">jobOffersSentt</code> or <code class="prettyprint">jobsCompleted</code>.</p>
+
+<p>An array of data points grouped by the interval in days are returned as well as an overall value representing the same statistic for the whole data series.</p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Required?</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>statisticName</td>
+<td>null</td>
+<td>yes</td>
+<td>The name of the statistic to be shown <code class="prettyprint">jobOffersSentt</code> or <code class="prettyprint">jobsCompleted</code></td>
+</tr>
+<tr>
+<td>interval</td>
+<td>1</td>
+<td>no</td>
+<td>The number of days each data point represents</td>
+</tr>
+<tr>
+<td>startTime</td>
+<td>mechanics first accepted subscription date</td>
+<td>no</td>
+<td>filter jobs by start time</td>
+</tr>
+<tr>
+<td>endTime</td>
+<td>the current time</td>
+<td>no</td>
+<td>filter jobs by end time</td>
+</tr>
+<tr>
+<td>jobOwner</td>
+<td>null</td>
+<td>no</td>
+<td>Filter jobs by owner <code class="prettyprint">mechanic</code> or <code class="prettyprint">autobutler</code></td>
+</tr>
+</tbody></table>
+
+<h2 id="revenue-counter">Revenue Counter</h2>
+
+<p>Returns the total revenue for the jobs in one of the following groups <code class="prettyprint">incoming</code>, <code class="prettyprint">ongoing</code>, <code class="prettyprint">toBeCompleted</code>.</p>
+
+<p>In the case of the <code class="prettyprint">incoming</code> jobs the revenue is estimated based on the average price of offers in the mechanics area.</p>
+<pre class="highlight shell"><code>curl -X <span class="s2">"GET"</span> <span class="s2">"https://www.autobutler.dk/api/v2/mechanics/statistics/job_revenue?jobGroup=ongoing"</span> <span class="se">\</span>
+     -H <span class="s2">"Authorization: token"</span>
+</code></pre><pre class="highlight javascript"><code><span class="nx">jQuery</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s2">"https://www.autobutler.dk/api/v2/mechanics/statistics/job_revenue?jobGroup=ongoing"</span><span class="p">,</span>
+  <span class="na">type</span><span class="p">:</span> <span class="s2">"GET"</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"Authorization"</span><span class="p">:</span> <span class="s2">"token"</span><span class="p">,</span>
+  <span class="p">},</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">textStatus</span><span class="p">,</span> <span class="nx">jqXHR</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"HTTP Request Succeeded: "</span> <span class="o">+</span> <span class="nx">jqXHR</span><span class="p">.</span><span class="nx">status</span><span class="p">);</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">fail</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">jqXHR</span><span class="p">,</span> <span class="nx">textStatus</span><span class="p">,</span> <span class="nx">errorThrown</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"HTTP Request Failed"</span><span class="p">);</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">always</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="cm">/* ... */</span>
+<span class="p">});</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h2 id="job-counter">Job Counter</h2>
+
+<p>Returns the total count for the jobs in one of the following groups <code class="prettyprint">incoming</code>, <code class="prettyprint">ongoing</code>, <code class="prettyprint">toBeCompleted</code></p>
+<pre class="highlight shell"><code>curl -X <span class="s2">"GET"</span> <span class="s2">"https://www.autobutler.dk/api/v2/mechanics/statistics/job_counter?jobGroup=ongoing"</span> <span class="se">\</span>
+     -H <span class="s2">"Authorization: token"</span>
+</code></pre><pre class="highlight javascript"><code><span class="nx">jQuery</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s2">"https://www.autobutler.dk/api/v2/mechanics/statistics/job_counter?jobGroup=ongoing"</span><span class="p">,</span>
+  <span class="na">type</span><span class="p">:</span> <span class="s2">"GET"</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"Authorization"</span><span class="p">:</span> <span class="s2">"token"</span><span class="p">,</span>
+  <span class="p">},</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">textStatus</span><span class="p">,</span> <span class="nx">jqXHR</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"HTTP Request Succeeded: "</span> <span class="o">+</span> <span class="nx">jqXHR</span><span class="p">.</span><span class="nx">status</span><span class="p">);</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">fail</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">jqXHR</span><span class="p">,</span> <span class="nx">textStatus</span><span class="p">,</span> <span class="nx">errorThrown</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"HTTP Request Failed"</span><span class="p">);</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">always</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="cm">/* ... */</span>
+<span class="p">});</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"revenue"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+          <h1 id="features">Features</h1>
+
+<h2 id="check-if-a-feature-flag-is-enabled-for-the-mechanic">Check if a feature flag is enabled for the mechanic</h2>
+
+<blockquote>
+<p>To check if a feature flag is enabled for the mechanic, use the following code:</p>
+</blockquote>
+<pre class="highlight shell"><code>curl -X <span class="s2">"GET"</span> <span class="s2">"https://www.autobutler.dk/api/v2/mechanics/features/featureName"</span> <span class="se">\</span>
+     -H <span class="s2">"Authorization: token"</span>
+</code></pre><pre class="highlight javascript"><code><span class="nx">jQuery</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s2">"https://www.autobutler.dk/api/v2/mechanics/features/featureName"</span><span class="p">,</span>
+  <span class="na">type</span><span class="p">:</span> <span class="s2">"GET"</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"Authorization"</span><span class="p">:</span> <span class="s2">"token"</span><span class="p">,</span>
+  <span class="p">},</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">textStatus</span><span class="p">,</span> <span class="nx">jqXHR</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"HTTP Request Succeeded: "</span> <span class="o">+</span> <span class="nx">jqXHR</span><span class="p">.</span><span class="nx">status</span><span class="p">);</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">fail</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">jqXHR</span><span class="p">,</span> <span class="nx">textStatus</span><span class="p">,</span> <span class="nx">errorThrown</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"HTTP Request Failed"</span><span class="p">);</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">always</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="cm">/* ... */</span>
+<span class="p">});</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint returns an object containing information about wether or not the
+feature is enabled for the mechanic.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://www.autobutler.dk/api/v2/mechanics/features/{featureName}</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Required?</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>featureName</td>
+<td>null</td>
+<td>yes</td>
+<td>The name of the feature</td>
+</tr>
+</tbody></table>
+
+<h3 id="response-json">Response JSON</h3>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Can be blank?</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>enabled</td>
+<td>boolean</td>
+<td>no</td>
+<td>Wether or not the requested feature is enabled for the mechanic</td>
 </tr>
 </tbody></table>
 
