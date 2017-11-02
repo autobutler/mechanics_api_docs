@@ -57,7 +57,8 @@ jQuery.ajax({
           }
         ]
       },
-      "job": {}
+      "job": {},
+      "offer": {}
     }
   ],
   "pagination": {
@@ -95,17 +96,8 @@ search        | null    | no        | Only show reviews for jobs where the refer
 
 Attribute                             | Type          | Can be blank? | Description
 ------------------------------------- | -------       | ------------- | -----------------
-reviews                               | array(object) | no            | A list of reviews and their associated job and offer
-reviews.review                        | object        | no            | The review object
-reviews.review.id                     | integer       | no            | The id of the review
-reviews.review.author                 | string        | no            | Author of the review
-reviews.review.createdAt              | string        | no            | A timestamp for when the review was created
-reviews.review.comment                | string        | yes           | A comment the author wrote for the review
-reviews.review.additionalComment      | string        | yes           | An additional comment the author wrote for the review
-reviews.review.rating                 | integer       | no            | A number from 1-5 the author gave
-reviews.review.reviewRatings          | array(object) | no            | An array of ratings included in the review
-reviews.review.reviewRatings.rating   | integer       | yes           | A number from 1-5 for additional ratings
-reviews.review.reviewRatings.category | string        | no            | A description of the additional rating
+reviews                               | array(object) | no            | An array of objects containing<a href="#review">review</a> and their associated job and offer
+reviews.review                        | object        | no            | The <a href="#review">review</a> object
 reviews.offer                         | object        | yes           | An <a href="#offerdetails">offerDetails</a> object associated with the review. Is empty if the review came from a review request
 reviews.job                           | object        | yes           | A <a href="#jobdetails">jobDetails</a> object associated with the review. Is empty if the review came from a review request
 pagination                            | object        | no            | A <a href="#pagination">pagination</a> object
