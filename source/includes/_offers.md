@@ -44,13 +44,6 @@ jQuery.ajax({
     "entriesPerPage": 20,
     "totalEntries": 4144,
     "totalPages": 208
-  },
-  "filter": {
-    "attributes": {
-      "jobTaskTypeId": null,
-      "makeId": null
-    },
-    "search": null
   }
 }
 ```
@@ -68,7 +61,6 @@ Parameter     | Default | Required? | Description
 page          | 1       | no        | The page of the result to return
 makeId        | null    | no        | Only show offers for jobs where the car is of the given make
 jobTaskTypeId | null    | no        | Only show offers for jobs that contain at least one job task of the given type
-search        | null    | no        | Only show offers for jobs where the reference number, registration number, car make, car model or job name matches the given string
 
 ### Response JSON
 
