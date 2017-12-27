@@ -108,7 +108,7 @@ This endpoint returns a list of completed jobs without a review.
 
 Attribute  | Type    | Can be blank? | Description
 ---------- | ------- | ------------- | -----------------------------------------------------------------------------------------------------------------------------
-job        | object  | no            | A <a href="#jobdetails">jobDetails</a> object that contains the details of the job
+job        | object  | no            | A <a href="#joboverview">jobOverview</a> object that contains the details of the job
 offer      | object  | yes           | A <a href="#offerdetails">offerDetails</a> object that contains the details of the existing offer
 
 ### URL Parameters
@@ -119,6 +119,120 @@ page          | 1       | no        | The page of the result to return
 makeId        | null    | no        | Only show jobs where the car is of the given make
 jobTaskTypeId | null    | no        | Only show jobs that contain at least one job task of the given type
 
+
+## Get a list of ongoing jobs
+
+> To obtain a list of jobs, use the following code:
+
+```shell
+curl -X "GET" "https://www.autobutler.dk/api/v2/mechanics/jobs/ongoing" \
+     -H "Authorization: token"
+```
+
+```javascript
+jQuery.ajax({
+  url: "https://www.autobutler.dk/api/v2/mechanics/jobs/ongoing",
+  type: "GET",
+  headers: {
+    "Authorization": "token",
+  },
+})
+.done(function(data, textStatus, jqXHR) {
+  console.log("HTTP Request Succeeded: " + jqXHR.status);
+  console.log(data);
+})
+.fail(function(jqXHR, textStatus, errorThrown) {
+  console.log("HTTP Request Failed");
+})
+.always(function() {
+  /* ... */
+});
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "jobs": []
+}
+```
+
+This endpoint returns a list of jobs without appointment.
+
+### HTTP Request
+
+`GET https://www.autobutler.dk/api/v2/mechanics/jobs/to_be_booked`
+
+### Response JSON
+
+Attribute  | Type    | Can be blank? | Description
+---------- | ------- | ------------- | -----------------------------------------------------------------------------------------------------------------------------
+job        | object  | no            | A <a href="#joboverview">jobOverview</a>object that contains the details of the job
+
+### URL Parameters
+
+Parameter     | Default | Required? | Description
+------------- | ------- | --------- | -----------------------------------------------------------------------------------------------------------------------------------
+page          | 1       | no        | The page of the result to return
+makeId        | null    | no        | Only show jobs where the car is of the given make
+jobTaskTypeId | null    | no        | Only show jobs that contain at least one job task of the given type
+
+## Get a list of jobs without appointment
+
+> To obtain a list of jobs, use the following code:
+
+```shell
+curl -X "GET" "https://www.autobutler.dk/api/v2/mechanics/jobs/to_be_booked" \
+     -H "Authorization: token"
+```
+
+```javascript
+jQuery.ajax({
+  url: "https://www.autobutler.dk/api/v2/mechanics/jobs/to_be_booked",
+  type: "GET",
+  headers: {
+    "Authorization": "token",
+  },
+})
+.done(function(data, textStatus, jqXHR) {
+  console.log("HTTP Request Succeeded: " + jqXHR.status);
+  console.log(data);
+})
+.fail(function(jqXHR, textStatus, errorThrown) {
+  console.log("HTTP Request Failed");
+})
+.always(function() {
+  /* ... */
+});
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "jobs": []
+}
+```
+
+This endpoint returns a list of jobs without appointment. Aka 'to be booked'.
+
+### HTTP Request
+
+`GET https://www.autobutler.dk/api/v2/mechanics/jobs/to_be_booked`
+
+### Response JSON
+
+Attribute  | Type    | Can be blank? | Description
+---------- | ------- | ------------- | -----------------------------------------------------------------------------------------------------------------------------
+job        | object  | no            | A <a href="#joboverview">jobOverview</a> object that contains the details of the job
+
+### URL Parameters
+
+Parameter     | Default | Required? | Description
+------------- | ------- | --------- | -----------------------------------------------------------------------------------------------------------------------------------
+page          | 1       | no        | The page of the result to return
+makeId        | null    | no        | Only show jobs where the car is of the given make
+jobTaskTypeId | null    | no        | Only show jobs that contain at least one job task of the given type
 
 ## Get job details
 
