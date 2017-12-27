@@ -505,10 +505,16 @@ mechanicsCount | integer | no            | The number of mechanics used in the m
 
 ```json
 {
-  "id": 2,
-  "name": "Robert Auto",
-  "city": "København Ø",
-  "zip": "2100"
+  "city": "Næstved",
+  "id": 306,
+  "name": "Workshop Næstved",
+  "nextAvailableTime": "2017-12-28",
+  "zip": "4700",
+  "logo": {
+      "url": "https://d2bythind2nctn.cloudfront.net/test.jpg",
+      "thumbUrl": "https://d2bythind2nctn.cloudfront.net/test.jpg",
+      "profileUrl": "https://d2bythind2nctn.cloudfront.net/test.jpg"
+  }
 }
 ```
 
@@ -518,6 +524,7 @@ id             | int     | no            | id of the user
 name           | string  | no            | Name of the user
 city           | string  | no            | User's location - city
 zip            | string  | no            | User's location - zip code
+logo           | object  | no            | Object containing multiple logo url image sizes
 
 ## campaignDetails
 
