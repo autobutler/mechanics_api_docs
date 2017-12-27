@@ -61,6 +61,65 @@ makeId        | null    | no        | Only show jobs where the car is of the giv
 jobTaskTypeId | null    | no        | Only show jobs that contain at least one job task of the given type
 jobRequestType| null    | no        | Only show jobs of the type filtered. Accept only parameters 'direct' or 'other'. Wrong parameter will return an unfiltered result
 
+## Get a list of jobs without a review
+
+> To obtain a list of jobs, use the following code:
+
+```shell
+curl -X "GET" "https://www.autobutler.dk/api/v2/mechanics/jobs/unreviewed" \
+     -H "Authorization: token"
+```
+
+```javascript
+jQuery.ajax({
+  url: "https://www.autobutler.dk/api/v2/mechanics/jobs/unreviewed",
+  type: "GET",
+  headers: {
+    "Authorization": "token",
+  },
+})
+.done(function(data, textStatus, jqXHR) {
+  console.log("HTTP Request Succeeded: " + jqXHR.status);
+  console.log(data);
+})
+.fail(function(jqXHR, textStatus, errorThrown) {
+  console.log("HTTP Request Failed");
+})
+.always(function() {
+  /* ... */
+});
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "jobs": []
+}
+```
+
+This endpoint returns a list of completed jobs without a review.
+
+### HTTP Request
+
+`GET https://www.autobutler.dk/api/v2/mechanics/jobs/unreviewed`
+
+### Response JSON
+
+Attribute  | Type    | Can be blank? | Description
+---------- | ------- | ------------- | -----------------------------------------------------------------------------------------------------------------------------
+job        | object  | no            | A <a href="#jobdetails">jobDetails</a> object that contains the details of the job
+offer      | object  | yes           | A <a href="#offerdetails">offerDetails</a> object that contains the details of the existing offer
+
+### URL Parameters
+
+Parameter     | Default | Required? | Description
+------------- | ------- | --------- | -----------------------------------------------------------------------------------------------------------------------------------
+page          | 1       | no        | The page of the result to return
+makeId        | null    | no        | Only show jobs where the car is of the given make
+jobTaskTypeId | null    | no        | Only show jobs that contain at least one job task of the given type
+
+
 ## Get job details
 
 > To obtain the details of a job, use the following code:
