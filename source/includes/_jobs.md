@@ -33,12 +33,13 @@ jQuery.ajax({
 
 ```json
 {
-  "jobs": []
+  "jobs":[{"job":{...}],
+  "pagination":{"currentPage":1,"totalPages":7,"totalEntries":132,"entriesPerPage":20}
 }
 ```
 
 This endpoint returns a list of jobs that are available for the workshop to bid
-on.
+on. Aka Incoming Jobs
 
 ### HTTP Request
 
@@ -46,9 +47,19 @@ on.
 
 ### Response JSON
 
-Attribute | Type    | Can be blank? | Description
---------- | ------- | ------------- | --------------------------------------------------------
-jobs      | array   | no            | A list of <a href="#joboverview">jobOverview</a> objects
+Attribute  | Type    | Can be blank? | Description
+---------  | ------- | ------------- | --------------------------------------------------------
+jobs       | array   | no            | A list of <a href="#joboverview">jobOverview</a> objects
+pagination | object  | no            | A <a href="#pagination">pagination</a> object
+
+### URL Parameters
+
+Parameter     | Default | Required? | Description
+------------- | ------- | --------- | -----------------------------------------------------------------------------------------------------------------------------------
+page          | 1       | no        | The page of the result to return
+makeId        | null    | no        | Only show jobs where the car is of the given make
+jobTaskTypeId | null    | no        | Only show jobs that contain at least one job task of the given type
+jobRequestType| null    | no        | Only show jobs of the type filtered. Accept only parameters 'direct' or 'other'. Wrong parameter will return an unfiltered result
 
 ## Get job details
 
