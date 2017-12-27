@@ -43,6 +43,15 @@
       "ownerType": "Partner",
       "mechanicOwned": false
     },
+    "jobMechanicReservation": {
+      "id": 354665,
+      "expires": "2017-12-28T07:29:04.000+01:00"
+    },
+    "leadInformation": {
+      "id": 15336280,
+      "mechanicId": 31442,
+      "deleted": true
+    },
     "marketPrice": { }
   },
   "draftOffer": {},
@@ -90,11 +99,18 @@ job.carOwner.id                | integer       | no            | The id of the c
 job.carOwner.ownerId           | integer       | no            | The id of the car owners owner - Mostly for internal use
 job.carOwner.ownerType         | string        | no            | The type of the car owners owner - Mostly for internal use
 job.carOwner.mechanicOwned     | boolean       | no            | A boolean indicating weather or not this is a Mechanic Booking job
+job.jobMechanicReservation     | object        | yes           | An object representating a job_mechanic_reservations entity object
+job.jobMechanicReservation.id  | integer       | no            | id of the entity object
+job.jobMechanicReservation.expires  | string   | no            | Localilized time of the reservation expiration date
+job.leadInformation            | object        | yes           | An object representing a lead_informations entity object
+job.leadInformation.id         | integer       | no            | The db id of the object
+job.leadInformation.mechanic_id| integer       | no            | Foreign key for the mechanic the information belongs to
+job.leadInformation.deleted    | boolean       | no            | Whether the mechanic hided the job
 job.marketPrice                | object        | yes           | A <a href="#marketprice">marketPrice</a> object with market pricing details of the job
 draftOffer                     | object        | yes           | A <a href="#draftofferoverview">draftOfferOverview</a> object
 offer                          | object        | yes           | A JSON object with details of the existing offer from the workshop
 offer.id                       | integer       | no            | The id of the offer
-offer.draft                    | boolean       | no            | A boolean representing weather or not the offer is a draft
+offer.draft                    | boolean       | no            | A boolean representing whether the offer is a draft
 offer.priceDetails             | object        | no            | A JSON object with details of the offer pricing
 offer.priceDetails.totalPrice  | float         | no            | The total price of the offer
 
