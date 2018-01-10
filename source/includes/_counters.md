@@ -35,9 +35,11 @@ jQuery.ajax({
 ```json
 {
   "newCampaignsCount": 0,
-  "unreadConversationsCount": 0,
-  "ongoingJobsCount": 0,
-  "directIncomingJobsCount": 0
+  "unreadConversationsCount": 19,
+  "jobsToBeCompletedCount": 1,
+  "jobsToBeBookedCount": 0,
+  "ongoingJobsCount": 1,
+  "incomingJobsCount": 236
 }
 ```
 
