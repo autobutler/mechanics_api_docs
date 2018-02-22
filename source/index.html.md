@@ -18,6 +18,7 @@ includes:
   - mechanic_integrations
   - mechanic_sub_contractors
   - jobs
+  - logo
   - deleted_jobs
   - offers
   - reviews
