@@ -45,7 +45,9 @@ jQuery.ajax({
     "requiredMechanicConfigFields": {},
     "leadsAreHidden": false,
     "haveOverdueInvoices": true,
-    "hasOverdueJobs": true
+    "hasOverdueJobs": true,
+    "has_jobs_with_completion_date_warning": false,
+    "has_jobs_with_strict_completion_date_warning"
 }
 ```
 
@@ -59,19 +61,21 @@ Used to show notifications about new product subscriptions, terms, overdue invoi
 
 ### Response JSON
 
-Attribute                    | Type           | Can be blank? | Description
------------------------------| -------------  | ------------- | ---------------------------------------------
-needsToAcceptSubscriptions   | boolean        | no            | Whether the mechanic needs to accept product subscriptions
-subscriptionsToAccept        | array(object)  | yes           | A list of product subscriptions the mechanics has yet to accept
-needToAcceptTerms            | boolean        | no            | Whether the mechanic needs to accept terms
-needToAcceptGeneratorTerms   | boolean        | no            | Whether the mechanic needs to accept related to Generator
-needToAcceptPartnerTerms     | boolean        | no            | Whether the mechanic needs to accept related to of Autobutler's partners
-termsToAccept                | array(object)  | yes           | A list of terms the mechanic needs to accept
-needToSetPaymentMethods      | boolean        | no            | Whether the mechanic needs to set payments methods
-needToFillInFields           | boolean        | no            | Whether the mechanic needs to fill in fields to make the account valid
-requiredFields               | hash           | yes           | A list of the required fields the mechanic needs to fill in to make the account valid
-requiredMechanicFields       | hash           | yes           | A list of the required fields from the users table the mechanic needs to fill in to make the account valid (for internal use)
-requiredMechanicConfigFields | hash           | yes           | A list of the required fields from the mechanic_configs table the mechanic needs to fill in to make the account valid (for internal use)
-leadsAreHidden               | boolean        | no            | Whether leads are hidden from the mechanic
-haveOverdueInvoices          | boolean        | no            | Whether the mechanic has any overdue invoices
-hasOverdueJobs               | boolean        | no            | Whether the mechanic has any Autobutler jobs that has surpassed the completion date by 7 days
+Attribute                                    | Type           | Can be blank? | Description
+---------------------------------------------| -------------  | ------------- | ---------------------------------------------
+needsToAcceptSubscriptions                   | boolean        | no            | Whether the mechanic needs to accept product subscriptions
+subscriptionsToAccept                        | array(object)  | yes           | A list of product subscriptions the mechanics has yet to accept
+needToAcceptTerms                            | boolean        | no            | Whether the mechanic needs to accept terms
+needToAcceptGeneratorTerms                   | boolean        | no            | Whether the mechanic needs to accept related to Generator
+needToAcceptPartnerTerms                     | boolean        | no            | Whether the mechanic needs to accept related to of Autobutler's partners
+termsToAccept                                | array(object)  | yes           | A list of terms the mechanic needs to accept
+needToSetPaymentMethods                      | boolean        | no            | Whether the mechanic needs to set payments methods
+needToFillInFields                           | boolean        | no            | Whether the mechanic needs to fill in fields to make the account valid
+requiredFields                               | hash           | yes           | A list of the required fields the mechanic needs to fill in to make the account valid
+requiredMechanicFields                       | hash           | yes           | A list of the required fields from the users table the mechanic needs to fill in to make the account valid (for internal use)
+requiredMechanicConfigFields                 | hash           | yes           | A list of the required fields from the mechanic_configs table the mechanic needs to fill in to make the account valid (for internal use)
+leadsAreHidden                               | boolean        | no            | Whether leads are hidden from the mechanic
+haveOverdueInvoices                          | boolean        | no            | Whether the mechanic has any overdue invoices
+hasOverdueJobs                               | boolean        | no            | Whether the mechanic has any Autobutler jobs that have surpassed the completion date by 7 days
+has_jobs_with_completion_date_warning        | boolean        | no            | Whether the mechanic has any Autobutler jobs that haven't been scheduled within 1 day after acceptance
+has_jobs_with_strict_completion_date_warning | boolean        | no            | Whether the mechanic has any Autobutler jobs that haven't been scheduled within 3 days after acceptance
