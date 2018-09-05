@@ -363,6 +363,7 @@ marketPrice             | float   | yes           | The typical market price for
 mechanicIntegrationData | object  | no            | Integration metadata
 pickupTimeOfDay         | string  | yes           | The time at which the car owner can pick up his car from the workshop
 priceDetails            | object  | no            | A <a href="#pricedetails">priceDetails</a> object
+scheduleInFuture        | boolean | no            | Wether or not the offer is schedule to be booked in the future
 qualityOfParts          | integer | no            | The quality of the spare parts included in the offer
 rejectedExplanation     | string  | yes           | An freehand explanation of why the offer was rejected
 rejectedReason          | string  | yes           | The selected reason for why the offer was rejected
